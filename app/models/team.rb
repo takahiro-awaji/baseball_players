@@ -14,12 +14,12 @@ class Team < ApplicationRecord
   belongs_to_active_hash :since
 
   with_options presence: true do
-    validates :name
-    validates :name_kana
-    validates :url, uniqueness: true
+    validates :team_name
+    validates :team_name_kana
+    validates :team_url, uniqueness: true
     with_options numericality: { other_than: 0, message: 'Select' } do
       validates :activity_base_id
-      validates :attribute_id
+      validates :team_attribute_id
     end
   end
 end
