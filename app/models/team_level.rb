@@ -1,4 +1,4 @@
-class Level < ActiveHash::Base
+class TeamLevel < ActiveHash::Base
   self.data = [
     { id: 0, name: '---' }, 
     { id: 1, name: '全国大会常連レベル' }, 

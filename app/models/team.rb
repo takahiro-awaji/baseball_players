@@ -8,9 +8,9 @@ class Team < ApplicationRecord
   belongs_to_active_hash :team_attribute
   belongs_to_active_hash :activity_pace
   belongs_to_active_hash :games_per_year
-  belongs_to_active_hash :level
-  belongs_to_active_hash :player_age
-  belongs_to_active_hash :player_history
+  belongs_to_active_hash :team_level
+  belongs_to_active_hash :team_player_age
+  belongs_to_active_hash :team_player_history
   belongs_to_active_hash :since
 
   with_options presence: true do
