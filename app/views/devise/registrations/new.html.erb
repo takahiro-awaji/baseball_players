@@ -1,15 +1,15 @@
-<h2>Sign up</h2>
+<h2>チーム新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label "メールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "パスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -17,12 +17,97 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "パスワード確認用" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label "チーム名" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "チーム名（カナ）" %><br />
+    <%= f.text_field :name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label "チームURL" %><br />
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label "活動拠点" %><br />
+    <%= f.collection_select(:activity_base_id, ActivityBase.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "チーム区分" %><br />
+    <%= f.collection_select(:attribute_id, TeamAttribute.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "チームレベル" %><br />
+    <%= f.collection_select(:level_id, Level.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "チーム平均年齢" %><br />
+    <%= f.collection_select(:player_age_id, PlayerAge.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "メンバー野球歴" %><br />
+    <%= f.collection_select(:player_history_id, PlayerHistory.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "所属リーグ・団体・連盟等" %><br />
+    <%= f.text_area :league %>
+  </div>
+
+  <div class="field">
+    <%= f.label "獲得タイトル" %><br />
+    <%= f.text_area :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label "チーム結成" %><br />
+    <%= f.collection_select(:since_id, Since.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "活動曜日" %><br />
+    <% ["日", "月", "火", "水", "木", "金", "土"].each do |day| %>
+      <%= f.check_box :activity_day, {multiple: true}, day, nil %>
+      <%= day %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label "活動ペース" %><br />
+    <%= f.collection_select(:activity_pace_id, ActivityPace.all, :id, :name, {}) %>
+  </div>
+
+    <div class="field">
+    <%= f.label "年間試合数" %><br />
+    <%= f.collection_select(:games_per_year_id, GamesPerYear.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "チームスローガン" %><br />
+    <%= f.text_field :slogan %>
+  </div>
+
+  <div class="field">
+    <%= f.label "チーム紹介" %><br />
+    <%= f.text_area :introduction %>
+  </div>
+
+
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "登録する" %>
   </div>
 <% end %>
 

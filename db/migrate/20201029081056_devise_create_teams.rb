@@ -17,7 +17,7 @@ class DeviseCreateTeams < ActiveRecord::Migration[6.0]
       t.text :league
       t.text :title
       t.integer :since_id
-      t.string :actiity_day
+      t.string :activity_day
       t.integer :activity_pace_id
       t.integer :games_per_year_id
       t.string :slogan
