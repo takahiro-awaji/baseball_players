@@ -15,21 +15,21 @@ ActiveRecord::Schema.define(version: 2020_10_29_081056) do
   create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name", null: false
-    t.string "name_kana", null: false
-    t.string "url", null: false
+    t.string "team_name", null: false
+    t.string "team_name_kana", null: false
+    t.string "team_url", null: false
     t.integer "activity_base_id", null: false
-    t.integer "attribute_id", null: false
-    t.integer "level_id"
-    t.integer "player_age_id"
-    t.integer "player_history_id"
+    t.integer "team_attribute_id", null: false
+    t.integer "team_level_id"
+    t.integer "team_player_age_id"
+    t.integer "team_player_history_id"
     t.text "league"
-    t.text "title"
+    t.text "team_title"
     t.integer "since_id"
     t.string "activity_day"
     t.integer "activity_pace_id"
     t.integer "games_per_year_id"
-    t.string "slogan"
+    t.string "team_slogan"
     t.text "introduction"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

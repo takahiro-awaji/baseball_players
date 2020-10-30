@@ -6,21 +6,21 @@ class DeviseCreateTeams < ActiveRecord::Migration[6.0]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.string :name,               null: false
-      t.string :name_kana,          null: false
-      t.string :url,                null: false, uniqueness: true
+      t.string :team_name,               null: false
+      t.string :team_name_kana,          null: false
+      t.string :team_url,                null: false, uniqueness: true
       t.integer :activity_base_id,  null: false
-      t.integer :attribute_id,      null: false
-      t.integer :level_id
-      t.integer :player_age_id
-      t.integer :player_history_id
+      t.integer :team_attribute_id,      null: false
+      t.integer :team_level_id
+      t.integer :team_player_age_id
+      t.integer :team_player_history_id
       t.text :league
-      t.text :title
+      t.text :team_title
       t.integer :since_id
       t.string :activity_day
       t.integer :activity_pace_id
       t.integer :games_per_year_id
-      t.string :slogan
+      t.string :team_slogan
       t.text :introduction
       ## Recoverable
       t.string   :reset_password_token
