@@ -1,0 +1,19 @@
+<h2><%= @team.team_name %></h2>
+<ul>
+  <li>チーム名：　<%= @team.team_name %></li>
+  <li>チーム名（カナ）：　<%= @team.team_name_kana %></li>
+  <li>活動拠点：　<%= @team.activity_base.name %></li>
+  <li>チーム区分：　<%= @team.team_attribute.name %></li>
+  <li>チームレベル：　<%= @team.team_level.name %></li>
+  <li>チーム平均年齢：　<%= @team.team_player_age.name %></li>
+  <li>メンバー野球歴：　<%= @team.team_player_history.name %></li>
+  <li>所属リーグ・団体・連盟等：　<%= @team.league %></li>
+  <li>獲得タイトル：　<%= @team.team_title %></li>
+  <li>チーム結成：　<%= @team.since.name %></li>
+  <li>活動曜日：　<%= @team.activity_day %></li>
+  <li>活動ペース：　<%= @team.activity_pace.name %></li>
+  <li>年間試合数：　<%= @team.games_per_year.name %></li>
+  <li>チームスローガン：　<%= @team.team_slogan %></li>
+  <li>チーム紹介：　<%= @team.introduction %></li>
+</ul>
+<%= link_to "トップページへ戻る", root_path %>
