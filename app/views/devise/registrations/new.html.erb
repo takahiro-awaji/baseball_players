@@ -23,17 +23,17 @@
 
   <div class="field">
     <%= f.label "チーム名" %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :team_name %>
   </div>
 
   <div class="field">
     <%= f.label "チーム名（カナ）" %><br />
-    <%= f.text_field :name_kana %>
+    <%= f.text_field :team_name_kana %>
   </div>
 
   <div class="field">
     <%= f.label "チームURL" %><br />
-    <%= f.text_field :url %>
+    <%= f.text_field :team_url %>
   </div>
 
   <div class="field">
@@ -43,22 +43,22 @@
 
   <div class="field">
     <%= f.label "チーム区分" %><br />
-    <%= f.collection_select(:attribute_id, TeamAttribute.all, :id, :name, {}) %>
+    <%= f.collection_select(:team_attribute_id, TeamAttribute.all, :id, :name, {}) %>
   </div>
 
   <div class="field">
     <%= f.label "チームレベル" %><br />
-    <%= f.collection_select(:level_id, Level.all, :id, :name, {}) %>
+    <%= f.collection_select(:team_level_id, Level.all, :id, :name, {}) %>
   </div>
 
   <div class="field">
     <%= f.label "チーム平均年齢" %><br />
-    <%= f.collection_select(:player_age_id, PlayerAge.all, :id, :name, {}) %>
+    <%= f.collection_select(:team_player_age_id, PlayerAge.all, :id, :name, {}) %>
   </div>
 
   <div class="field">
     <%= f.label "メンバー野球歴" %><br />
-    <%= f.collection_select(:player_history_id, PlayerHistory.all, :id, :name, {}) %>
+    <%= f.collection_select(:team_player_history_id, PlayerHistory.all, :id, :name, {}) %>
   </div>
 
   <div class="field">
@@ -68,7 +68,7 @@
 
   <div class="field">
     <%= f.label "獲得タイトル" %><br />
-    <%= f.text_area :title %>
+    <%= f.text_area :team_title %>
   </div>
 
   <div class="field">
@@ -78,7 +78,7 @@
 
   <div class="field">
     <%= f.label "活動曜日" %><br />
-    <% ["日", "月", "火", "水", "木", "金", "土"].each do |day| %>
+    <% [ "土", "日", "月", "火", "水", "木", "金"].each do |day| %>
       <%= f.check_box :activity_day, {multiple: true}, day, nil %>
       <%= day %>
     <% end %>
@@ -96,7 +96,7 @@
 
   <div class="field">
     <%= f.label "チームスローガン" %><br />
-    <%= f.text_field :slogan %>
+    <%= f.text_field :team_slogan %>
   </div>
 
   <div class="field">
