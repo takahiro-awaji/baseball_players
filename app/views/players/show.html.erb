@@ -1,0 +1,18 @@
+<h2><%= @player.name %></h2>
+所属チーム：　<%= @player.team.team_name %>
+<ul>
+  <li>選手名：　<%= @player.name %></li>
+  <li>性別：　<%= @player.sex %></li>
+  <li>生年月日：　<%= @player.birthday %></li>
+  <li>メインポジション：　<%= @player.main_position.name %></li>
+  <li>背番号：　<%= @player.number %></li>
+  <li>投/打：　<%= @player.at_pitch %> / <%= @player.at_bat %></li>
+  <li>サブポジション：　<%= @player.sub_position %></li>
+  <li>選手の役職：　<%= @player.player_post %></li>
+  <li>スタッフの役職：　<%= @player.staff_post %></li>
+  <li>野球歴：　<%= @player.carrer %></li>
+  <li>自己紹介：　<%= @player.promotion %></li>
+</ul>
+<h3>個人成績</h3>
+<%= link_to "チームページへ戻る", "/teams/#{@team.id}" %>
+<%= link_to "トップページへ戻る", root_path %>

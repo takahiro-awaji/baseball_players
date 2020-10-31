@@ -1,6 +1,6 @@
 <h2>新規選手登録</h2>
 <%= form_with(model: @player, url: team_players_path, local: true, method: :post) do |f| %>
-  
+
   <div class="field"> 
     <%= f.label "選手名" %><br />
     <%= f.text_field :name %>
@@ -19,7 +19,7 @@
 
   <div class="field">
     <%= f.label "メインポジション" %><br />
-    <%= f.collection_select(:main_position_id, Position.all, :id, :name, {}) %>
+    <%= f.collection_select(:main_position_id, MainPosition.all, :id, :name, {}) %>
   </div>
 
   <div class="field">
