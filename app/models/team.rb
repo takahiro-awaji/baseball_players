@@ -13,6 +13,8 @@ class Team < ApplicationRecord
   belongs_to_active_hash :team_player_history
   belongs_to_active_hash :since
 
+  has_many :players
+
   with_options presence: true do
     validates :team_name
     validates :team_name_kana
