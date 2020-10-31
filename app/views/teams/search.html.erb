@@ -1,0 +1,11 @@
+<h2>検索結果</h2>
+<%= form_with(url: search_teams_path, local: true, method: :get) do |form| %>
+  <%= form.text_field :keyword %>
+  <%= form.submit "検索"%>
+<% end %>
+<ul>
+  <% @teams.each do |team| %>
+    <li><%= link_to team.team_name, team_path(team) %></li>
+  <% end %>
+</ul>
+<%= link_to "トップページへ戻る", root_path %>
