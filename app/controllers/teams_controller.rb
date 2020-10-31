@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update]
 
   def index
+    @teams = Team.all.order(created_at: :desc)
   end
 
   def show
