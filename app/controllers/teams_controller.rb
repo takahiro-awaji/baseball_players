@@ -23,6 +23,10 @@ class TeamsController < ApplicationController
     team.destroy
   end
 
+  def search
+    @teams = Team.search(params[:keyword]).order(created_at: :desc)
+  end
+
   private
 
   def set_team

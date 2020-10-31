@@ -22,4 +22,13 @@ class Team < ApplicationRecord
       validates :team_attribute_id
     end
   end
+
+  def self.search(search)
+    if search != ""
+      Team.where('team_name LIKE (?)', "%#{search}%")
+    else
+      Team.all
+    end
+  end
+
 end
