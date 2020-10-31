@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_081139) do
     t.string "name", null: false
     t.string "sex"
     t.date "birthday"
-    t.string "main_position", null: false
+    t.integer "main_position_id", null: false
     t.integer "number"
     t.string "at_bat"
     t.string "at_pitch"
