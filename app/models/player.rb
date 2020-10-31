@@ -1,6 +1,6 @@
 class Player < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :position
+  belongs_to_active_hash :main_position
   belongs_to :team
 
   validates :name, presence: true
