@@ -1,0 +1,8 @@
+<h2>選手一覧</h2>
+<ul>
+  <% @players.each do |player| %>
+    <li><%= link_to player.name, "/teams/#{@team.id}/players/#{player.id}" %></li>
+  <% end %>
+</ul>
+<%= link_to "チームページへ戻る", team_path(@team) %>
+<%= link_to "トップページへ戻る", root_path %>
