@@ -1,4 +1,6 @@
 <h2><%= @player.name %></h2>
+<%= link_to "編集", edit_team_player_path(@player) %>
+<%= link_to "削除", team_player_path(@player), method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
 所属チーム：　<%= @player.team.team_name %>
 <ul>
   <li>選手名：　<%= @player.name %></li>
