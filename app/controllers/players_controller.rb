@@ -1,4 +1,10 @@
 class PlayersController < ApplicationController
+
+  def index
+    @team = Team.find(params[:team_id])
+    @players = Player.where(team_id: @team.id)
+  end
+
   def new
     @player = Player.new
     @team = Team.find(params[:team_id])

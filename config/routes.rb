@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :players, only: [:new, :create, :show]
+    resources :players, only: [:index, :new, :create, :show]
   end
 end
