@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
-  before_action :set_team, only: [:new, :create, :show]
+  before_action :set_team, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_game, only: [:show, :edit, :update]
 
   def new
     @game = Game.new
@@ -15,13 +16,31 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @game.update(game_params)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    game = Game.find(params[:id])
+    game.destroy
   end
 
   private
 
   def set_team
     @team = Team.find(params[:team_id])
+  end
+
+  def set_game
+    @game = Game.find(params[:id])
   end
 
   def game_params
