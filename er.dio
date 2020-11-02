@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2020-10-31T08:17:20.566Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.50.1 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="r4GePk-Pn6xh5k2FXKx1" version="13.6.5">
+<mxfile host="65bd71144e" modified="2020-11-02T09:40:22.529Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.50.1 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="p1dqUVJ8QA7uy4WWriGe" version="13.6.5">
     <diagram id="ziJ1YS-6tVnV7epeBkQ9" name="ページ1">
         <mxGraphModel dx="673" dy="2180" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -241,32 +241,35 @@
                 <mxCell id="303" value="opponent" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
                     <mxGeometry x="10" y="70" width="60" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="304" value="attribute" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
-                    <mxGeometry x="10" y="130" width="60" height="20" as="geometry"/>
+                <mxCell id="304" value="game_attribute" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
+                    <mxGeometry x="10" y="130" width="90" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="305" value="score" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
-                    <mxGeometry x="10" y="170" width="40" height="20" as="geometry"/>
+                <mxCell id="305" value="game_opponent_score" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
+                    <mxGeometry x="120" y="50" width="140" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="306" value="total_stats_add" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
                     <mxGeometry x="10" y="150" width="100" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="307" value="game_comment" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
-                    <mxGeometry x="120" y="50" width="100" height="20" as="geometry"/>
+                    <mxGeometry x="120" y="90" width="100" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="308" value="result" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
-                    <mxGeometry x="120" y="30" width="40" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="309" value="player_id" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
-                    <mxGeometry x="120" y="90" width="60" height="20" as="geometry"/>
+                <mxCell id="308" value="game_result" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
+                    <mxGeometry x="120" y="70" width="80" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="310" value="team_id" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
-                    <mxGeometry x="120" y="70" width="60" height="20" as="geometry"/>
+                    <mxGeometry x="120" y="110" width="60" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="312" value="field_name" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
                     <mxGeometry x="10" y="110" width="70" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="313" value="tournament_name" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="300" vertex="1">
                     <mxGeometry x="10" y="90" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="367" value="top_or_bottom" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="300">
+                    <mxGeometry x="10" y="170" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="368" value="game_myteam_score" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="300">
+                    <mxGeometry x="120" y="30" width="130" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="351" value="盗塁" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
                     <mxGeometry x="180" y="-410" width="40" height="20" as="geometry"/>
