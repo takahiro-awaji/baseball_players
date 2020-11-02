@@ -14,6 +14,7 @@ class Team < ApplicationRecord
   belongs_to_active_hash :since
 
   has_many :players
+  has_many :games
 
   with_options presence: true do
     validates :team_name
