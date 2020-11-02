@@ -1,0 +1,12 @@
+<h2>試合結果詳細</h2>
+<%= @game.gameday %>　<%= @game.gametime %> 〜
+<%= @game.field_name %>
+<div><%= @game.game_attribute %></div>
+<div><%= @game.tournament_name %></div>
+<h3><%= @game.team.team_name %> 対 <%= @game.opponent %></h3>
+<h3><%= @game.game_myteam_score %> ー <%= @game.game_opponent_score %></h3>
+<h4><%= @game.game_result %></h4>
+<div>コメント：<%= @game.game_comment %></div>
+<h3>選手個人成績</h3> 
+<%= link_to "チームページへ戻る", team_path(@team) %>
+<%= link_to "トップページへ戻る", root_path %>

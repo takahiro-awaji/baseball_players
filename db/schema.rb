@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_093342) do
+ActiveRecord::Schema.define(version: 2020_11_02_115247) do
 
   create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "gameday", null: false
-    t.time "gametime"
+    t.string "gametime"
     t.string "opponent", null: false
     t.string "tournament_name"
     t.string "field_name"

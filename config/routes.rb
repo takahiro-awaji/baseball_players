@@ -7,6 +7,6 @@ Rails.application.routes.draw do
       get 'search'
     end
     resources :players
-    resources :games, only: [:new, :create]
+    resources :games, only: [:new, :create, :show]
   end
 end

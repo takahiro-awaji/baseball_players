@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_team, only: [:new, :create]
+  before_action :set_team, only: [:new, :create, :show]
 
   def new
     @game = Game.new
@@ -12,6 +12,10 @@ class GamesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+    @game = Game.find(params[:id])
   end
 
   private
