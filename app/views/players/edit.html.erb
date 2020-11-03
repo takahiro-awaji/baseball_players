@@ -1,5 +1,5 @@
 <h2>選手編集</h2>
-<%= form_with(model: @player, url: team_player_path(@player), local: true) do |f| %>
+<%= form_with(model: @player, url: team_player_path(@player.team_id), local: true) do |f| %>
 
   <div class="field"> 
     <%= f.label "選手名" %><br />
