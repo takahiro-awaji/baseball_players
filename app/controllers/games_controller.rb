@@ -1,6 +1,11 @@
 class GamesController < ApplicationController
-  before_action :set_team, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_team
   before_action :set_game, only: [:show, :edit, :update]
+
+
+  def index
+    @games = Game.where(team_id: @team.id)
+  end 
 
   def new
     @game = Game.new
