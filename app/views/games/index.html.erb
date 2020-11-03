@@ -1,0 +1,12 @@
+<h2>試合一覧</h2>
+  <% @games.each do |game| %>
+    <div>
+    <%= link_to game.gameday, "/teams/#{@team.id}/games/#{game.id}" %>
+    <%= game.opponent %>
+    <%= game.game_attribute %>
+    <%= game.game_result %>
+    <%= game.game_myteam_score %> - <%= game.game_opponent_score %>
+    </div>
+  <% end %>
+<%= link_to "チームページへ戻る", team_path(@team) %>
+<%= link_to "トップページへ戻る", root_path %>
