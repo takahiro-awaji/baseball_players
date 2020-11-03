@@ -4,7 +4,7 @@ class GamesController < ApplicationController
 
 
   def index
-    @games = Game.where(team_id: @team.id)
+    @games = Game.where(team_id: @team.id).order(gameday: :desc)
   end 
 
   def new
