@@ -1,6 +1,8 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update]
   before_action :set_team
+  before_action :ensure_correct_team, except: [:index, :show]
+
   def index
     @players = Player.where(team_id: @team.id)
   end
@@ -51,4 +53,10 @@ class PlayersController < ApplicationController
     @team = Team.find(params[:team_id])
   end
 
+  def ensure_correct_team
+    team = Team.find(params[:team_id])
+    if team != current_team
+      redirect_to root_path
+    end
+  end
 end

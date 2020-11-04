@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   before_action :set_team
   before_action :set_game, only: [:show, :edit, :update]
-
+  before_action :ensure_correct_team, except: [:index, :show]
 
   def index
     @games = Game.where(team_id: @team.id).order(gameday: :desc)
@@ -52,6 +52,13 @@ class GamesController < ApplicationController
     params.require(:game).permit(:gameday, :gametime, :opponent, :tournament_name, :field_name,
                                  :game_attribute, :total_stats_add, :top_or_bottom, :game_myteam_score, :game_opponent_score, 
                                  :game_result, :game_comment).merge(team_id: current_team.id)
+  end
+
+  def ensure_correct_team
+    team = Team.find(params[:team_id])
+    if team != current_team
+      redirect_to root_path
+    end
   end
 
 end
