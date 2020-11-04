@@ -9,4 +9,13 @@ class ApplicationController < ActionController::Base
                                                        :since_id, :activity_pace_id, :games_per_year_id, :team_slogan, 
                                                        :introduction, activity_day:[]])
   end
+
+  def after_sign_up_path_for(resource)
+    team_path(resource)
+  end
+
+  def after_sign_in_path_for(resource)
+    team_path(resource)
+  end
+
 end
