@@ -1,3 +1,5 @@
+<%= render 'shared/header' %>
+
 <h2><%= @team.team_name %></h2>
 <%= link_to "編集", edit_team_path(@team) %>
 <%= link_to "削除", team_path(@team), method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>

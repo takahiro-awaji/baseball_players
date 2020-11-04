@@ -1,0 +1,21 @@
+.top-page-header {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.top-page-menu {
+  display: flex;
+  list-style: none;
+  margin: 10px;
+}
+
+/* 
+.mypage {
+
+} */
+
+.logout, .login {
+  margin-left: 15px;
+}
