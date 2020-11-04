@@ -1,0 +1,43 @@
+.top-search-form {
+  justify-content: center;
+}
+
+.top-page-menu {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.search-form {
+  height: 50px;
+  width: 400px;
+}
+
+.btn-search {
+  height: 50px;
+  background-color: lightblue;
+}
+
+.btn-top-team-index {
+  height: 50px;
+  background-color: lightgray;
+  font-size: 24px;
+}
+
+.btn-show {
+  background-color: lightgreen;
+}
+
+.card-body {
+  text-align: center;
+}
+
+
+.team-name {
+  font-size: 30px;
+
+}
+
+.team-attribute, .team-activity-base {
+  font-size: 15px;
+}
