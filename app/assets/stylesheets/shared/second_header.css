@@ -1,0 +1,16 @@
+.second-search {
+  height: 100%;
+}
+
+.second-search-form {
+  width: 50%;
+}
+
+.btn-new-player {
+  background-color: lightpink;
+}
+
+.btn-new-game {
+  background-color: limegreen;
+  margin-left: 15px;
+}

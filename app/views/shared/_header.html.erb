@@ -1,5 +1,5 @@
 <header class="top-page-header">
-<h1>ようこそ！</h1>
+<h1><%= link_to image_tag('logo.jpg', class: "logo"), root_path %></h1>
   <% if team_signed_in? %>
     <ul class="top-page-menu">
       <li><%= link_to "マイチームページ", team_path(current_team), class: "mypage btn btn-primary" %></li>
