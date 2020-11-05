@@ -1,3 +1,5 @@
+<%= render 'shared/header' %>
+
 <h2>新規選手登録</h2>
 <%= form_with(model: @player, url: team_players_path, local: true, method: :post) do |f| %>
 

@@ -1,3 +1,5 @@
+<%= render 'shared/header' %>
+
 <h2><%= @player.name %></h2>
 <% if @team == current_team %>
   <%= link_to "編集", edit_team_player_path(@player.team_id) %>

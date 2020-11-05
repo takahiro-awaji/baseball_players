@@ -1,3 +1,5 @@
+<%= render 'shared/header' %>
+
 <h2>試合結果詳細</h2>
 <% if @team == current_team %>
   <%= link_to "編集", edit_team_game_path(@team) %>

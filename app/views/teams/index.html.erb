@@ -19,21 +19,8 @@
     </div>
   </div>
 
-  <%# 検索、チーム一覧 %>
-  <div class="top-page-menu">
-    <div class="row top-search-form">
-      <%= form_with(url: search_teams_path, local: true, method: :get) do |form| %>
-        <%= form.text_field :keyword, class: "search-form", placeholder: "チーム名を入力してください" %>
-        <%= form.submit "検索", class: "btn btn-search"%>
-      <% end %>
-    </div>
-    <div class="row top-team-index">
-      <%= link_to "チーム一覧", teams_path, class: "btn btn-top-team-index" %>
-    </div>
-  </div>
-
   <%# チーム一覧 %>
-  <div class="row">
+  <div class="row mt-5">
     <% @teams.each do |team| %>
       <div class="card col-6" style="width: 30rem;">
         <%= link_to image_tag('school.png', width: "100%", height: "180px"), team_path(team) %>
