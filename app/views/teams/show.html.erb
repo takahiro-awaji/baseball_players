@@ -1,32 +1,135 @@
 <%= render 'shared/header' %>
 
-<h2><%= @team.team_name %></h2>
-<% if @team == current_team %>
-  <%= link_to "編集", edit_team_path(@team) %>
-  <%= link_to "削除", team_path(@team), method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
-  <%= link_to "選手新規登録", new_team_player_path(@team) %>
-  <%= link_to "選手一覧", team_players_path(@team) %>
-  <%= link_to "試合結果登録", new_team_game_path(@team) %>
-  <%= link_to "試合結果一覧", team_games_path(@team) %>
-<% else %>
-  <%= link_to "選手一覧", team_players_path(@team) %>
-  <%= link_to "試合結果一覧", team_games_path(@team) %>
-<% end %>
-<ul>
-  <li>チーム名：　<%= @team.team_name %></li>
-  <li>チーム名（カナ）：　<%= @team.team_name_kana %></li>
-  <li>活動拠点：　<%= @team.activity_base.name %></li>
-  <li>チーム区分：　<%= @team.team_attribute.name %></li>
-  <li>チームレベル：　<%= @team.team_level.name %></li>
-  <li>チーム平均年齢：　<%= @team.team_player_age.name %></li>
-  <li>メンバー野球歴：　<%= @team.team_player_history.name %></li>
-  <li>所属リーグ・団体・連盟等：　<%= @team.league %></li>
-  <li>獲得タイトル：　<%= @team.team_title %></li>
-  <li>チーム結成：　<%= @team.since.name %></li>
-  <li>活動曜日：　<%= @team.activity_day %></li>
-  <li>活動ペース：　<%= @team.activity_pace.name %></li>
-  <li>年間試合数：　<%= @team.games_per_year.name %></li>
-  <li>チームスローガン：　<%= @team.team_slogan %></li>
-  <li>チーム紹介：　<%= @team.introduction %></li>
-</ul>
-<%= link_to "トップページへ戻る", root_path %>
+<div class="container">
+  <%# チームトップ画像 %>
+  <%# <div>
+  <img src="images/top-slide-002.jpg" class="img-fluid" alt="team-image">
+  </div> %>
+  <%# //チームトップ画像 %>
+
+  <h2><%= @team.team_name %></h2>
+  <%# 編集とかメニュー系 %>
+  <% if @team == current_team %>
+    <%= link_to "編集", edit_team_path(@team) %>
+    <%= link_to "削除", team_path(@team), method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
+    <%= link_to "選手新規登録", new_team_player_path(@team) %>
+    <%= link_to "選手一覧", team_players_path(@team) %>
+    <%= link_to "試合結果登録", new_team_game_path(@team) %>
+    <%= link_to "試合結果一覧", team_games_path(@team) %>
+  <% else %>
+    <%= link_to "選手一覧", team_players_path(@team) %>
+    <%= link_to "試合結果一覧", team_games_path(@team) %>
+  <% end %>
+  <%# //編集とかメニュー系 %>
+
+  <div class="row">
+    <div class="col">
+      <h5>チームプロフィール</h5>
+      <table class="table">
+        <tr>
+          <th scope="row">チーム名</th>
+          <td><%= @team.team_name %></td>
+        </tr>
+        <tr>
+          <th scope="row">チーム名（カナ）</th>
+          <td><%= @team.team_name_kana %></td>
+        </tr>
+        <tr>
+          <th score="row">活動拠点</th>
+          <td><%= @team.activity_base.name %></td>
+        </tr>
+        <tr>
+          <th score="row">チーム区分</th>
+          <td><%= @team.team_attribute.name %></td>
+        </tr>
+        <tr>
+          <th score="row">チームレベル</th>
+          <td><%= @team.team_level.name %></td>
+        </tr>
+        <tr>
+          <th score="row">チーム平均年齢</th>
+          <td><%= @team.team_player_age.name %></td>
+        </tr>
+        <tr>
+          <th score="row">メンバー野球歴</th>
+          <td><%= @team.team_player_history.name %></td>
+        </tr>
+        <tr>
+          <th score="row">所属リーグ・団体・連盟等</th>
+          <td><%= @team.league %></td>
+        </tr>
+        <tr>
+          <th score="row">獲得タイトル</th>
+          <td><%= @team.team_title %></td>
+        </tr>
+        <tr>
+          <th score="row">チーム結成</th>
+          <td><%= @team.since.name %></td>
+        </tr>
+        <tr>
+          <th score="row">活動曜日</th>
+          <td><%= @team.activity_day %></td>
+        </tr>
+        <tr>
+          <th score="row">活動ペース</th>
+          <td><%= @team.activity_pace.name %></td>
+        </tr>
+        <tr>
+          <th score="row">年間試合数</th>
+          <td><%= @team.games_per_year.name %></td>
+        </tr>
+        <tr>
+          <th score="row">チームスローガン</th>
+          <td><%= @team.team_slogan %></td>
+        </tr>
+        <tr>
+          <th score="row">チーム紹介</th>
+          <td><%= @team.introduction %></td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="col">
+      <h5>選手一覧</h5>
+        <div class="row">
+          <% @players.each do |player| %>
+          <div class="media col-6 p-3 position-relative border">
+          <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" %>
+            <%= player.number %>　<%= player.name %><br />（<%= player.main_position.name %>)<br />（<%= player.at_pitch%>/<%= player.at_bat %>          </div>
+          <% end %>
+        </div>
+    </div>
+
+    <div class="w-100"></div>
+    
+    <div class="col">
+      <h5>試合結果一覧</h5>
+        <div class="row">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">試合日</th>
+                <th scope="col">対戦相手</th>
+                <th scope="col">結果</th>
+                <th scope="col">スコア</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% @games.each do |game| %>
+                <tr>
+                  <td><%= game.gameday %></td>
+                  <td><%= game.opponent %></td>
+                  <td><%= game.game_result %></td>
+                  <td><%= game.game_myteam_score %> - <%= game.game_opponent_score %></td>
+                </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+    </div>
+    
+    <div class="col">
+    <p>チーム成績</p>
+    </div>
+  </div>
+</div>
