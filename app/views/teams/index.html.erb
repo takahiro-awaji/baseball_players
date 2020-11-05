@@ -1,6 +1,25 @@
 <%= render 'shared/header' %>
 
 <div class="container">
+  <%# TOPページスライド %>
+  <div id="carouselExampleFade" class="carousel slide carousel-fade mt-3" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag("top-slide-001.jpg", class: "d-block w-100", width: "800", height: "400") %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("top-slide-002.jpg", class: "d-block w-100", width: "800", height: "400") %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("top-slide-003.jpg", class: "d-block w-100", width: "800", height: "400") %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("top-slide-004.jpg", class: "d-block w-100", width: "800", height: "400") %>
+      </div>
+    </div>
+  </div>
+
+  <%# 検索、チーム一覧 %>
   <div class="top-page-menu">
     <div class="row top-search-form">
       <%= form_with(url: search_teams_path, local: true, method: :get) do |form| %>
@@ -12,19 +31,22 @@
       <%= link_to "チーム一覧", teams_path, class: "btn btn-top-team-index" %>
     </div>
   </div>
-    <div class="row">
-      <% @teams.each do |team| %>
-        <div class="card col-6" style="width: 30rem;">
-          <%= link_to image_tag('school.png', width: "100%", height: "180px"), team_path(team) %>
-          <div class="card-body">
-            <h5 class="card-title team-name"><%= team.team_name %></h5>
-            <p class="card-text team-attribute"><%= team.team_attribute.name %></p>
-            <p class="card-text team-activity-base"><%= team.activity_base.name %></p>
-            <%= link_to "詳細", team_path(team), class: "btn btn-show" %>
-          </div>
+
+  <%# チーム一覧 %>
+  <div class="row">
+    <% @teams.each do |team| %>
+      <div class="card col-6" style="width: 30rem;">
+        <%= link_to image_tag('school.png', width: "100%", height: "180px"), team_path(team) %>
+        <div class="card-body">
+          <h5 class="card-title team-name"><%= team.team_name %></h5>
+          <p class="card-text team-attribute"><%= team.team_attribute.name %></p>
+          <p class="card-text team-activity-base"><%= team.activity_base.name %></p>
+          <%= link_to "詳細", team_path(team), class: "btn btn-show" %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
+
 </div>
 
 <%= render 'shared/footer' %>
