@@ -1,13 +1,14 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update]
-  before_action :move_to_index, except: [:index, :show, :search]
-  before_action :ensure_correct_team, except: [:index, :show, :search]
+  before_action :ensure_correct_team, only: [:edit, :update, :destroy]
 
   def index
     @teams = Team.all.order(created_at: :desc)
   end
 
   def show
+    @players = Player.where(team_id: @team.id).order(created_at: :desc).limit(10)
+    @games = Game.where(team_id: @team.id).order(gameday: :desc).limit(5)
   end
 
   def edit
@@ -42,7 +43,7 @@ class TeamsController < ApplicationController
   end
 
   def ensure_correct_team
-    team = Team.find(params[:team_id])
+    team = Team.find(params[:id])
     if team != current_team
       redirect_to root_path
     end
