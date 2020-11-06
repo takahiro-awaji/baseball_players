@@ -39,7 +39,7 @@
       </form> %>
 
       <%= form_with(url: search_teams_path, local: true, method: :get, class: "form-inline my-2 my-lg-0 mr-3") do |form| %>
-        <%= form.text_field :keyword, class: "form-control mr-sm-3 ", placeholder: "チーム名を入力してください" %>
+        <%= form.text_field :keyword, class: "form-control mr-sm-3 ", placeholder: "チーム名を入力してください", style: "width: 300px" %>
         <%= form.submit "検索", class: "btn btn-outline-success my-2 my-sm-0"%>
       <% end %>
     </div>
