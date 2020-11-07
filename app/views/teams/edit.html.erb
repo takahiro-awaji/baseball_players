@@ -1,90 +1,95 @@
 <%= render 'shared/header' %>
 
-<%= form_with(model: @team, local: true) do |f| %>
+<div class="container mt-3">
+  <h2>チーム編集</h2>
+  
+  <%= form_with(model: @team, local: true) do |f| %>
   <%# <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field"> 
-    <%= f.label "チーム名" %><br />
-    <%= f.text_field :team_name %>
+  <div class="form-group row"> 
+    <%= f.label "チーム名", class: "col-sm-2" %><br />
+    <%= f.text_field :team_name, class: "form-control col-sm-6" %>
   </div>
 
-  <div class="field">
-    <%= f.label "チーム名（カナ）" %><br />
-    <%= f.text_field :team_name_kana %>
+  <div class="form-group row">
+    <%= f.label "チーム名（カナ）", class: "col-sm-2" %><br />
+    <%= f.text_field :team_name_kana, class: "form-control col-sm-6" %>
   </div>
 
-  <div class="field">
-    <%= f.label "活動拠点" %><br />
+  <div class="form-group row">
+    <%= f.label "活動拠点", class: "col-sm-2" %><br />
     <%= f.collection_select(:activity_base_id, ActivityBase.all, :id, :name, {}) %>
   </div>
 
-  <div class="field">
-    <%= f.label "チーム区分" %><br />
+  <div class="form-group row">
+    <%= f.label "チーム区分", class: "col-sm-2" %><br />
     <%= f.collection_select(:team_attribute_id, TeamAttribute.all, :id, :name, {}) %>
   </div>
 
-  <div class="field">
-    <%= f.label "チームレベル" %><br />
+  <div class="form-group row">
+    <%= f.label "チームレベル", class: "col-sm-2" %><br />
     <%= f.collection_select(:team_level_id, TeamLevel.all, :id, :name, {}) %>
   </div>
 
-  <div class="field">
-    <%= f.label "チーム平均年齢" %><br />
+  <div class="form-group row">
+    <%= f.label "チーム平均年齢", class: "col-sm-2" %><br />
     <%= f.collection_select(:team_player_age_id, TeamPlayerAge.all, :id, :name, {}) %>
   </div>
 
-  <div class="field">
-    <%= f.label "メンバー野球歴" %><br />
+  <div class="form-group row">
+    <%= f.label "メンバー野球歴", class: "col-sm-2" %><br />
     <%= f.collection_select(:team_player_history_id, TeamPlayerHistory.all, :id, :name, {}) %>
   </div>
 
-  <div class="field">
-    <%= f.label "所属リーグ・団体・連盟等" %><br />
-    <%= f.text_area :league %>
+  <div class="form-group row">
+    <%= f.label "所属リーグ・団体・連盟等", class: "col-sm-2" %><br />
+    <%= f.text_area :league, class: "form-control col-sm-6 overflow-auto" %>
   </div>
 
-  <div class="field">
-    <%= f.label "獲得タイトル" %><br />
-    <%= f.text_area :team_title %>
+  <div class="form-group row">
+    <%= f.label "獲得タイトル", class: "col-sm-2" %><br />
+    <%= f.text_area :team_title, class: "form-control col-sm-6 overflow-auto" %>
   </div>
 
-  <div class="field">
-    <%= f.label "チーム結成" %><br />
+  <div class="form-group row">
+    <%= f.label "チーム結成", class: "col-sm-2" %><br />
     <%= f.collection_select(:since_id, Since.all, :id, :name, {}) %>
   </div>
 
-  <div class="field">
-    <%= f.label "活動曜日" %><br />
+  <div class="form-group row">
+    <%= f.label "活動曜日", class: "col-sm-2" %><br />
     <% [ "土", "日", "月", "火", "水", "木", "金"].each do |day| %>
-      <%= f.check_box :activity_day, {multiple: true}, day, nil %>
-      <%= day %>
+      <div class="form-check">
+        <%= f.check_box :activity_day, {multiple: true}, day, nil %>
+        <%= day %>
+      </div>
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label "活動ペース" %><br />
+  <div class="form-group row">
+    <%= f.label "活動ペース", class: "col-sm-2" %><br />
     <%= f.collection_select(:activity_pace_id, ActivityPace.all, :id, :name, {}) %>
   </div>
 
-    <div class="field">
-    <%= f.label "年間試合数" %><br />
+    <div class="form-group row">
+    <%= f.label "年間試合数", class: "col-sm-2" %><br />
     <%= f.collection_select(:games_per_year_id, GamesPerYear.all, :id, :name, {}) %>
   </div>
 
-  <div class="field">
-    <%= f.label "チームスローガン" %><br />
-    <%= f.text_field :team_slogan %>
+  <div class="form-group row">
+    <%= f.label "チームスローガン", class: "col-sm-2" %><br />
+    <%= f.text_field :team_slogan, class: "form-control col-sm-6 overflow-auto" %>
   </div>
 
-  <div class="field">
-    <%= f.label "チーム紹介" %><br />
-    <%= f.text_area :introduction %>
+  <div class="form-group row">
+    <%= f.label "チーム紹介", class: "col-sm-2" %><br />
+    <%= f.text_area :introduction, class: "form-control col-sm-6 overflow-auto" %>
   </div>
 
 
 
   <div class="actions">
-    <%= f.submit "登録する" %>
+    <%= f.submit "更新する", class: "col-8 btn btn-primary" %>
   </div>
 <% end %>
 
