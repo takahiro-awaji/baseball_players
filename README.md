@@ -62,7 +62,7 @@ Baseball Players
 *レーダーチャート機能 
 
 ## データベース設計
-![代替テキスト]https://gyazo.com/49fb9fe59c3853670f0723a440023e5c
+https://gyazo.com/49fb9fe59c3853670f0723a440023e5c
 
 ## ローカルでの動作方法
- 
+作成中のため未設定 
