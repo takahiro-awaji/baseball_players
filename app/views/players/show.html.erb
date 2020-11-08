@@ -1,26 +1,78 @@
 <%= render 'shared/header' %>
 
-<h2><%= @player.name %></h2>
-<% if @team == current_team %>
-  <%= link_to "編集", edit_team_player_path(@player.team_id) %>
-  <%= link_to "削除", team_player_path(@player.team_id), method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
-<% end %>
-所属チーム：　<%= @player.team.team_name %>
-<ul>
-  <li>選手名：　<%= @player.name %></li>
-  <li>性別：　<%= @player.sex %></li>
-  <li>生年月日：　<%= @player.birthday %></li>
-  <li>メインポジション：　<%= @player.main_position.name %></li>
-  <li>背番号：　<%= @player.number %></li>
-  <li>投/打：　<%= @player.at_pitch %> / <%= @player.at_bat %></li>
-  <li>サブポジション：　<%= @player.sub_position %></li>
-  <li>選手の役職：　<%= @player.player_post %></li>
-  <li>スタッフの役職：　<%= @player.staff_post %></li>
-  <li>野球歴：　<%= @player.carrer %></li>
-  <li>自己紹介：　<%= @player.promotion %></li>
-</ul>
-<h3>個人成績</h3>
-<%= link_to "チームページへ戻る", "/teams/#{@team.id}" %>
-<%= link_to "トップページへ戻る", root_path %>
+<div class="container mt-3">
+
+  <h2><%= @player.name %></h2>
+  <% if @team == current_team %>
+    <%= link_to "編集", edit_team_player_path(@player.team_id) %>
+    <%= link_to "削除", team_player_path(@player.team_id), method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
+  <% end %>
+  <br/>
+
+  <div class="row">
+    <div class="col-8">
+      <table class="table">
+        <tr>
+          <th scope="row">所属チーム</th>
+          <td><%= @player.team.team_name %></td>
+        </tr>
+        <tr>
+          <th scope="row">選手名</th>
+          <td><%= @player.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">性別</th>
+          <td><%= @player.sex %></td>
+        </tr>
+        <tr>
+          <th scope="row">生年月日</th>
+          <td><%= @player.birthday %></td>
+        </tr>
+        <tr>
+          <th scope="row">メインポジション</th>
+          <td><%= @player.main_position.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">背番号</th>
+          <td><%= @player.number %></td>
+        </tr>
+        <tr>
+          <th scope="row">投／打</th>
+          <td><%= @player.at_pitch %> / <%= @player.at_bat %></td>
+        </tr>
+        <tr>
+          <th scope="row">サブポジション</th>
+          <td><%= @player.sub_position %></td>
+        </tr>
+        <tr>
+          <th scope="row">選手の役職</th>
+          <td><%= @player.player_post %></td>
+        </tr>
+        <tr>
+          <th scope="row">スタッフの役職</th>
+          <td><%= @player.staff_post %></td>
+        </tr>
+        <tr>
+          <th scope="row">野球歴</th>
+          <td><%= @player.carrer %></td>
+        </tr>
+        <tr>
+          <th scope="row">自己紹介</th>
+          <td><%= @player.promotion %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+    <h3>個人成績</h3>
+    </div>
+  </div>
+    
+  <%= link_to "チームページへ戻る", "/teams/#{@team.id}" %>
+  <%= link_to "トップページへ戻る", root_path %>
+
+</div>
 
 <%= render 'shared/footer' %>
