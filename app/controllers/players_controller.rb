@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   before_action :ensure_correct_team, except: [:index, :show]
 
   def index
-    @players = Player.where(team_id: @team.id)
+    @players = Player.where(team_id: @team.id).order(number: :asc)
   end
 
   def new
