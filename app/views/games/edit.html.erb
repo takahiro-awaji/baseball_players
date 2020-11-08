@@ -1,57 +1,79 @@
 <%= render 'shared/header' %>
 
-<h2>試合結果登録</h2>
-<%= form_with(model: @game, url: team_game_path(@team), local: true) do |f| %>
-  <div class="field">
-    <%= f.label "試合日" %>
-    <%= f.date_field :gameday %>
-  </div>
-    <div class="field">
-    <%= f.label "試合開始時間" %>
-    <%= f.time_field :gametime %>
-  </div>
-  <div class="field">
-    <%= f.label "対戦相手" %>
-    <%= f.text_field :opponent %>
-  </div>
-  <div class="field">
-    <%= f.label "大会名" %>
-    <%= f.text_field :tournament_name %>
-  </div>
-  <div class="field">
-    <%= f.label "球場名" %>
-    <%= f.text_field :field_name %>
-  </div>
-  <div class="field">
-        <%= f.label "試合区分" %>
-      <%= f.select(:game_attribute, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}) %>
-  </div>
-  <div class="field">
-    <%= f.label "通算成績に加える" %>
-    <%= f.radio_button(:total_stats_add, 'はい') %> はい
-    <%= f.radio_button(:total_stats_add, 'いいえ') %> いいえ
-  </div>
-  <div class="field">
-    <%= f.label "スコア" %>
-    <%= f.radio_button(:top_or_bottom, '先攻') %>先攻
-    <%= f.radio_button(:top_or_bottom, '後攻') %>後攻<br />
-    自チーム <%= f.text_field :game_myteam_score, class: "score-form" %> 対
-    相手チーム <%= f.text_field :game_opponent_score, class: "score-form" %>
-  </div>
-  <div class="field">
-    <%= f.label "試合結果" %>
-    <%= f.select(:game_result, ["勝ち", "負け", "引き分け", "その他"], {include_blank: "選択してください"}) %>
-  </div>
-  <div class="field">
-    <%= f.label "コメント" %>
-    <%= f.text_area :game_comment %>
-  </div>
+<div class="container mt-3">
+  <h2>試合結果登録</h2>
 
-  <div class="actions">
-    <%= f.submit "登録する" %>
-  </div>
-<% end %>
-<%= link_to "チームページへ戻る", team_path(@team) %>
-<%= link_to "トップページへ戻る", root_path %>
+  <%= form_with(model: @game, url: team_game_path(@team), local: true) do |f| %>
+ 
+    <div class="form-group row">
+      <%= f.label "試合日", class: "col-sm-2" %>
+      <%= f.date_field :gameday, class: "form-control col-sm-4" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "試合開始時間", class: "col-sm-2" %>
+      <%= f.time_field :gametime, class: "form-control col-sm-4" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "対戦相手", class: "col-sm-2" %>
+      <%= f.text_field :opponent, class: "form-control col-sm-4" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "大会名", class: "col-sm-2" %>
+      <%= f.text_field :tournament_name, class: "form-control col-sm-6" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "球場名", class: "col-sm-2" %>
+      <%= f.text_field :field_name, class: "form-control col-sm-6" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "試合区分", class: "col-sm-2" %>
+      <%= f.select(:game_attribute, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}) %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "通算成績に加える", class: "col-sm-2" %>
+      <div class="form-check">
+        <%= f.radio_button(:total_stats_add, 'はい') %> はい
+        <%= f.radio_button(:total_stats_add, 'いいえ') %> いいえ
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "スコア", class: "col-sm-2" %>
+      <div class="form-check">
+        <%= f.radio_button(:top_or_bottom, '先攻') %>先攻
+        <%= f.radio_button(:top_or_bottom, '後攻') %>後攻<br />
+        <div class="pt-2">
+          自チーム <%= f.text_field :game_myteam_score, class: "score-form" %> 対
+          相手チーム <%= f.text_field :game_opponent_score, class: "score-form" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "試合結果", class: "col-sm-2" %>
+      <%= f.select(:game_result, ["勝ち", "負け", "引き分け", "その他"], {include_blank: "選択してください"}) %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "コメント", class: "col-sm-2" %>
+      <%= f.text_area :game_comment, class: "form-control col-sm-6" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "登録する", class: "col-8 btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+  <%= link_to "チームページへ戻る", team_path(@team) %>
+  <%= link_to "トップページへ戻る", root_path %>
+
+</div>
 
 <%= render 'shared/footer' %>
