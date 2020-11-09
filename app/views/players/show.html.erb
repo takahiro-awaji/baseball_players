@@ -1,13 +1,29 @@
 <%= render 'shared/header' %>
 
 <div class="container mt-3">
-
-  <h2><%= @player.name %></h2>
   <% if @team == current_team %>
     <%= link_to "編集", edit_team_player_path(@player.team_id) %>
     <%= link_to "削除", team_player_path(@player.team_id), method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
   <% end %>
-  <br/>
+  <div class="row">
+<%# 選手画像の表示 %>
+    <div class="col-sm-3">
+    <% if @player.image.present? %>
+      <%= image_tag(@player.image, class: "m-2", size: "150x150") if @player.image.attached? %>
+    <% else %>
+      <%= image_tag('logo.jpg', class: "m-2", size: "150x150") %>
+    <% end %>
+    </div>
+  <%# //選手画像の表示 %>
+
+    <div class="row">
+      <div class="col">
+        <h2><%= @player.number %></h2>
+        <h3><%= @player.name %></h3>
+        <%= @player.main_position.name %> ／ <%= @player.at_pitch %>／<%= @player.at_bat %>
+      </div>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-8">
