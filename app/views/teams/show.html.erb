@@ -29,8 +29,11 @@
   <%# //編集とかメニュー系 %>
 
   <div class="row">
+
     <div class="col">
-      <h5>チームプロフィール</h5>
+      <a href="#" class="d-block bg-dark text-white">
+      <h5 class="p-2">チームプロフィール</h5>
+      </a>
       <table class="table">
         <tr>
           <th scope="row">チーム名</th>
@@ -96,7 +99,9 @@
     </div>
     
     <div class="col">
-      <h5>選手一覧</h5>
+      <a href="#" class="d-block bg-success text-white">
+      <h5 class="p-2">選手一覧（最新登録10選手）</h5>
+      </a>
         <div class="row">
           <% @players.each do |player| %>
           <div class="media col-6 p-3 position-relative border">
@@ -110,10 +115,12 @@
         </div>
     </div>
 
-    <div class="w-100"></div>
+    <div class="w-100 m-3"></div>
     
     <div class="col">
-      <h5>試合結果一覧</h5>
+      <a href="#" class="d-block bg-primary text-white">
+      <h5 class="p-2">試合結果一覧（最新5試合）</h5>
+      </a>
         <div class="row">
           <table class="table">
             <thead class="thead-dark">
@@ -139,7 +146,9 @@
     </div>
     
     <div class="col">
-    <p>チーム成績</p>
+      <a href="#" class="d-block bg-danger text-white">
+      <p class="p-2">チーム成績</p>
+      </a>
     </div>
   </div>
 </div>
