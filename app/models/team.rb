@@ -15,6 +15,7 @@ class Team < ApplicationRecord
 
   has_many :players
   has_many :games
+  has_one_attached :image
 
   with_options presence: true do
     validates :team_name

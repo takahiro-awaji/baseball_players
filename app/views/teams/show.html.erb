@@ -1,13 +1,19 @@
 <%= render 'shared/header' %>
 
 <div class="container mt-3">
-  <%# チームトップ画像 %>
-  <%# <div>
-  <img src="images/top-slide-002.jpg" class="img-fluid" alt="team-image">
-  </div> %>
-  <%# //チームトップ画像 %>
+  <%# <% チームトップ画像 %>
+  <% if @team.image.present? %>
+    <div style="height: 400px;">
+      <%= image_tag(@team.image, width: "100%", height: "100%") if @team.image.attached?  %>
+    </div>
+  <% else %>
+    <div style="height: 400px;">
+      <%= image_tag('school.png', width: "100%", height: "100%") %>
+    </div>
+  <% end %>
+  <%# <% //チームトップ画像 %>
 
-  <h2><%= @team.team_name %></h2>
+  <h2 class="mt-3"><%= @team.team_name %></h2>
   <%# 編集とかメニュー系 %>
   <% if @team == current_team %>
     <%= link_to "編集", edit_team_path(@team) %>
