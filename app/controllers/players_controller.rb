@@ -42,7 +42,7 @@ class PlayersController < ApplicationController
 
   def player_params
     params.require(:player).permit(:name, :sex, :birthday, :main_position_id, :number, :at_pitch, :at_bat,
-                                   :player_post, :staff_post, :carrer, :promotion, sub_position: []).merge(team_id: current_team.id)
+                                   :player_post, :staff_post, :carrer, :promotion, :image,  sub_position: []).merge(team_id: current_team.id)
   end
 
   def set_player
