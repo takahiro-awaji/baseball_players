@@ -9,17 +9,17 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">試合日</th>
-            <th scope="col">試合区分</th>
-            <th scope="col">対戦相手</th>
-            <th scope="col">結果</th>
-            <th scope="col">スコア</th>
+            <th scope="col" width="15%">試合日</th>
+            <th scope="col" width="15%">試合区分</th>
+            <th scope="col" width="40%">対戦相手</th>
+            <th scope="col" width="10%">結果</th>
+            <th scope="col" width="20%">スコア</th>
           </tr>
         </thead>
         <tbody>
           <% @games.each do |game| %>
             <tr>
-              <td><%= link_to game.gameday, "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
+              <td class="position-relative"><%= link_to game.gameday, "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
               <td><%= game.game_attribute %></td>
               <td><%= game.opponent %></td>
               <td><%= game.game_result %></td>

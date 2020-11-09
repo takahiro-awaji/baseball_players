@@ -95,7 +95,7 @@
           <% @players.each do |player| %>
           <div class="media col-6 p-3 position-relative border">
           <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" %>
-            <%= player.number %>　<%= player.name %><br />（<%= player.main_position.name %>)<br />（<%= player.at_pitch%>/<%= player.at_bat %>          </div>
+            <%= player.number %>　<%= player.name %><br />（<%= player.main_position.name %>)<br />（<%= player.at_pitch%>/<%= player.at_bat %>）          </div>
           <% end %>
         </div>
     </div>
@@ -108,16 +108,16 @@
           <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">試合日</th>
-                <th scope="col">対戦相手</th>
-                <th scope="col">結果</th>
-                <th scope="col">スコア</th>
+                <th scope="col" width="30%">試合日</th>
+                <th scope="col" width="35%">対戦相手</th>
+                <th scope="col" width="15%">結果</th>
+                <th scope="col" width="15%">スコア</th>
               </tr>
             </thead>
             <tbody>
                 <% @games.each do |game| %>
                 <tr>
-                  <td><%= game.gameday %></td>
+                  <td class="position-relative"><%= link_to game.gameday, "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
                   <td><%= game.opponent %></td>
                   <td><%= game.game_result %></td>
                   <td><%= game.game_myteam_score %> - <%= game.game_opponent_score %></td>
