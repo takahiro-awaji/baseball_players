@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:team_name, :team_name_kana, :activity_base_id, :team_attribute_id, :team_level_id,
                           :team_player_age_id, :team_player_history_id, :league, :team_title, :since_id, 
-                          :activity_pace_id, :games_per_year_id, :team_slogan, :introduction, activity_day: [])
+                          :activity_pace_id, :games_per_year_id, :team_slogan, :introduction, :image, activity_day: [])
   end
 
   def ensure_correct_team

@@ -107,7 +107,10 @@
       <%= f.text_area :introduction, class: "form-control col-sm-6 overflow-auto" %>
     </div>
 
-
+    <div class="custom-file row mb-3">
+      <%= f.label "チーム画像", class: "col-sm-2" %>
+      <%= f.file_field :image, id: "customFile" %>
+    </div>
 
     <div class="actions">
       <%= f.submit "登録する", class: "col-8 btn btn-primary" %>
