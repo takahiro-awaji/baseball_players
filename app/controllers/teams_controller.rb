@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
   def show
     @players = Player.where(team_id: @team.id).order(created_at: :desc).limit(10)
     @games = Game.where(team_id: @team.id).order(gameday: :desc).limit(5)
+    @game = @team.games.all
   end
 
   def edit

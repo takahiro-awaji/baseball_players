@@ -149,6 +149,33 @@
       <a href="#" class="d-block bg-danger text-white">
       <p class="p-2">チーム成績</p>
       </a>
+
+      <div class="table-responsive-sm ">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">試合数</th>
+              <th scope="col">勝ち</th>
+              <th scope="col">負け</th>
+              <th scope="col">引分</th>
+              <th scope="col">勝率</th>
+              <th scope="col">得点</th>
+              <th scope="col">失点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @game.count %></td>
+              <td><%= @game.where(game_result: "勝ち").count %></td>
+              <td><%= @game.where(game_result: "負け").count %></td>
+              <td><%= @game.where(game_result: "引き分け").count %></td>
+              <td><%= sprintf("%.3f",@game.where(game_result: "勝ち").count / @game.count.to_f) %></td>
+              <td><%= @game.sum(:game_myteam_score) %></td>
+              <td><%= @game.sum(:game_opponent_score) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
