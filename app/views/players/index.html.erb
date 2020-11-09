@@ -8,8 +8,12 @@
   <div class="row">
     <% @players.each do |player| %>
       <div class="media col-6 p-3 position-relative border">
-        <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"),"/teams/#{@team.id}/players/#{player.id}", class:"stretched-link" %>
-        <%= player.number %>　<%= player.name %><br />（<%= player.main_position.name %>）<br />（<%= player.at_pitch %>/<%= player.at_bat %>）
+        <% if player.image.present? %>
+          <%= link_to image_tag(player.image, class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" if player.image.attached? %>
+        <% else %>
+          <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" %>
+        <% end %>
+        <%= player.number %>　<%= player.name %><br />（<%= player.main_position.name %>)<br />（<%= player.at_pitch%>/<%= player.at_bat %>）
       </div>
     <% end %>
   </div>
