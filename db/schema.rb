@@ -10,7 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_115247) do
+ActiveRecord::Schema.define(version: 2020_11_09_045916) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "batting_stats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "at_field"
+    t.integer "batting_order"
+    t.string "fielding_position"
+    t.integer "at_standing"
+    t.integer "at_hitting"
+    t.integer "hit"
+    t.integer "run_batted_in"
+    t.integer "run"
+    t.integer "stolen_base"
+    t.integer "double"
+    t.integer "triple"
+    t.integer "homerun"
+    t.integer "strikeout"
+    t.integer "walk"
+    t.integer "hit_by_pitch"
+    t.integer "sacrifice_bunt"
+    t.integer "sacrifice_fly"
+    t.integer "double_play"
+    t.integer "opponent_error"
+    t.integer "fielding_error"
+    t.bigint "game_id", null: false
+    t.bigint "player_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_batting_stats_on_game_id"
+    t.index ["player_id"], name: "index_batting_stats_on_player_id"
+  end
+
+  create_table "game_players", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "game_id"
+    t.bigint "player_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_game_players_on_game_id"
+    t.index ["player_id"], name: "index_game_players_on_player_id"
+  end
 
   create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "gameday", null: false
@@ -78,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_115247) do
     t.index ["reset_password_token"], name: "index_teams_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "games", "teams"
   add_foreign_key "players", "teams"
 end
