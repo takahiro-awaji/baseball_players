@@ -1,7 +1,11 @@
 <%= render 'shared/header' %>
 
-<h2>更新が完了しました。</h2>
-<%= link_to "チームのページへ戻る", team_path(@team) %>
-<%= link_to "トップページへ戻る", root_path %>
+<div class="container mt-3">
+
+  <h2>更新が完了しました。</h2>
+  <%= link_to "チームのページへ戻る", team_path(@team) %>
+  <%= link_to "トップページへ戻る", root_path %>
+
+</div>
 
 <%= render 'shared/footer' %>
