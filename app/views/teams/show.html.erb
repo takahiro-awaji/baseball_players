@@ -65,11 +65,11 @@
         </tr>
         <tr>
           <th score="row">所属リーグ・団体・連盟等</th>
-          <td><%= @team.league %></td>
+          <td><%= simple_format(@team.league) %></td>
         </tr>
         <tr>
           <th score="row">獲得タイトル</th>
-          <td><%= @team.team_title %></td>
+          <td><%= simple_format(@team.team_title) %></td>
         </tr>
         <tr>
           <th score="row">チーム結成</th>
@@ -93,7 +93,7 @@
         </tr>
         <tr>
           <th score="row">チーム紹介</th>
-          <td><%= @team.introduction %></td>
+          <td><%= simple_format(@team.introduction) %></td>
         </tr>
       </table>
     </div>
@@ -117,7 +117,7 @@
 
     <div class="w-100 m-3"></div>
     
-    <div class="col">
+    <div class="col" style="height: mh-100;">
       <a href="#" class="d-block bg-primary text-white">
       <h5 class="p-2">試合結果一覧（最新5試合）</h5>
       </a>
@@ -147,7 +147,7 @@
     
     <div class="col">
       <a href="#" class="d-block bg-danger text-white">
-      <p class="p-2">チーム成績</p>
+      <h5 class="p-2">チーム成績</h5>
       </a>
 
       <div class="table-responsive-sm ">

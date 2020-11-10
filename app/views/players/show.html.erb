@@ -62,19 +62,19 @@
         </tr>
         <tr>
           <th scope="row">選手の役職</th>
-          <td><%= @player.player_post %></td>
+          <td><%= simple_format(@player.player_post) %></td>
         </tr>
         <tr>
           <th scope="row">スタッフの役職</th>
-          <td><%= @player.staff_post %></td>
+          <td><%= simple_format(@player.staff_post) %></td>
         </tr>
         <tr>
           <th scope="row">野球歴</th>
-          <td><%= @player.carrer %></td>
+          <td><%= simple_format(@player.carrer) %></td>
         </tr>
         <tr>
           <th scope="row">自己紹介</th>
-          <td><%= @player.promotion %></td>
+          <td><%= simple_format(@player.promotion) %></td>
         </tr>
       </table>
     </div>
