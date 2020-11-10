@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   before_action :ensure_correct_team, except: [:index, :show]
 
   def index
-    @games = Game.where(team_id: @team.id).order(gameday: :desc)
+    @games = Game.where(team_id: @team.id).page(params[:page]).per(10).order(gameday: :desc)
   end 
 
   def new
