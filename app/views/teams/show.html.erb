@@ -124,16 +124,16 @@
         <div class="row">
           <table class="table">
             <thead class="thead-dark">
-              <tr>
-                <th scope="col" width="30%">試合日</th>
-                <th scope="col" width="35%">対戦相手</th>
+              <tr class="text-center">
+                <th scope="col" width="25%">試合日</th>
+                <th scope="col" width="40">対戦相手</th>
                 <th scope="col" width="15%">結果</th>
                 <th scope="col" width="15%">スコア</th>
               </tr>
             </thead>
             <tbody>
                 <% @games.each do |game| %>
-                <tr>
+                <tr class="text-center">
                   <td class="position-relative"><%= link_to game.gameday, "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
                   <td><%= game.opponent %></td>
                   <td><%= game.game_result %></td>
@@ -153,7 +153,7 @@
       <div class="table-responsive-sm ">
         <table class="table">
           <thead>
-            <tr>
+            <tr class="text-center">
               <th scope="col">試合数</th>
               <th scope="col">勝ち</th>
               <th scope="col">負け</th>
@@ -164,7 +164,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr class="text-center">
               <td><%= @game.count %></td>
               <td><%= @game.where(game_result: "勝ち").count %></td>
               <td><%= @game.where(game_result: "負け").count %></td>
