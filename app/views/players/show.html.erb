@@ -5,9 +5,10 @@
     <%= link_to "編集", edit_team_player_path(@player.team_id) %>
     <%= link_to "削除", team_player_path(@player.team_id), method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
   <% end %>
+
   <div class="row">
 <%# 選手画像の表示 %>
-    <div class="col-sm-3">
+    <div class="col-2">
     <% if @player.image.present? %>
       <%= image_tag(@player.image, class: "m-2", size: "150x150") if @player.image.attached? %>
     <% else %>
@@ -16,17 +17,24 @@
     </div>
   <%# //選手画像の表示 %>
 
-    <div class="row">
-      <div class="col">
-        <h2><%= @player.number %></h2>
-        <h3><%= @player.name %></h3>
-        <%= @player.main_position.name %> ／ <%= @player.at_pitch %>／<%= @player.at_bat %>
-      </div>
+  <%# レーダーチャート %>
+    <div class="col-2">
+    <%= image_tag('logo.jpg', class: "m-2", size: "150x150") %>
     </div>
+  <%# レーダーチャート %>
+    
+  <%# 選手名、背番号、ポジション、投打 %>
+    <div class="col-6 text-center">
+      <h2><%= @player.number %></h2>
+      <h3><%= @player.name %></h3>
+      <%= @player.main_position.name %> ／ <%= @player.at_pitch %>／<%= @player.at_bat %>
+    </div>
+  <%# //選手名、背番号、ポジション、投打 %>
+
   </div>
 
   <div class="row">
-    <div class="col-8">
+    <div class="col-sm-10">
       <table class="table">
         <tr>
           <th scope="row">所属チーム</th>
