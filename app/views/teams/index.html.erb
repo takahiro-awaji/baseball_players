@@ -27,7 +27,7 @@
         <% if team.image.present? %>
           <%= link_to image_tag(team.image, width: "100%", height: "180px", class: "mt-2"), team_path(team) if team.image.attached? %>
         <% else %>
-          <%= link_to image_tag('school.png', width: "100%", height: "180px", class: "mt-2"), team_path(team) %>
+          <%= link_to image_tag('default_team.jpg', width: "100%", height: "180px", class: "mt-2"), team_path(team) %>
         <% end %>
         <div class="card-body">
           <h5 class="card-title team-name"><%= team.team_name %></h5>
