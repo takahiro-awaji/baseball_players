@@ -21,7 +21,7 @@ class Team < ApplicationRecord
     validates :team_name
     validates :team_name_kana
     validates :team_url, uniqueness: true
-    with_options numericality: { other_than: 0, message: 'Select' } do
+    with_options numericality: { other_than: 0, message: 'を選択してください' } do
       validates :activity_base_id
       validates :team_attribute_id
     end

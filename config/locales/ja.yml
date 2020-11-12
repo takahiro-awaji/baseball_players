@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      team: チーム
+    attributes:
+      team:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認用
+        team_name: チーム名
+        team_name_kana: チーム名（カナ）
+        team_url: チームURL
+        activity_base_id: 活動拠点
+        team_attribute_id: チーム区分
