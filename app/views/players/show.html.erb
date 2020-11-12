@@ -7,8 +7,8 @@
   <% end %>
 
   <div class="row">
-<%# 選手画像の表示 %>
-    <div class="col-lg-2 col-sm-4">
+  <%# 選手画像の表示 %>
+    <div class="col-lg-3 col-sm-4 text-center">
     <% if @player.image.present? %>
       <%= image_tag(@player.image, class: "m-2", size: "150x150") if @player.image.attached? %>
     <% else %>
@@ -17,26 +17,37 @@
     </div>
   <%# //選手画像の表示 %>
 
-  <%# レーダーチャート %>
-    <div class="col-lg-2 col-sm-4">
-    <canvas id="radar-chart" width="150" height="150" class="m-2"></canvas>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-    </div>
-  <%# レーダーチャート %>
-    
   <%# 選手名、背番号、ポジション、投打 %>
-    <div class="col-lg-6 col-sm-10 text-center">
+    <div class="col-lg-7 col-sm-6 text-center">
       <h2><%= @player.number %></h2>
       <h3><%= @player.name %></h3>
+        <div class="progress">
+          <div class="progress-bar bg-dark" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
       <%= @player.main_position.name %> ／ <%= @player.at_pitch %>／<%= @player.at_bat %>
     </div>
   <%# //選手名、背番号、ポジション、投打 %>
+  </div>
 
+  <div class="row">
+  <%# レーダーチャート %>
+    <div class="col-lg-4 col-sm-4">
+    <canvas id="radar-chart-batter" width="200" height="100" class="m-2"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    </div>
+  <%# レーダーチャート %>
+  
+    <%# レーダーチャート %>
+    <div class="col-lg-4 col-sm-4">
+    <canvas id="radar-chart-pitcher" width="200" height="100" class="m-2"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    </div>
+  <%# レーダーチャート %>
   </div>
 
   <div class="row">
     <div class="col-sm-10">
-      <table class="table">
+      <table class="table table-bordered">
         <tr>
           <th scope="row">所属チーム</th>
           <td><%= @player.team.team_name %></td>
