@@ -4,7 +4,9 @@
   <h2>ログイン</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <h5 class="alert alert-info col-sm-6"><%= flash[:alert] %></h5>
+    <h5 class="alert col-sm-6">
+      <%= flash[:alert] %>
+    </h5>
    
     <div class="form-group row">
       <%= f.label "メールアドレス", class: "col-sm-2" %><br />

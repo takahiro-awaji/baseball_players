@@ -17,6 +17,9 @@ class Team < ApplicationRecord
   has_many :games
   has_one_attached :image
 
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'は英文字と数字を両方使用してください'
+  
   with_options presence: true do
     validates :team_name
     validates :team_name_kana
