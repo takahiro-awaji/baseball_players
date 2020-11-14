@@ -52,8 +52,9 @@ class TeamsController < ApplicationController
   end
 
   def forbid_login_user
+    team = current_team
     if team_signed_in?
-      redirect_to teams_path
+      redirect_to team_path(team)
     end
   end
 
