@@ -3,6 +3,9 @@
 <div class="container mt-3">
 
 <h2>試合一覧</h2>
+<% if @team == current_team %>
+    <%= link_to "試合結果登録", new_team_game_path(@team), class: "btn btn-info mb-2" %>
+  <% end %>
 
   <div class="col">
     <div class="row">
