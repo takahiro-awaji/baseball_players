@@ -75,3 +75,5 @@ gem 'kaminari-bootstrap', "~> 3.0.1"
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'aws-sdk-s3', require: false
