@@ -1,5 +1,6 @@
 class Game < ApplicationRecord
   belongs_to :team
+  has_many :batting_stats
 
   validates :gameday, presence: true
   validates :opponent, presence: true
