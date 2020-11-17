@@ -5,7 +5,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.where(team_id: @team.id).page(params[:page]).per(10).order(gameday: :desc)
-  end 
+  end
 
   def new
     @game = Game.new
@@ -29,7 +29,7 @@ class GamesController < ApplicationController
   def update
     if @game.update(game_params)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -50,15 +50,12 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:gameday, :gametime, :opponent, :tournament_name, :field_name,
-                                 :game_attribute, :total_stats_add, :top_or_bottom, :game_myteam_score, :game_opponent_score, 
+                                 :game_attribute, :total_stats_add, :top_or_bottom, :game_myteam_score, :game_opponent_score,
                                  :game_result, :game_comment).merge(team_id: current_team.id)
   end
 
   def ensure_correct_team
     team = Team.find(params[:team_id])
-    if team != current_team
-      redirect_to root_path
-    end
+    redirect_to root_path if team != current_team
   end
-
 end

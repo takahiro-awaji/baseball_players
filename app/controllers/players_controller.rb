@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
   def new
     @player = Player.new
   end
-  
+
   def create
     @player = Player.new(player_params)
     if @player.save
@@ -29,7 +29,7 @@ class PlayersController < ApplicationController
   def update
     if @player.update(player_params)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -42,7 +42,7 @@ class PlayersController < ApplicationController
 
   def player_params
     params.require(:player).permit(:name, :sex, :birthday, :main_position_id, :number, :at_pitch, :at_bat,
-                                   :player_post, :staff_post, :carrer, :promotion, :image,  sub_position: []).merge(team_id: current_team.id)
+                                   :player_post, :staff_post, :carrer, :promotion, :image, sub_position: []).merge(team_id: current_team.id)
   end
 
   def set_player
@@ -55,8 +55,6 @@ class PlayersController < ApplicationController
 
   def ensure_correct_team
     team = Team.find(params[:team_id])
-    if team != current_team
-      redirect_to root_path
-    end
+    redirect_to root_path if team != current_team
   end
 end
