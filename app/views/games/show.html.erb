@@ -1,22 +1,100 @@
 <%= render 'shared/header' %>
 
 <div class="container mt-3">
+  <div class="row">
   <h2>試合結果詳細</h2>
   
   <% if @team == current_team %>
-    <%= link_to "編集", edit_team_game_path(@team) %>
-    <%= link_to "削除", team_game_path(@team), method: :delete, data: {confirm: "本当に削除してもいいですか？"} %>
+    <div class="btn-group">
+      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="fas fa-pencil-alt fa-lg" style="color: darkblue"></span>
+      </button>
+      <div class="dropdown-menu">
+    <%= link_to "編集", edit_team_game_path(@team), class: "dropdown-item" %>
+    <%= link_to "削除", team_game_path(@team),class: "dropdown-item", method: :delete, data: {confirm: "本当に削除してもいいですか？"} %>
+      </div>
+    </div>
   <% end %>
-  
-  <%= @game.gameday %>　<%= @game.gametime %> 〜
-  <%= @game.field_name %>
-  <div><%= @game.game_attribute %></div>
-  <div><%= @game.tournament_name %></div>
-  <h3><%= @game.team.team_name %> 対 <%= @game.opponent %></h3>
-  <h3><%= @game.game_myteam_score %> ー <%= @game.game_opponent_score %></h3>
-  <h4><%= @game.game_result %></h4>
-  <div>コメント：<%= simple_format(@game.game_comment) %></div>
-  <h3>選手個人成績</h3> 
+  </div>
+
+  <div class="col-10">
+
+    <div class="row justify-content-center">
+      <div class="p-2">
+      <%= @game.gameday %>
+      </div>
+      <div class="p-2">
+      <%= @game.gametime %>
+      </div>
+      <div class="p-2">
+      <%= @game.field_name %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="p-2">
+      <%= @game.game_attribute %>
+      </div>
+      <div class="p-2">
+      <%= @game.tournament_name %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-3">
+      <h3 class="col-6 text-center">
+        <span class="col-2">
+        <%= @game.team.team_name %>
+        </span>
+        <span class="col-2">
+        対
+        </span>
+        <span class="col-2">
+        <%= @game.opponent %>
+        </span>
+      </h3>
+    </div>
+
+    <div class="row justify-content-center">
+    <h3 class="col-6 text-center">
+      <span class="col-2">
+      <%= @game.game_myteam_score %>
+      </span>
+      <span class="col-2">
+      ー
+      </span>
+      <span class="col-2">
+      <%= @game.game_opponent_score %>
+      </span>
+    </h3>
+    </div>
+
+    <div class="text-center">
+    <h4><%= @game.game_result %></h4>
+    </div>
+    
+    <div class="card">
+    <div class="card-header">
+    コメント：
+    </div>
+    <div class="card-body">
+    <%= simple_format(@game.game_comment) %>
+    </div>
+    </div>
+
+  </div>
+   <div class="row">
+    <h3>選手個人成績</h3>
+
+    <% if @team == current_team %>
+    <div class="btn-group">
+      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="fas fa-pencil-alt fa-lg" style="color: darkblue"></span>
+      </button>
+    </div>
+  <% end %>
+    </div>
+
+  <%= link_to "試合一覧へ戻る", team_games_path(@team) %>
   <%= link_to "チームページへ戻る", team_path(@team) %>
   <%= link_to "トップページへ戻る", root_path %>
 
