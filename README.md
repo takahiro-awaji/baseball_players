@@ -8,7 +8,7 @@ Baseball Players
 チームで登録を行い、試合結果、選手一覧、選手の個人成績を登録し、管理ができます。
 
 ## URL
-https://baseball-players.herokuapp.com/
+http://baseball-players.site/
 
 ## テスト用アカウント
 テスト用メールアドレス
@@ -78,5 +78,22 @@ takahiro1234
 ## データベース設計
 <img width="586" alt="49fb9fe59c3853670f0723a440023e5c" src="https://user-images.githubusercontent.com/69838495/99043625-d660e900-25d1-11eb-848f-6fb106892fa9.png">
 
-## ローカルでの動作方法
-作成中のため未設定 
+## 使用技術（開発環境）
+### バックエンド
+Ruby(2.6.5), Ruby on Rails(6.0.0)
+### フロントエンド
+デザインはBootstrap(4.5.0)を使用
+### データベース
+MySQL, SequelPro
+### インフラ
+AWS(EC2), Capistrano
+### Webサーバ（本番環境）
+nginx
+### アプリケーションサーバ（本番環境）
+unicorn
+### ソース管理
+GitHub, GitHubDesktop
+### テスト
+RSpec
+### エディタ
+VSCode
