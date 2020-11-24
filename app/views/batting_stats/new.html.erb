@@ -5,12 +5,12 @@
   <p>成績を登録する選手にチェックを入れてください。</p>
   <%= form_with(model: @form, url: team_game_batting_stats_path, method: :post, local: true) do |form| %>
   <div class="overflow-auto">
-  <table class="table">
+  <table class="table text-center text-nowrap">
     <thead>
       <tr>
         <th></th>
-        <th scope="col">背番号　</th>
-        <th scope="col">選手名　</th>
+        <th scope="col">背番号</th>
+        <th scope="col">選手名</th>
         <th scope="col">出場</th>
         <th scope="col">打順</th>
         <th scope="col">守備位置</th>
