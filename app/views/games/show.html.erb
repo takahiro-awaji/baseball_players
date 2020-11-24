@@ -120,7 +120,7 @@
 
   </div>
 
-  <div class="row col-10 mt-3">
+  <div class="row col mt-3">
   <h3>選手個人成績</h3>
     
     <% if @team == current_team %>
@@ -129,7 +129,7 @@
         <span class="fas fa-pencil-alt fa-lg" style="color: darkblue"></span>
       </button>
       <div class="dropdown-menu">
-        <%= link_to "打者成績登録", new_team_game_batting_stat_path(@team, @game) %>
+        <%= link_to "打者成績登録", new_team_game_batting_stat_path(@team, @game), class: "dropdown-item" %>
       </div>
     </div>
     <% end %>
@@ -138,7 +138,7 @@
     <% if @batting_stats.present? %>
     <div class="overflow-auto">
     <table class="table text-center text-nowrap">
-    <thead>
+    <thead class="thead-light">
       <tr>
         <th scope="col">背番号</th>
         <th scope="col">選手名</th>
@@ -192,7 +192,7 @@
        </tr>
       <% end %>
     </tbody>
-    <tfoot>
+    <tfoot class="thead-light">
       <tr>
         <th scope="col">背番号</th>
         <th scope="col">選手名</th>
@@ -222,11 +222,8 @@
     </div>
   <% end %>
   </div>
-  <%= link_to "チームページへ戻る", team_path(@team) %>
-  <%= link_to "トップページへ戻る", root_path %>
 
-
-  <div class="row d-flex justify-content-around">
+  <div class="row d-flex justify-content-around mt-3">
     <%= link_to "試合一覧へ戻る", team_games_path(@team), class: "btn btn-outline-success col-sm-3 m-2" %>
     <%= link_to "チームページへ戻る", team_path(@team), class: "btn btn-outline-secondary col-sm-3 m-2" %>
     <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-info col-sm-3 m-2" %>
