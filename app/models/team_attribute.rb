@@ -1,6 +1,6 @@
 class TeamAttribute < ActiveHash::Base
   self.data = [
-    { id: 0, name: '---' }, 
+    { id: 0, name: '---' },
     { id: 1, name: '成人（男子）硬式' },
     { id: 2, name: '成人（男子）軟式' },
     { id: 3, name: '成人（男子）ソフト' },

@@ -89,16 +89,6 @@ RSpec.describe Team, type: :model do
         @team.valid?
         expect(@team.errors.full_messages).to include('パスワードは6文字以上で入力してください')
       end
-      it 'パスワードが数字のみのとき' do
-        @team.password = '111111'
-        @team.valid?
-        expect(@team.errors.full_messages).to include('パスワードは英文字と数字を両方使用してください')
-      end
-      it 'パスワードが半角英字のみのとき' do
-        @team.password = 'aaaaaa'
-        @team.valid?
-        expect(@team.errors.full_messages).to include('パスワードは英文字と数字を両方使用してください')
-      end
       it 'チーム名が未入力のとき' do
         @team.team_name = nil
         @team.valid?

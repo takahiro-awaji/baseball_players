@@ -40,22 +40,17 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:team_name, :team_name_kana, :activity_base_id, :team_attribute_id, :team_level_id,
-                          :team_player_age_id, :team_player_history_id, :league, :team_title, :since_id, 
-                          :activity_pace_id, :games_per_year_id, :team_slogan, :introduction, :image, activity_day: [])
+                                 :team_player_age_id, :team_player_history_id, :league, :team_title, :since_id,
+                                 :activity_pace_id, :games_per_year_id, :team_slogan, :introduction, :image, activity_day: [])
   end
 
   def ensure_correct_team
     team = Team.find(params[:id])
-    if team != current_team
-      redirect_to root_path
-    end
+    redirect_to root_path if team != current_team
   end
 
   def forbid_login_user
     team = current_team
-    if team_signed_in?
-      redirect_to team_path(team)
-    end
+    redirect_to team_path(team) if team_signed_in?
   end
-
 end

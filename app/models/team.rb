@@ -2,7 +2,7 @@ class Team < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :activity_base
   belongs_to_active_hash :team_attribute
@@ -19,7 +19,7 @@ class Team < ApplicationRecord
 
   # PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   # validates_format_of :password, with: PASSWORD_REGEX, message: 'は英文字と数字を両方使用してください'
-  
+
   with_options presence: true do
     validates :team_name
     validates :team_name_kana
@@ -31,11 +31,10 @@ class Team < ApplicationRecord
   end
 
   def self.search(search)
-    if search != ""
+    if search != ''
       Team.where('team_name LIKE (?)', "%#{search}%")
     else
       Team.all
     end
   end
-
 end
