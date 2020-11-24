@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get 'search'
     end
     resources :players
-    resources :games
+    resources :games do
+      resources :batting_stats, only: [:new, :create]
+    end
   end
 end

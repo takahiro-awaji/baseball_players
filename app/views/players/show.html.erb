@@ -110,9 +110,93 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row col-10">
     <div class="col">
     <h3>個人成績</h3>
+    <% if @batting_stats.present? %>
+    <div class="overflow-auto">
+    <table class="table text-center text-nowrap">
+    <thead>
+      <tr>
+        <th scope="col">試合数</th>
+        <th scope="col">打席</th>
+        <th scope="col">打数</th>
+        <th scope="col">安打</th>
+        <th scope="col">打率</th>
+        <th scope="col">打点</th>
+        <th scope="col">得点</th>
+        <th scope="col">出塁率</th>
+        <th scope="col">盗塁</th>
+        <th scope="col">二塁打</th>
+        <th scope="col">三塁打</th>
+        <th scope="col">本塁打</th>
+        <th scope="col">長打率</th>
+        <th scope="col">OPS</th>
+        <th scope="col">三振</th>
+        <th scope="col">四球</th>
+        <th scope="col">死球</th>
+        <th scope="col">犠打</th>
+        <th scope="col">犠飛</th>
+        <th scope="col">併殺</th>
+        <th scope="col">敵失</th>
+        <th scope="col">失策</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @batting_stats.count %></td>
+        <td><%= @batting_stats.sum(:at_standing) %></td>
+        <td><%= @batting_stats.sum(:at_hitting) %></td>
+        <td><%= @batting_stats.sum(:hit) %></td>
+        <td><%= sprintf("%.3f", @batting_stats.sum(:hit) / @batting_stats.sum(:at_hitting).to_f) %></td>
+        <td><%= @batting_stats.sum(:run_batted_in) %></td>
+        <td><%= @batting_stats.sum(:run) %></td>
+        <td><%= sprintf("%.3f", (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) / (@batting_stats.sum(:at_hitting) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch) + @batting_stats.sum(:sacrifice_fly)).to_f) %></td>
+        <td><%= @batting_stats.sum(:stolen_base) %></td>
+        <td><%= @batting_stats.sum(:double) %></td>
+        <td><%= @batting_stats.sum(:triple) %></td>
+        <td><%= @batting_stats.sum(:homerun) %></td>
+        <td><%= sprintf("%.3f", @batting_stats.sum(:hit) + (@batting_stats.sum(:double) * 2) + (@batting_stats.sum(:triple) * 3) + (@batting_stats.sum(:homerun) * 4) / @batting_stats.sum(:at_hitting).to_f) %></td>
+        <td><%= sprintf("%.3f", (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) / (@batting_stats.sum(:at_hitting) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch) + @batting_stats.sum(:sacrifice_fly)).to_f) + sprintf("%.0f", @batting_stats.sum(:hit) + (@batting_stats.sum(:double) * 2) + (@batting_stats.sum(:triple) * 3) + (@batting_stats.sum(:homerun) * 4) / @batting_stats.sum(:at_hitting).to_f) %></td>
+        <td><%= @batting_stats.sum(:strikeout) %></td>
+        <td><%= @batting_stats.sum(:walk) %></td>
+        <td><%= @batting_stats.sum(:hit_by_pitch) %></td>
+        <td><%= @batting_stats.sum(:sacrifice_bunt) %></td>
+        <td><%= @batting_stats.sum(:sacrifice_fly) %></td>
+        <td><%= @batting_stats.sum(:double_play) %></td>
+        <td><%= @batting_stats.sum(:opponent_error) %></td>
+        <td><%= @batting_stats.sum(:fielding_error) %></td>
+       </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="col">試合数</th>
+        <th scope="col">打席</th>
+        <th scope="col">打数</th>
+        <th scope="col">安打</th>
+        <th scope="col">打率</th>
+        <th scope="col">打点</th>
+        <th scope="col">得点</th>
+        <th scope="col">出塁率</th>
+        <th scope="col">盗塁</th>
+        <th scope="col">二塁打</th>
+        <th scope="col">三塁打</th>
+        <th scope="col">本塁打</th>
+        <th scope="col">長打率</th>
+        <th scope="col">OPS</th>
+        <th scope="col">三振</th>
+        <th scope="col">四球</th>
+        <th scope="col">死球</th>
+        <th scope="col">犠打</th>
+        <th scope="col">犠飛</th>
+        <th scope="col">併殺</th>
+        <th scope="col">敵失</th>
+        <th scope="col">失策</th>
+      </tr>
+    </tfoot>
+    </table>
+    </div>
+  <% end %>
     </div>
   </div>
     

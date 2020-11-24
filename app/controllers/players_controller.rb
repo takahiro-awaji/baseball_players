@@ -21,6 +21,7 @@ class PlayersController < ApplicationController
   end
 
   def show
+    @batting_stats = BattingStat.all.where(player_id: @player.id)
   end
 
   def edit
