@@ -16,8 +16,98 @@
   <h3><%= @game.game_myteam_score %> ー <%= @game.game_opponent_score %></h3>
   <h4><%= @game.game_result %></h4>
   <div>コメント：<%= simple_format(@game.game_comment) %></div>
-  <h3>選手個人成績</h3> 
+
+  <div class="row col-10 mt-3">
+  <h3>選手個人成績</h3>
   <%= link_to "打者成績登録", new_team_game_batting_stat_path(@team, @game) %>
+
+    <% if @batting_stats.present? %>
+    <div class="overflow-auto">
+    <table class="table text-center text-nowrap">
+    <thead>
+      <tr>
+        <th scope="col">背番号</th>
+        <th scope="col">選手名</th>
+        <th scope="col">出場</th>
+        <th scope="col">打順</th>
+        <th scope="col">守備位置</th>
+        <th scope="col">打席</th>
+        <th scope="col">打数</th>
+        <th scope="col">安打</th>
+        <th scope="col">打点</th>
+        <th scope="col">得点</th>
+        <th scope="col">盗塁</th>
+        <th scope="col">二塁打</th>
+        <th scope="col">三塁打</th>
+        <th scope="col">本塁打</th>
+        <th scope="col">三振</th>
+        <th scope="col">四球</th>
+        <th scope="col">死球</th>
+        <th scope="col">犠打</th>
+        <th scope="col">犠飛</th>
+        <th scope="col">併殺</th>
+        <th scope="col">敵失</th>
+        <th scope="col">失策</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @batting_stats.each do |b| %>
+      <tr>
+        <td><%= b.player.number %></td>
+        <td><%= b.player.name %></td>
+        <td><%= b.at_field %></td>
+        <td><%= b.batting_order %></td>
+        <td><%= b.fielding_position %></td>
+        <td><%= b.at_standing %></td>
+        <td><%= b.at_hitting %></td>
+        <td><%= b.hit %></td>
+        <td><%= b.run_batted_in %></td>
+        <td><%= b.run %></td>
+        <td><%= b.stolen_base %></td>
+        <td><%= b.double %></td>
+        <td><%= b.triple %></td>
+        <td><%= b.homerun %></td>
+        <td><%= b.strikeout %></td>
+        <td><%= b.walk %></td>
+        <td><%= b.hit_by_pitch %></td>
+        <td><%= b.sacrifice_bunt %></td>
+        <td><%= b.sacrifice_fly %></td>
+        <td><%= b.double_play %></td>
+        <td><%= b.opponent_error %></td>
+        <td><%= b.fielding_error %></td>
+       </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="col">背番号</th>
+        <th scope="col">選手名</th>
+        <th scope="col">出場</th>
+        <th scope="col">打順</th>
+        <th scope="col">守備位置</th>
+        <th scope="col">打席</th>
+        <th scope="col">打数</th>
+        <th scope="col">安打</th>
+        <th scope="col">打点</th>
+        <th scope="col">得点</th>
+        <th scope="col">盗塁</th>
+        <th scope="col">二塁打</th>
+        <th scope="col">三塁打</th>
+        <th scope="col">本塁打</th>
+        <th scope="col">三振</th>
+        <th scope="col">四球</th>
+        <th scope="col">死球</th>
+        <th scope="col">犠打</th>
+        <th scope="col">犠飛</th>
+        <th scope="col">併殺</th>
+        <th scope="col">敵失</th>
+        <th scope="col">失策</th>
+      </tr>
+    </tfoot>
+    </table>
+    </div>
+  <% end %>
+  </div>
   <%= link_to "チームページへ戻る", team_path(@team) %>
   <%= link_to "トップページへ戻る", root_path %>
 
