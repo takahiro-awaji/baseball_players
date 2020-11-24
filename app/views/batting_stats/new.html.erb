@@ -1,0 +1,104 @@
+<%= render 'shared/header' %>
+
+<div class="container mt-3">
+  <h2>打者成績登録</h2>
+  <p>成績を登録する選手にチェックを入れてください。</p>
+  <%= form_with(model: @form, url: team_game_batting_stats_path, method: :post, local: true) do |form| %>
+  <div class="overflow-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col">背番号　</th>
+        <th scope="col">選手名　</th>
+        <th scope="col">出場</th>
+        <th scope="col">打順</th>
+        <th scope="col">守備位置</th>
+        <th scope="col">打席</th>
+        <th scope="col">打数</th>
+        <th scope="col">安打</th>
+        <th scope="col">打点</th>
+        <th scope="col">得点</th>
+        <th scope="col">盗塁</th>
+        <th scope="col">二塁打</th>
+        <th scope="col">三塁打</th>
+        <th scope="col">本塁打</th>
+        <th scope="col">三振</th>
+        <th scope="col">四球</th>
+        <th scope="col">死球</th>
+        <th scope="col">犠打</th>
+        <th scope="col">犠飛</th>
+        <th scope="col">併殺</th>
+        <th scope="col">敵失</th>
+        <th scope="col">失策</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <%= form.fields_for :batting_stats do |f| %>
+      <tr>
+        <td><%= f.check_box(:player_id, {}, player.id, nil) %></td>
+        <td><%= player.number %></td> 
+        <td><%= player.name %></td>
+        <td><%= f.select(:at_field, ["先発", "代打", "代走", "守備"], prompt: "--")%></td>
+        <td><%= f.number_field :batting_order, style: "width: 40px;", min: 1 %></td>
+        <td><%= f.select(:fielding_position,["投", "捕", "一", "二", "三", "遊", "左", "中", "右", "DH"], prompt: "--") %></td>
+        <td><%= f.number_field :at_standing, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :at_hitting, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :hit, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :run_batted_in, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :run, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :stolen_base, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :double, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :triple, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :homerun, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :strikeout, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :walk, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :hit_by_pitch, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :sacrifice_bunt, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :sacrifice_fly, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :double_play, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :opponent_error, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :fielding_error, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.hidden_field :game_id, value: @game.id %></td>
+       </tr>
+       <% end %>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th scope="col">背番号</th>
+        <th scope="col">選手名</th>
+        <th scope="col">出場</th>
+        <th scope="col">打順</th>
+        <th scope="col">守備位置</th>
+        <th scope="col">打席</th>
+        <th scope="col">打数</th>
+        <th scope="col">安打</th>
+        <th scope="col">打点</th>
+        <th scope="col">得点</th>
+        <th scope="col">盗塁</th>
+        <th scope="col">二塁打</th>
+        <th scope="col">三塁打</th>
+        <th scope="col">本塁打</th>
+        <th scope="col">三振</th>
+        <th scope="col">四球</th>
+        <th scope="col">死球</th>
+        <th scope="col">犠打</th>
+        <th scope="col">犠飛</th>
+        <th scope="col">併殺</th>
+        <th scope="col">敵失</th>
+        <th scope="col">失策</th>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+
+  <%= form.submit "登録する", class: "col-4 mt-2 btn btn-primary" %>
+
+  <% end %>
+
+
+</div>
+<%= render 'shared/footer' %>
