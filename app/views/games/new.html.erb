@@ -36,6 +36,14 @@
     </div>
 
     <div class="form-group row">
+      <%= f.label "通算成績に加える", class: "col-sm-2" %>
+      <div class="form-check">
+        <%= f.radio_button(:total_stats_add, 'はい') %> はい
+        <%= f.radio_button(:total_stats_add, 'いいえ') %> いいえ
+      </div>
+    </div>
+    
+    <div class="form-group row">
       <%= f.label "スコア", class: "col-sm-2" %>
       <div class="form-check">
         <%= f.radio_button(:top_or_bottom, '先攻') %>先攻
