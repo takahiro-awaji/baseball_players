@@ -22,6 +22,14 @@ class PlayersController < ApplicationController
 
   def show
     @batting_stats = BattingStat.all.where(player_id: @player.id)
+    @batting_average = sprintf("%.3f", @batting_stats.sum(:hit) / @batting_stats.sum(:at_hitting).to_f)
+    @batting_on_base_percentage = sprintf("%.3f", (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) \
+    / (@batting_stats.sum(:at_hitting) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch) + @batting_stats.sum(:sacrifice_fly)).to_f)
+    @batting_slugging_percentage = sprintf("%.3f", (@batting_stats.sum(:hit) + (@batting_stats.sum(:double) * 2) + (@batting_stats.sum(:triple) * 3) \
+    + (@batting_stats.sum(:homerun) * 4)) / @batting_stats.sum(:at_hitting).to_f)
+    @batting_on_base_plus_slugging = sprintf("%.3f", (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) \
+    / (@batting_stats.sum(:at_hitting) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch) + @batting_stats.sum(:sacrifice_fly)).to_f \
+    + (@batting_stats.sum(:hit) + (@batting_stats.sum(:double) * 2) + (@batting_stats.sum(:triple) * 3) + (@batting_stats.sum(:homerun) * 4)) / @batting_stats.sum(:at_hitting).to_f)
   end
 
   def edit
