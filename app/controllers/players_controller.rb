@@ -30,6 +30,11 @@ class PlayersController < ApplicationController
     @batting_on_base_plus_slugging = sprintf("%.3f", (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) \
     / (@batting_stats.sum(:at_hitting) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch) + @batting_stats.sum(:sacrifice_fly)).to_f \
     + (@batting_stats.sum(:hit) + (@batting_stats.sum(:double) * 2) + (@batting_stats.sum(:triple) * 3) + (@batting_stats.sum(:homerun) * 4)) / @batting_stats.sum(:at_hitting).to_f)
+    
+    @pitching_stats = PitchingStat.all.where(player_id: @player.id)
+    @pitching_earned_run_average = sprintf("%.2f", @pitching_stats.sum(:earned_run) * 7 / @pitching_stats.sum(:inning).to_f)
+    @pitching_win_average = sprintf("%.2f", @pitching_stats.where(win_lose_or_save: "勝").count / ( @pitching_stats.where(win_lose_or_save: "勝").count + @pitching_stats.where(win_lose_or_save: "負").count ).to_f )
+    @pitching_strikeout_average = sprintf("%.2f", @pitching_stats.sum(:strikeout) * 7 / @pitching_stats.sum(:inning).to_f )
   end
 
   def edit

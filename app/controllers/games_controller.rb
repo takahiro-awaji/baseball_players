@@ -22,6 +22,7 @@ class GamesController < ApplicationController
 
   def show
     @batting_stats = BattingStat.where(game_id: params[:id]).order(batting_order: :asc)
+    @pitching_stats = PitchingStat.where(game_id: params[:id]).order(pitching_order: :asc)
   end
 
   def edit

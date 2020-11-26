@@ -114,6 +114,7 @@
     <div class="col-sm-10">
     <h3>個人成績</h3>
     <% if @batting_stats.present? %>
+    <h4 class="mt-4">打者成績</h4>
     <div class="overflow-auto">
     <table class="table text-center text-nowrap">
     <thead class="thead-light">
@@ -192,6 +193,80 @@
         <th scope="col">併殺</th>
         <th scope="col">敵失</th>
         <th scope="col">失策</th>
+      </tr>
+    </tfoot>
+    </table>
+    </div>
+  <% end %>
+
+  <% if @pitching_stats.present?%>
+  <h4 class="mt-4">投手成績</h4>
+  <div class="overflow-auto">
+    <table class="table text-center text-nowrap">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">試合数</th>
+        <th scope="col">勝</th>
+        <th scope="col">負</th>
+        <th scope="col">S</th>
+        <th scope="col" colspan="2">投球回</th>
+        <th scope="col">失点</th>
+        <th scope="col">自責点</th>
+        <th scope="col">防御率</th>
+        <th scope="col">勝率</th>
+        <th scope="col">完投</th>
+        <th scope="col">完封</th>
+        <th scope="col">被安打</th>
+        <th scope="col">被本塁打</th>
+        <th scope="col">奪三振</th>
+        <th scope="col">奪三振率</th>
+        <th scope="col">与四死球</th>
+        <th scope="col">ボーク</th>
+        <th scope="col">暴投</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%= @pitching_stats.count %></td>
+          <td><%= @pitching_stats.where(win_lose_or_save: "勝").count %></td>
+          <td><%= @pitching_stats.where(win_lose_or_save: "負").count %></td>
+          <td><%= @pitching_stats.where(win_lose_or_save: "S").count %></td>
+          <td colspan="2"><%= @pitching_stats.sum(:inning) %>回<%= @pitching_stats.sum(:part_of_inning) %>/3</td>
+          <td><%= @pitching_stats.sum(:runs_allowed) %></td>
+          <td><%= @pitching_stats.sum(:earned_run) %></td>
+          <td><%= @pitching_earned_run_average %></td>
+          <td><%= @pitching_win_average %></td>
+          <td><%= @pitching_stats.where(complete_game: "○").count %></td>
+          <td><%= @pitching_stats.where(shutout: "○").count %></td>
+          <td><%= @pitching_stats.sum(:hit_allowed) %></td>
+          <td><%= @pitching_stats.sum(:homerun_allowed) %></td>
+          <td><%= @pitching_stats.sum(:strikeout) %></td>
+          <td><%= @pitching_strikeout_average %></td>
+          <td><%= @pitching_stats.sum(:base_on_ball_or_hit_by_pitch) %></td>
+          <td><%= @pitching_stats.sum(:balk) %></td>
+          <td><%= @pitching_stats.sum(:wild_pitch) %></td>
+        </tr>
+    </tbody>
+    <tfoot class="thead-light">
+      <tr>
+        <th scope="col">試合数</th>
+        <th scope="col">勝</th>
+        <th scope="col">負</th>
+        <th scope="col">S</th>
+        <th scope="col" colspan="2">投球回</th>
+        <th scope="col">失点</th>
+        <th scope="col">自責点</th>
+        <th scope="col">防御率</th>
+        <th scope="col">勝率</th>
+        <th scope="col">完投</th>
+        <th scope="col">完封</th>
+        <th scope="col">被安打</th>
+        <th scope="col">被本塁打</th>
+        <th scope="col">奪三振</th>
+        <th scope="col">奪三振率</th>
+        <th scope="col">与四死球</th>
+        <th scope="col">ボーク</th>
+        <th scope="col">暴投</th>
       </tr>
     </tfoot>
     </table>
