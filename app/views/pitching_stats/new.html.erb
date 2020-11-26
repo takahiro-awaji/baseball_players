@@ -1,0 +1,84 @@
+<%= render 'shared/header' %>
+
+<div class="container mt-3">
+  <h2>投手成績登録</h2>
+  <p>成績を登録する選手にチェックを入れてください。</p>
+  <%= form_with(model: @form, url: team_game_pitching_stats_path, method: :post, local: true) do |form| %>
+  <div class="overflow-auto">
+  <table class="table text-center text-nowrap">
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col">背番号</th>
+        <th scope="col">選手名</th>
+        <th scope="col">登板順</th>
+        <th scope="col">勝敗</th>
+        <th scope="col" colspan="2">投球回</th>
+        <th scope="col">失点</th>
+        <th scope="col">自責点</th>
+        <th scope="col">完投</th>
+        <th scope="col">完封</th>
+        <th scope="col">被安打</th>
+        <th scope="col">被本塁打</th>
+        <th scope="col">奪三振</th>
+        <th scope="col">与四死球</th>
+        <th scope="col">ボーク</th>
+        <th scope="col">暴投</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <%= form.fields_for :pitching_stats do |f| %>
+      <tr>
+        <td><%= f.check_box(:player_id, {}, player.id, nil) %></td>
+        <td><%= player.number %></td> 
+        <td><%= player.name %></td>
+        <td><%= f.number_field :pitching_order, style: "width: 40px;", min: 1 %></td>
+        <td><%= f.select(:win_lose_or_save, ["勝", "負", "S"], {prompt: "--"} , {style: "height: 30px;"} ) %></td>
+        <td><%= f.select(:inning, [0,1,2,3,4,5,6,7,8,9,10,11,12], {prompt: ""}, {style: "height: 30px;"} ) %> 回</td>
+        <td><%= f.select(:inning, [0,1,2], {prompt: ""}, {style: "height: 30px;"} ) %> /3</td>
+        <td><%= f.number_field :runs_allowed, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :earned_run, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.select(:complete_game, ["○"], {prompt: "--"} , {style: "height: 30px;"}) %></td>
+        <td><%= f.select(:shutout, ["○"], {prompt: "--"} , {style: "height: 30px;"}) %></td>
+        <td><%= f.number_field :hit_allowed, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :homerun_allowed, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :strikeout, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :base_on_ball_or_hit_by_pitch, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :balk, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.number_field :wild_pitch, style: "width: 40px;", min: 0 %></td>
+        <td><%= f.hidden_field :game_id, value: @game.id %></td>
+       </tr>
+       <% end %>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th scope="col">背番号</th>
+        <th scope="col">選手名</th>
+        <th scope="col">登板順</th>
+        <th scope="col">勝敗</th>
+        <th scope="col" colspan="2">投球回</th>
+        <th scope="col">失点</th>
+        <th scope="col">自責点</th>
+        <th scope="col">完投</th>
+        <th scope="col">完封</th>
+        <th scope="col">被安打</th>
+        <th scope="col">被本塁打</th>
+        <th scope="col">奪三振</th>
+        <th scope="col">与四死球</th>
+        <th scope="col">ボーク</th>
+        <th scope="col">暴投</th>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+
+  <%= form.submit "登録する", class: "col-4 mt-2 btn btn-primary" %>
+
+  <% end %>
+
+
+</div>
+<%= render 'shared/footer' %>

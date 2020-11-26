@@ -130,6 +130,7 @@
       </button>
       <div class="dropdown-menu">
         <%= link_to "打者成績登録", new_team_game_batting_stat_path(@team, @game), class: "dropdown-item" %>
+        <%= link_to "投手成績登録", new_team_game_pitching_stat_path(@team, @game), class: "dropdown-item" %>
       </div>
     </div>
     <% end %>

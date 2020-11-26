@@ -12,7 +12,6 @@ class PitchingStatsController < ApplicationController
     @players = Player.where(team_id: @team.id).order(number: :asc)
     @game = Game.find(params[:game_id])
     @form = Form::PitchingStatCollection.new(pitching_stat_collection_params)
-    binding.pry
     if @form.save
       redirect_to root_path
     else
