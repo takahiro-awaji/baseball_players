@@ -3,7 +3,7 @@ class Player < ApplicationRecord
   belongs_to_active_hash :main_position
   belongs_to :team
   has_one_attached :image
-  has_many :games, through: :batting_stats, :pitching_stats
+  has_many :games, through: :batting_stats, through: :pitching_stats
   has_many :batting_stats
   has_many :pitching_stats
   
