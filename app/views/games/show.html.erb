@@ -138,6 +138,7 @@
 
     <% if @batting_stats.present? %>
     <div class="overflow-auto">
+    <h4 class="mt-4">打者成績</h4>
     <table class="table text-center text-nowrap">
     <thead class="thead-light">
       <tr>
@@ -222,6 +223,73 @@
     </table>
     </div>
   <% end %>
+
+  <% if @pitching_stats.present? %>
+    <div class="overflow-auto mt-4">
+    <h4 class="mt-4">投手成績</h4>
+    <table class="table text-center text-nowrap">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">背番号</th>
+        <th scope="col">選手名</th>
+        <th scope="col">登板順</th>
+        <th scope="col">勝敗</th>
+        <th scope="col" colspan="2">投球回</th>
+        <th scope="col">失点</th>
+        <th scope="col">自責点</th>
+        <th scope="col">完投</th>
+        <th scope="col">完封</th>
+        <th scope="col">被安打</th>
+        <th scope="col">被本塁打</th>
+        <th scope="col">奪三振</th>
+        <th scope="col">与四死球</th>
+        <th scope="col">ボーク</th>
+        <th scope="col">暴投</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pitching_stats.each do |p| %>
+        <tr>
+          <td><%= p.player.number %></td> 
+          <td><%= p.player.name %></td>
+          <td><%= p.pitching_order %></td>
+          <td><%= p.win_lose_or_save %></td>
+          <td colspan="2"><%= p.inning %>回<%= p.part_of_inning %>/3</td>
+          <td><%= p.runs_allowed %></td>
+          <td><%= p.earned_run %></td>
+          <td><%= p.complete_game %></td>
+          <td><%= p.shutout %></td>
+          <td><%= p.hit_allowed %></td>
+          <td><%= p.homerun_allowed %></td>
+          <td><%= p.strikeout %></td>
+          <td><%= p.base_on_ball_or_hit_by_pitch %></td>
+          <td><%= p.balk %></td>
+          <td><%= p.wild_pitch %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    <tfoot class="thead-light">
+      <tr>
+        <th scope="col">背番号</th>
+        <th scope="col">選手名</th>
+        <th scope="col">登板順</th>
+        <th scope="col">勝敗</th>
+        <th scope="col" colspan="2">投球回</th>
+        <th scope="col">失点</th>
+        <th scope="col">自責点</th>
+        <th scope="col">完投</th>
+        <th scope="col">完封</th>
+        <th scope="col">被安打</th>
+        <th scope="col">被本塁打</th>
+        <th scope="col">奪三振</th>
+        <th scope="col">与四死球</th>
+        <th scope="col">ボーク</th>
+        <th scope="col">暴投</th>
+      </tr>
+    </tfoot>
+    </table>
+    </div>
+    <% end %>
   </div>
 
   <div class="row d-flex justify-content-around mt-3">
