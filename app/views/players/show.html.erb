@@ -231,7 +231,7 @@
           <td><%= @pitching_stats.where(win_lose_or_save: "勝").count %></td>
           <td><%= @pitching_stats.where(win_lose_or_save: "負").count %></td>
           <td><%= @pitching_stats.where(win_lose_or_save: "S").count %></td>
-          <td colspan="2"><%= @pitching_stats.sum(:inning) %>回<%= @pitching_stats.sum(:part_of_inning) %>/3</td>
+          <td colspan="2"><%= @pitching_stats.sum(:inning) + ( @pitching_stats.sum(:part_of_inning) / 3 ) %>回<%= @pitching_stats.sum(:part_of_inning) % 3 %>/3</td>
           <td><%= @pitching_stats.sum(:runs_allowed) %></td>
           <td><%= @pitching_stats.sum(:earned_run) %></td>
           <td><%= @pitching_earned_run_average %></td>

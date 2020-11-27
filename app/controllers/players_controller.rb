@@ -33,7 +33,7 @@ class PlayersController < ApplicationController
     
     @pitching_stats = PitchingStat.all.where(player_id: @player.id)
     @pitching_earned_run_average = sprintf("%.2f", @pitching_stats.sum(:earned_run) * 7 / @pitching_stats.sum(:inning).to_f)
-    @pitching_win_average = sprintf("%.2f", @pitching_stats.where(win_lose_or_save: "勝").count / ( @pitching_stats.where(win_lose_or_save: "勝").count + @pitching_stats.where(win_lose_or_save: "負").count ).to_f )
+    @pitching_win_average = sprintf("%.3f", @pitching_stats.where(win_lose_or_save: "勝").count / ( @pitching_stats.where(win_lose_or_save: "勝").count + @pitching_stats.where(win_lose_or_save: "負").count ).to_f )
     @pitching_strikeout_average = sprintf("%.2f", @pitching_stats.sum(:strikeout) * 7 / @pitching_stats.sum(:inning).to_f )
   end
 
