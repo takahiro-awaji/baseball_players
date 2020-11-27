@@ -148,7 +148,7 @@
                 <tr class="text-center">
                   <td class="position-relative"><%= link_to game.gameday, "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
                   <td><%= game.opponent %></td>
-                  <td><%= game.game_result %></td>
+                  <td class="text-nowrap"><%= game.game_result %></td>
                   <td><%= game.game_myteam_score %> - <%= game.game_opponent_score %></td>
                 </tr>
                 <% end %>
