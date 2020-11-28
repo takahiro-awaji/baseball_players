@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    member do
+      get 'stat'
+    end
     resources :players
     resources :games do
       resources :batting_stats, only: [:new, :create]
