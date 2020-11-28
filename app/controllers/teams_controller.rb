@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update]
+  before_action :set_team, only: [:show, :edit, :update, :stat]
   before_action :ensure_correct_team, only: [:edit, :update, :destroy]
   before_action :forbid_login_user, only: :top
 
@@ -32,6 +32,12 @@ class TeamsController < ApplicationController
     @teams = Team.search(params[:keyword]).order(created_at: :desc)
   end
 
+  def stat
+    @games = Game.where(team_id: @team.id)
+    @b_stats = BattingStat.where(game_id: @games.ids)
+    @p_stats = PitchingStat.where(game_id: @games.ids)
+  end
+  
   private
 
   def set_team

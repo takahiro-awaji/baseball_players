@@ -1,0 +1,48 @@
+<%= render 'shared/header' %>
+
+<div class="container mt-3">
+
+  <div class="col">
+    <h3><%= @team.team_name %></h3>
+  </div>
+
+  <div class="col">
+    <div class="table-responsive-sm">
+      <table class="table">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">試合数</th>
+            <th scope="col">勝ち</th>
+            <th scope="col">負け</th>
+            <th scope="col">引分</th>
+            <th scope="col">勝率</th>
+            <th scope="col">得点</th>
+            <th scope="col">失点</th>
+            <th scope="col">打率</th>
+            <th scope="col">本塁打</th>
+            <th scope="col">盗塁</th>
+            <th scope="col">防御率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center">
+            <td><%= @games.count %></td>
+            <td><%= @games.where(game_result: "勝ち").count %></td>
+            <td><%= @games.where(game_result: "負け").count %></td>
+            <td><%= @games.where(game_result: "引き分け").count %></td>
+            <td><%= sprintf("%.3f",@games.where(game_result: "勝ち").count / @games.count.to_f) %></td>
+            <td><%= @games.sum(:game_myteam_score) %></td>
+            <td><%= @games.sum(:game_opponent_score) %></td>
+            <td><%= sprintf("%.3f", @b_stats.sum(:hit) / @b_stats.sum(:at_hitting).to_f) %></td>
+            <td><%= @b_stats.sum(:homerun) %></td>
+            <td><%= @b_stats.sum(:stolen_base) %></td>
+            <td><%= sprintf("%.2f", @p_stats.sum(:earned_run) * 7 / @p_stats.sum(:inning).to_f) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<%= render 'shared/footer' %>
