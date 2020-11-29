@@ -1,4 +1,5 @@
 class PitchingStatsController < ApplicationController
+  before_action :ensure_correct_team, only: [:new, :create]
 
   def new
     @form = Form::PitchingStatCollection.new
@@ -30,4 +31,9 @@ class PitchingStatsController < ApplicationController
                                         :balk, :wild_pitch, :game_id]).merge(game_id: params[:game_id])
   end
 
+  def ensure_correct_team
+    team = Team.find(params[:team_id])
+    redirect_to root_path if team != current_team
+  end
+  
 end

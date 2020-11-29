@@ -1,4 +1,5 @@
 class BattingStatsController < ApplicationController
+  before_action :ensure_correct_team, only: [:new, :create]
 
   def new
     @form = Form::BattingStatCollection.new
@@ -23,12 +24,17 @@ class BattingStatsController < ApplicationController
 
   private
 
-    def batting_stat_collection_params
-        params.require(:form_batting_stat_collection)
-        .permit(batting_stats_attributes: [:player_id, :at_field, :batting_order, :fielding_position, :at_standing, :at_hitting,
-                                           :hit, :run_batted_in, :run, :stolen_base, :double, :triple, :homerun,
-                                           :strikeout, :walk, :hit_by_pitch, :sacrifice_bunt, :sacrifice_fly,
-                                           :double_play, :opponent_error, :fielding_error, :game_id]).merge(game_id: params[:game_id])
-    end
+  def batting_stat_collection_params
+      params.require(:form_batting_stat_collection)
+      .permit(batting_stats_attributes: [:player_id, :at_field, :batting_order, :fielding_position, :at_standing, :at_hitting,
+                                          :hit, :run_batted_in, :run, :stolen_base, :double, :triple, :homerun,
+                                          :strikeout, :walk, :hit_by_pitch, :sacrifice_bunt, :sacrifice_fly,
+                                          :double_play, :opponent_error, :fielding_error, :game_id]).merge(game_id: params[:game_id])
+  end
+  
+  def ensure_correct_team
+    team = Team.find(params[:team_id])
+    redirect_to root_path if team != current_team
+  end
 
 end
