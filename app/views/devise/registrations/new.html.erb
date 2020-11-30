@@ -9,42 +9,50 @@
     <div class="form-group row">
       <%= f.label "メールアドレス", class: "col-sm-2" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-sm-6" %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "パスワード", class: "col-sm-2" %>
-
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-sm-4" %>
+      <p class="ml-2 mr-2 badge badge-danger">必須</p>
+      <p>6文字以上</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "パスワード確認用", class: "col-sm-2" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-sm-4" %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "チーム名", class: "col-sm-2" %><br />
       <%= f.text_field :team_name, class: "form-control col-sm-6" %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "チーム名（カナ）", class: "col-sm-2" %><br />
       <%= f.text_field :team_name_kana, class: "form-control col-sm-6" %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "チームURL", class: "col-sm-2 text-uppercase" %><br />
       <%= f.text_field :team_url, class: "form-control col-sm-4" %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "活動拠点" , class: "col-sm-2"%><br />
       <%= f.collection_select(:activity_base_id, ActivityBase.all, :id, :name, {}) %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "チーム区分", class: "col-sm-2" %><br />
       <%= f.collection_select(:team_attribute_id, TeamAttribute.all, :id, :name, {}) %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
