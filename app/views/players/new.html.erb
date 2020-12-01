@@ -12,12 +12,12 @@
 
     <div class="form-group row">
       <%= f.label "性別", class: "col-sm-2" %><br />
-      <div class="form-check">
+      <label class="form-check pr-2">
         <%= f.radio_button(:sex, '男') %> 男
-      </div>
-      <div class="form-check">
+      </label>
+      <label class="form-check pr-2">
         <%= f.radio_button(:sex, '女') %> 女
-      </div>
+      </label>
     </div>
 
     <div class="form-group row">
@@ -38,50 +38,47 @@
     <div class="form-group row">
       <%= f.label "投打", class: "col-sm-2" %><br />
         <div class="form-check mr-4">
-        
-        <%= f.label "投", class: "mr-4" %>
-        
-          <%= f.radio_button(:at_pitch, "右")%> 右
-          <%= f.radio_button(:at_pitch, "左")%> 左
-          <%= f.radio_button(:at_pitch, "両")%> 両
-        </div>
+          <%= f.label "投", class: "mr-4" %>
+          <label class="pr-2"><%= f.radio_button(:at_pitch, "右")%> 右</label>
+          <label class="pr-2"><%= f.radio_button(:at_pitch, "左")%> 左</label>
+          <label class="pr-2"><%= f.radio_button(:at_pitch, "両")%> 両</label>
+          </div>
         <div class="form-check">
-        <%= f.label "打", class: "mr-4" %>
-       
-          <%= f.radio_button(:at_bat, "右")%> 右
-          <%= f.radio_button(:at_bat, "左")%> 左
-          <%= f.radio_button(:at_bat, "両")%> 両
+          <%= f.label "打", class: "mr-4" %>
+          <label class="pr-2"><%= f.radio_button(:at_bat, "右")%> 右</label>
+          <label class="pr-2"><%= f.radio_button(:at_bat, "左")%> 左</label>
+          <label class="pr-2"><%= f.radio_button(:at_bat, "両")%> 両</label>
         </div>
     </div>
 
     <div class="form-group row">
       <%= f.label "サブポジション", class: "col-sm-2" %><br />
       <% ["投手", "捕手", "内野手", "外野手"].each do |sub| %>
-      <div class="form-check">
-        <%= f.check_box :sub_position, {multiple: true}, sub, nil %>
-        <%= sub %>
-      </div>
+        <label class="form-check pr-2">
+          <%= f.check_box :sub_position, {multiple: true}, sub, nil %>
+          <%= sub %>
+        </label>
       <% end %>
     </div>
 
     <div class="form-group row">
       <%= f.label "選手の役職", class: "col-sm-2" %><br />
-      <%= f.text_area :player_post, class: "form-control col-sm-6", placeholder: "例）キャプテン、副キャプテン、渉外、用具など" %>
+      <%= f.text_area :player_post, class: "form-control col-sm-6", rows: 3, placeholder: "例）キャプテン、副キャプテン、渉外、用具など" %>
     </div>
 
     <div class="form-group row">
       <%= f.label "スタッフの役職", class: "col-sm-2" %><br />
-      <%= f.text_area :staff_post, class: "form-control col-sm-6", placeholder: "例）監督、コーチ、マネージャーなど" %>
+      <%= f.text_area :staff_post, class: "form-control col-sm-6", rows: 3, placeholder: "例）監督、コーチ、マネージャーなど" %>
     </div>
 
     <div class="form-group row">
       <%= f.label "野球歴", class: "col-sm-2" %><br />
-      <%= f.text_area :carrer, class: "form-control col-sm-6" %>
+      <%= f.text_area :carrer, class: "form-control col-sm-6", rows: 4 %>
     </div>
 
     <div class="form-group row">
       <%= f.label "PR・コメント", class: "col-sm-2 text-uppercase" %><br />
-      <%= f.text_area :promotion, class: "form-control col-sm-6" %>
+      <%= f.text_area :promotion, class: "form-control col-sm-6", rows: 4 %>
     </div>
 
     <div class="custom-file row mb-3">
