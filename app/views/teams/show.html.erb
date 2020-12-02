@@ -45,7 +45,7 @@
   </div>
   
   <div class="row">
-
+    <%# チームプロフィール %>
     <div class="col">
       <a href="#" class="d-block bg-dark text-white">
       <h5 class="p-2">チームプロフィール</h5>
@@ -113,24 +113,37 @@
         </tr>
       </table>
     </div>
-    
+    <%# //チームプロフィール %>
+
+    <%# 選手一覧 %>
     <div class="col">
       <h5><%= link_to "選手一覧（最新登録10選手）", team_players_path(@team), class: "p-2 d-block bg-success text-white" %></h5>
         <div class="row">
           <% @players.each do |player| %>
-          <div class="media col-6 p-3 position-relative border">
+          <div class="media col-lg-6 p-3 position-relative border">
             <% if player.image.present? %>
               <%= link_to image_tag(player.image, class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" if player.image.attached? %>
             <% else %>
               <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" %>
             <% end %>
-            <%= player.number %>　<%= player.name %><br />（<%= player.main_position.name %>)<br />（<%= player.at_pitch%>/<%= player.at_bat %>）          </div>
+            <div class="media-body">
+              <h5 class="pb-2 border-bottom">
+                <%= player.number %>　<%= player.name %>
+              </h5>
+              <p class="text-center">
+                <%= player.main_position.name %><br />（<%= player.at_pitch%>/<%= player.at_bat %>）
+              </p>
+            </div>
+          </div>
           <% end %>
         </div>
+        
     </div>
+    <%# //選手一覧 %>
 
     <div class="w-100 m-3"></div>
     
+    <%# 試合結果一覧 %>
     <div class="col" style="height: mh-100;">
       <h5><%= link_to "試合結果一覧（最新5試合）", team_games_path(@team), class: "p-2 d-block bg-primary text-white" %></h5>
         <div class="row">
@@ -156,10 +169,11 @@
           </table>
         </div>
     </div>
-    
+    <%# //試合結果一覧 %>
+
+    <%# チーム成績 %>
     <div class="col">
       <h5><%= link_to "チーム成績（詳細はこちら）", stat_team_path(@team), class: "p-2 d-block bg-danger text-white" %></h5>
-
       <div class="table-responsive-sm ">
         <table class="table">
           <thead>
@@ -187,6 +201,7 @@
         </table>
       </div>
     </div>
+    <%# //チーム成績 %>
   </div>
 </div>
 
