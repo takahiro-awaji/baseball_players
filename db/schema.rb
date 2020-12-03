@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_082734) do
+ActiveRecord::Schema.define(version: 2020_12_03_082624) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -129,6 +129,16 @@ ActiveRecord::Schema.define(version: 2020_11_26_082734) do
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "batting"
+    t.integer "power"
+    t.integer "running"
+    t.integer "throwing"
+    t.integer "fielding"
+    t.integer "speedball"
+    t.integer "control"
+    t.integer "stamina"
+    t.integer "breakingball"
+    t.integer "fielding_of_pitcher"
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
