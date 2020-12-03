@@ -22,7 +22,7 @@
 
     <div class="form-group row">
       <%= f.label "生年月日", class: "col-sm-2" %><br />
-      <%= f.date_field :birthday, class: "form-control col-sm-2" %>
+      <%= f.date_field :birthday, class: "form-control col-sm-4" %>
     </div>
 
     <div class="form-group row">
@@ -32,7 +32,7 @@
 
     <div class="form-group row">
       <%= f.label "背番号", class: "col-sm-2" %><br />
-      <%= f.text_field :league, class: "form-control col-sm-4" %>
+      <%= f.text_field :number, class: "form-control col-sm-4" %>
     </div>
 
     <div class="form-group row">
@@ -59,6 +59,62 @@
           <%= sub %>
         </label>
       <% end %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "スキル", class: "col-sm-2"%>
+      <table>
+      <tr>
+        <th>【野手】</th>
+        <td>　0~100</td>
+      </tr>
+      <tr>
+        <th>打撃</th>
+        <td><%= f.number_field :batting, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      <tr>
+        <th>パワー</th>
+        <td><%= f.number_field :power, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      <tr>
+        <th>走力</th>
+        <td><%= f.number_field :running, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      <tr>
+        <th>肩力</th>
+        <td><%= f.number_field :throwing, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      <tr>
+        <th>守備（野手）</th>
+        <td><%= f.number_field :fielding, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      </table>
+      <table class="ml-3">
+      <tr>
+        <th>【投手】</th>
+        <td>　0~100</td>
+      </tr>
+      <tr>
+        <th>球速</th>
+        <td><%= f.number_field :speedball, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      <tr>
+        <th>コントロール</th>
+        <td><%= f.number_field :control, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      <tr>
+        <th>スタミナ</th>
+        <td><%= f.number_field :stamina, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      <tr>
+        <th>変化球</th>
+        <td><%= f.number_field :breakingball, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      <tr>
+        <th>守備（投手）</th>
+        <td><%= f.number_field :fielding_of_pitcher, class: "ml-2 pl-2", max: 100, min: 0 %></td>
+      </tr>
+      </table>
     </div>
 
     <div class="form-group row">
