@@ -161,7 +161,17 @@
                 <tr class="text-center">
                   <td class="position-relative"><%= link_to game.gameday, "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
                   <td><%= game.opponent %></td>
-                  <td class="text-nowrap"><%= game.game_result %></td>
+                  <td class="text-nowrap">
+                    <% if game.game_result == "勝ち"%>
+                      <p class="d-inline p-2 bg-danger text-white rounded"><%= game.game_result %></p>
+                    <% elsif game.game_result == "負け"%>
+                      <p class="d-inline p-2 bg-primary text-white rounded"><%= game.game_result %></p>
+                    <% elsif game.game_result == "引き分け"%>
+                      <p class="d-inline p-2 bg-success text-white rounded"><%= game.game_result %></p>
+                    <% else %>
+                      <p class="d-inline p-2 bg-dark text-white rounded"><%= game.game_result %></p>
+                    <% end %>
+                    </td>
                   <td><%= game.game_myteam_score %> - <%= game.game_opponent_score %></td>
                 </tr>
                 <% end %>
