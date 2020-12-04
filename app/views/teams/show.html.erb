@@ -46,7 +46,7 @@
   
   <div class="row">
     <%# チームプロフィール %>
-    <div class="col">
+    <div class="col-xs-12 col-sm-12 col-md-6">
       <a href="#" class="d-block bg-dark text-white">
       <h5 class="p-2">チームプロフィール</h5>
       </a>
@@ -116,7 +116,7 @@
     <%# //チームプロフィール %>
 
     <%# 選手一覧 %>
-    <div class="col">
+    <div class="col-xs-12 col-sm-12 col-md-6">
       <h5><%= link_to "選手一覧（最新登録10選手）", team_players_path(@team), class: "p-2 d-block bg-success text-white" %></h5>
         <div class="row">
           <% @players.each do |player| %>
@@ -127,9 +127,14 @@
               <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" %>
             <% end %>
             <div class="media-body">
-              <h5 class="pb-2 border-bottom">
-                <%= player.number %>　<%= player.name %>
-              </h5>
+              <div class="border-bottom d-flex">
+                <h4 class="mr-3">
+                  <%= player.number %>
+                </h4>
+                <h5>
+                <%= player.name %>
+                </h5>
+              </div>
               <p class="text-center">
                 <%= player.main_position.name %><br />（<%= player.at_pitch%>/<%= player.at_bat %>）
               </p>
@@ -144,7 +149,7 @@
     <div class="w-100 m-3"></div>
     
     <%# 試合結果一覧 %>
-    <div class="col" style="height: mh-100;">
+    <div class="col-xs-12 col-sm-12 col-md-6" style="height: mh-100;">
       <h5><%= link_to "試合結果一覧（最新5試合）", team_games_path(@team), class: "p-2 d-block bg-primary text-white" %></h5>
         <div class="row">
           <table class="table table-hover">
@@ -182,7 +187,7 @@
     <%# //試合結果一覧 %>
 
     <%# チーム成績 %>
-    <div class="col">
+    <div class="col-xs-12 col-sm-12 col-md-6">
       <h5><%= link_to "チーム成績（詳細はこちら）", stat_team_path(@team), class: "p-2 d-block bg-danger text-white" %></h5>
       <div class="table-responsive-sm ">
         <table class="table">
