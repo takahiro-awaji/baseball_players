@@ -8,5 +8,5 @@ class Player < ApplicationRecord
   has_many :pitching_stats
   
   validates :name, presence: true
-  validates :main_position_id, presence: true, numericality: { other_than: 0, message: 'Select' }
+  validates :main_position_id, presence: true, numericality: { other_than: 0, message: 'を選択してください' }
 end

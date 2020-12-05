@@ -4,10 +4,12 @@
   <h2>選手編集</h2>
 
   <%= form_with(model: @player, url: team_player_path(@player.team_id), local: true) do |f| %>
+    <%= render 'devise/shared/error_messages', resource: @player %>
 
     <div class="form-group row"> 
       <%= f.label "選手名", class: "col-sm-2" %><br />
       <%= f.text_field :name, class: "form-control col-sm-6" %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
@@ -28,6 +30,7 @@
     <div class="form-group row">
       <%= f.label "メインポジション", class: "col-sm-2" %><br />
       <%= f.collection_select(:main_position_id, MainPosition.all, :id, :name, {}) %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">

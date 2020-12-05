@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       team: チーム
+      player: 選手
     attributes:
       team:
         email: メールアドレス
@@ -12,3 +13,6 @@ ja:
         team_url: チームURL
         activity_base_id: 活動拠点
         team_attribute_id: チーム区分
+      player:
+        name: 名前
+        main_position_id: メインポジション
