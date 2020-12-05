@@ -3,6 +3,7 @@ ja:
     models:
       team: チーム
       player: 選手
+      game: 試合結果
     attributes:
       team:
         email: メールアドレス
@@ -16,3 +17,9 @@ ja:
       player:
         name: 名前
         main_position_id: メインポジション
+      game:
+        gameday: 試合日
+        opponent: 対戦相手
+        total_stats_add: 通算成績
+        top_or_bottom: 先攻/後攻
+        game_result: 試合結果

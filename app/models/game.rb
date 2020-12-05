@@ -4,9 +4,11 @@ class Game < ApplicationRecord
   has_many :batting_stats
   has_many :pitching_stats
 
-  validates :gameday, presence: true
-  validates :opponent, presence: true
-  validates :total_stats_add, presence: true
-  validates :top_or_bottom, presence: true
-  validates :game_result, presence: true
+  with_options presence: true do
+    validates :gameday
+    validates :opponent
+    validates :total_stats_add
+    validates :top_or_bottom
+    validates :game_result
+  end
 end

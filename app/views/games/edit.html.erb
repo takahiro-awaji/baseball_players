@@ -4,10 +4,12 @@
   <h2>試合結果編集</h2>
 
   <%= form_with(model: @game, url: team_game_path(@team), local: true) do |f| %>
- 
+    <%= render 'devise/shared/error_messages', resource: @game %>
+
     <div class="form-group row">
       <%= f.label "試合日", class: "col-sm-2" %>
       <%= f.date_field :gameday, class: "form-control col-sm-4" %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
@@ -18,6 +20,7 @@
     <div class="form-group row">
       <%= f.label "対戦相手", class: "col-sm-2" %>
       <%= f.text_field :opponent, class: "form-control col-sm-4" %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
@@ -41,13 +44,15 @@
         <%= f.radio_button(:total_stats_add, 'はい') %> はい
         <%= f.radio_button(:total_stats_add, 'いいえ') %> いいえ
       </div>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "スコア", class: "col-sm-2" %>
       <div class="form-check">
         <%= f.radio_button(:top_or_bottom, '先攻') %>先攻
-        <%= f.radio_button(:top_or_bottom, '後攻') %>後攻<br />
+        <%= f.radio_button(:top_or_bottom, '後攻') %>後攻
+        <p class="ml-2 badge badge-danger">必須</p><br />
         <div class="pt-2">
           自チーム <%= f.text_field :game_myteam_score, class: "score-form" %> 対
           相手チーム <%= f.text_field :game_opponent_score, class: "score-form" %>
@@ -58,11 +63,12 @@
     <div class="form-group row">
       <%= f.label "試合結果", class: "col-sm-2" %>
       <%= f.select(:game_result, ["勝ち", "負け", "引き分け", "その他"], {include_blank: "選択してください"}) %>
+      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
       <%= f.label "コメント", class: "col-sm-2" %>
-      <%= f.text_area :game_comment, class: "form-control col-sm-6" %>
+      <%= f.text_area :game_comment, class: "form-control col-sm-6", rows: 8 %>
     </div>
 
     <div class="actions">
