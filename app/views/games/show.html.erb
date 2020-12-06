@@ -22,7 +22,7 @@
 
     <div class="row justify-content-center">
       <div class="p-2">
-      <%= @game.gameday %>
+      <%= l(@game.gameday, format: :long) %>
       </div>
       <div class="p-2">
       <%= @game.gametime %>

@@ -72,7 +72,7 @@
         </tr>
         <tr>
           <th scope="row">生年月日</th>
-          <td><%= @player.birthday %></td>
+          <td><%= l(@player.birthday, format: :default) %></td>
         </tr>
         <tr>
           <th scope="row">メインポジション</th>

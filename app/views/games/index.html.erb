@@ -25,7 +25,7 @@
         <tbody>
           <% @games.each do |game| %>
           <tr>
-            <td class="position-relative"><%= link_to game.gameday, "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
+            <td class="position-relative"><%= link_to l(game.gameday, format: :default), "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
             <td><%= game.game_attribute %></td>
             <td><%= game.opponent %></td>
             <td class="text-nowrap">

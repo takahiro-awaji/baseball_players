@@ -23,3 +23,8 @@ ja:
         total_stats_add: 通算成績
         top_or_bottom: 先攻/後攻
         game_result: 試合結果
+  date:
+    formats:
+      default: ! '%Y/%m/%d'
+      long: ! '%Y年%m月%d日(%a)'
+      short: ! '%m/%d'
