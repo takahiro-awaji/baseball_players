@@ -3,7 +3,7 @@
 <div class="container mt-3">
   <h2>打者成績登録</h2>
   <p>成績を登録する選手にチェックを入れてください。</p>
-  <%= form_with(model: @form, url: team_game_batting_stats_path, method: :post, local: true) do |form| %>
+  <%= form_with(model: @form, url: team_game_batting_stats_path(@team.team_url), method: :post, local: true) do |form| %>
   <div class="overflow-auto">
   <table class="table text-center text-nowrap">
     <thead>
