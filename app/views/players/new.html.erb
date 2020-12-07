@@ -3,7 +3,7 @@
 <div class="container mt-3">
   <h2>新規選手登録</h2>
 
-  <%= form_with(model: @player, url: team_players_path, local: true, method: :post) do |f| %>
+  <%= form_with(model: @player, url: team_players_path(@team.team_url), local: true, method: :post) do |f| %>
     <%= render 'devise/shared/error_messages', resource: @player %>
   
     <div class="form-group row"> 
@@ -151,7 +151,7 @@
   <% end %>
 
   <div class="row d-flex justify-content-around">
-    <%= link_to "チームページへ戻る", team_path(@team), class: "btn btn-outline-secondary col-sm-3 m-2" %>
+    <%= link_to "チームページへ戻る", team_path(@team.team_url), class: "btn btn-outline-secondary col-sm-3 m-2" %>
     <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-info col-sm-3 m-2" %>
   </div>
 

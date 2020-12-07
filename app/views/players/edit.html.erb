@@ -3,7 +3,7 @@
 <div class="container mt-3">
   <h2>選手編集</h2>
 
-  <%= form_with(model: @player, url: team_player_path(@player.team_id), local: true) do |f| %>
+  <%= form_with(model: @player, url: team_player_path(@player.team.team_url), local: true) do |f| %>
     <%= render 'devise/shared/error_messages', resource: @player %>
 
     <div class="form-group row"> 
@@ -151,7 +151,7 @@
   <% end %>
 
   <div class="row d-flex justify-content-around">
-    <%= link_to "チームページへ戻る", team_path(@team), class: "btn btn-outline-secondary col-sm-3 m-2" %>
+    <%= link_to "チームページへ戻る", team_path(@team.team_url), class: "btn btn-outline-secondary col-sm-3 m-2" %>
     <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-info col-sm-3 m-2" %>
   </div>
   
