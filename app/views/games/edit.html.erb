@@ -78,6 +78,7 @@
   <% end %>
 
   <div class="row d-flex justify-content-around">
+    <%= link_to "試合結果詳細へ戻る", team_game_path(@team.team_url), class: "btn btn-outline-success col-sm-3 m-2" %>
     <%= link_to "チームページへ戻る", team_path(@team.team_url), class: "btn btn-outline-secondary col-sm-3 m-2" %>
     <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-info col-sm-3 m-2" %>
   </div>
