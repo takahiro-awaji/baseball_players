@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :teams
   root "teams#top"
   get '/' => 'teams#show', as: :signin
-  resources :teams, only: [:index, :show, :edit, :update, :destroy] do
+  resources :teams, only: [:index, :show, :edit, :update, :destroy], param: :team_url do
     collection do
       get 'search'
     end
