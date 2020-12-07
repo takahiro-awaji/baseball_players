@@ -5,7 +5,7 @@
   <div class="row d-flex justify-content-between">
     <h2>試合一覧</h2>
     <% if @team == current_team %>
-      <%= link_to "試合結果登録", new_team_game_path(@team), class: "btn btn-info mb-2" %>
+      <%= link_to "試合結果登録", new_team_game_path(@team.team_url), class: "btn btn-info mb-2" %>
     <% end %>
   </div>
 
@@ -25,7 +25,7 @@
         <tbody>
           <% @games.each do |game| %>
           <tr>
-            <td class="position-relative"><%= link_to l(game.gameday, format: :default), "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
+            <td class="position-relative"><%= link_to l(game.gameday, format: :default), team_game_path(@team.team_url, game.id), class: "stretched-link" %></td>
             <td><%= game.game_attribute %></td>
             <td><%= game.opponent %></td>
             <td class="text-nowrap">
@@ -40,7 +40,7 @@
               <% end %>
             </td>
             <td><%= game.game_myteam_score %> - <%= game.game_opponent_score %></td>
-            <td><%= link_to "詳細", "/teams/#{@team.id}/games/#{game.id}", class: "btn btn-sm btn-secondary" %></td>
+            <td><%= link_to "詳細",team_game_path(@team.team_url, game.id), class: "btn btn-sm btn-secondary" %></td>
           </tr>
           <% end %>
         </tbody>
@@ -50,7 +50,7 @@
   </div>
 
   <div class="row d-flex justify-content-around">
-    <%= link_to "チームページへ戻る", team_path(@team), class: "btn btn-outline-secondary col-sm-3 m-2" %>
+    <%= link_to "チームページへ戻る", team_path(@team.team_url), class: "btn btn-outline-secondary col-sm-3 m-2" %>
     <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-info col-sm-3 m-2" %>
   </div>
 

@@ -21,13 +21,13 @@
         <span class="fas fa-baseball-ball fa-lg" style="color: darkblue"></span>
       </button>
       <div class="dropdown-menu">
-        <%= link_to "チーム編集", edit_team_path(@team), class: "dropdown-item" %>
-        <%= link_to "選手新規登録", new_team_player_path(@team), class: "dropdown-item" %>
-        <%= link_to "選手一覧", team_players_path(@team), class: "dropdown-item" %>
-        <%= link_to "試合結果登録", new_team_game_path(@team), class: "dropdown-item" %>
-        <%= link_to "試合結果一覧", team_games_path(@team), class: "dropdown-item" %>
+        <%= link_to "チーム編集", edit_team_path(@team.team_url), class: "dropdown-item" %>
+        <%= link_to "選手新規登録", new_team_player_path(@team.team_url), class: "dropdown-item" %>
+        <%= link_to "選手一覧", team_players_path(@team.team_url), class: "dropdown-item" %>
+        <%= link_to "試合結果登録", new_team_game_path(@team.team_url), class: "dropdown-item" %>
+        <%= link_to "試合結果一覧", team_games_path(@team.team_url), class: "dropdown-item" %>
         <div class="dropdown-divider"></div>
-        <%= link_to "チーム削除", team_path(@team), class: "dropdown-item", method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
+        <%= link_to "チーム削除", team_path(@team.team_url), class: "dropdown-item", method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
       </div>
     </div>
   <% else %>
@@ -36,8 +36,8 @@
         <span class="fas fa-baseball-ball fa-lg" style="color: darkblue"></span>
       </button>
       <div class="dropdown-menu">
-        <%= link_to "選手一覧", team_players_path(@team), class: "dropdown-item" %>
-        <%= link_to "試合結果一覧", team_games_path(@team), class: "dropdown-item" %>
+        <%= link_to "選手一覧", team_players_path(@team.team_url), class: "dropdown-item" %>
+        <%= link_to "試合結果一覧", team_games_path(@team.team_url), class: "dropdown-item" %>
       </div>
     </div>
   <% end %>
@@ -117,14 +117,14 @@
 
     <%# 選手一覧 %>
     <div class="col-lg-6">
-      <h5><%= link_to "選手一覧（最新登録10選手）", team_players_path(@team), class: "p-2 d-block bg-success text-white" %></h5>
+      <h5><%= link_to "選手一覧（最新登録10選手）", team_players_path(@team.team_url), class: "p-2 d-block bg-success text-white" %></h5>
         <div class="row">
           <% @players.each do |player| %>
           <div class="media col-lg-6 p-3 position-relative border">
             <% if player.image.present? %>
-              <%= link_to image_tag(player.image, class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" if player.image.attached? %>
+              <%= link_to image_tag(player.image, class: "mr-3", size: "100x100"), team_player_path(@team.team_url, player.id), class: "stretched-link" if player.image.attached? %>
             <% else %>
-              <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"), "/teams/#{@team.id}/players/#{player.id}", class: "stretched-link" %>
+              <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"),team_player_path(@team.team_url, player.id), class: "stretched-link" %>
             <% end %>
             <div class="media-body">
               <div class="border-bottom d-flex">
@@ -150,7 +150,7 @@
     
     <%# 試合結果一覧 %>
     <div class="col-lg-6" style="height: mh-100;">
-      <h5><%= link_to "試合結果一覧（最新5試合）", team_games_path(@team), class: "p-2 d-block bg-primary text-white" %></h5>
+      <h5><%= link_to "試合結果一覧（最新5試合）", team_games_path(@team.team_url), class: "p-2 d-block bg-primary text-white" %></h5>
         <div class="row">
           <table class="table table-hover">
             <thead class="thead-dark">
@@ -164,7 +164,7 @@
             <tbody>
                 <% @games.each do |game| %>
                 <tr class="text-center">
-                  <td class="position-relative"><%= link_to l(game.gameday, format: :default), "/teams/#{@team.id}/games/#{game.id}", class: "stretched-link" %></td>
+                  <td class="position-relative"><%= link_to l(game.gameday, format: :default), team_game_path(@team.team_url, game.id), class: "stretched-link" %></td>
                   <td><%= game.opponent %></td>
                   <td class="text-nowrap">
                     <% if game.game_result == "勝ち"%>
@@ -188,7 +188,7 @@
 
     <%# チーム成績 %>
     <div class="col-lg-6">
-      <h5><%= link_to "チーム成績（詳細はこちら）", stat_team_path(@team), class: "p-2 d-block bg-danger text-white" %></h5>
+      <h5><%= link_to "チーム成績（詳細はこちら）", stat_team_path(@team.team_url), class: "p-2 d-block bg-danger text-white" %></h5>
       <div class="table-responsive-sm ">
         <table class="table">
           <thead>

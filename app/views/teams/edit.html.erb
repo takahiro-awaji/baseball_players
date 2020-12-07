@@ -3,7 +3,7 @@
 <div class="container mt-3">
   <h2>チーム編集</h2>
   
-  <%= form_with(model: @team, local: true) do |f| %>
+  <%= form_with(model: @team, url: team_path(@team.team_url), local: true) do |f| %>
     <%= render "devise/shared/error_messages", resource: @team %>
 
   <div class="form-group row"> 

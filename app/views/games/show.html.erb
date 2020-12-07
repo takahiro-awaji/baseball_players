@@ -11,8 +11,8 @@
         <span class="fas fa-pencil-alt fa-lg" style="color: darkblue"></span>
       </button>
       <div class="dropdown-menu">
-        <%= link_to "編集", edit_team_game_path(@team), class: "dropdown-item" %>
-        <%= link_to "削除", team_game_path(@team),class: "dropdown-item", method: :delete, data: {confirm: "本当に削除してもいいですか？"} %>
+        <%= link_to "編集", edit_team_game_path(@team.team_url), class: "dropdown-item" %>
+        <%= link_to "削除", team_game_path(@team.team_url),class: "dropdown-item", method: :delete, data: {confirm: "本当に削除してもいいですか？"} %>
       </div>
     </div>
     <% end %>
@@ -129,8 +129,8 @@
         <span class="fas fa-pencil-alt fa-lg" style="color: darkblue"></span>
       </button>
       <div class="dropdown-menu">
-        <%= link_to "打者成績登録", new_team_game_batting_stat_path(@team, @game), class: "dropdown-item" %>
-        <%= link_to "投手成績登録", new_team_game_pitching_stat_path(@team, @game), class: "dropdown-item" %>
+        <%= link_to "打者成績登録", new_team_game_batting_stat_path(@team.team_url, @game), class: "dropdown-item" %>
+        <%= link_to "投手成績登録", new_team_game_pitching_stat_path(@team.team_url, @game), class: "dropdown-item" %>
       </div>
     </div>
     <% end %>
@@ -293,8 +293,8 @@
   </div>
 
   <div class="row d-flex justify-content-around mt-3">
-    <%= link_to "試合一覧へ戻る", team_games_path(@team), class: "btn btn-outline-success col-sm-3 m-2" %>
-    <%= link_to "チームページへ戻る", team_path(@team), class: "btn btn-outline-secondary col-sm-3 m-2" %>
+    <%= link_to "試合一覧へ戻る", team_games_path(@team.team_url), class: "btn btn-outline-success col-sm-3 m-2" %>
+    <%= link_to "チームページへ戻る", team_path(@team.team_url), class: "btn btn-outline-secondary col-sm-3 m-2" %>
     <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-info col-sm-3 m-2" %>
   </div>
 </div>

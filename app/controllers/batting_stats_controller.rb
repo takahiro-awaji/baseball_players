@@ -1,21 +1,17 @@
 class BattingStatsController < ApplicationController
   before_action :ensure_correct_team, only: [:new, :create]
+  before_action :set_team, only: [:new, :create]
+  before_action :set_players, only: [:new, :create]
+  before_action :set_game, only: [:new, :create]
 
   def new
     @form = Form::BattingStatCollection.new
-    @team = Team.find(params[:team_id])
-    @game = Game.find(params[:game_id])
-    # @player = Player.find(params[:player_id])
-    @players = Player.where(team_id: @team.id).order(number: :asc)
   end
 
   def create
-    @team = Team.find(params[:team_id])
-    @players = Player.where(team_id: @team.id).order(number: :asc)
     @form = Form::BattingStatCollection.new(batting_stat_collection_params)
-    @game = Game.find(params[:game_id])
     if @form.save
-      redirect_to root_path
+      redirect_to team_game_path(@team.team_url, @game)
     else
       render :new
     end
@@ -33,8 +29,20 @@ class BattingStatsController < ApplicationController
   end
   
   def ensure_correct_team
-    team = Team.find(params[:team_id])
+    team = Team.find_by!(team_url: params[:team_team_url])
     redirect_to root_path if team != current_team
+  end
+
+  def set_team
+    @team = Team.find_by!(team_url: params[:team_team_url])
+  end
+
+  def set_players
+    @players = Player.where(team_id: @team.id).order(number: :asc)
+  end
+
+  def set_game
+    @game = Game.find(params[:game_id])
   end
 
 end

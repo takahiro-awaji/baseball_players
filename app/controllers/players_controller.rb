@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   before_action :ensure_correct_team, except: [:index, :show]
 
   def index
-    @players = Player.where(team_id: @team.id).order(number: :asc)
+    @players = Player.where(team_id: @team).order(number: :asc)
   end
 
   def new
@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if @player.save
-      redirect_to "/teams/#{@team.id}/players"
+      redirect_to team_players_path(@team.team_url)
     else
       render 'new'
     end
@@ -67,11 +67,11 @@ class PlayersController < ApplicationController
   end
 
   def set_team
-    @team = Team.find(params[:team_id])
+    @team = Team.find_by(team_url: params[:team_team_url])
   end
 
   def ensure_correct_team
-    team = Team.find(params[:team_id])
+    team = Team.find_by!(team_url: params[:team_team_url])
     redirect_to root_path if team != current_team
   end
 end

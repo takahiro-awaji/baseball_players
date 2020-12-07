@@ -14,7 +14,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
-      redirect_to "/teams/#{@team.id}/games/"
+      redirect_to team_games_path(@team.team_url)
     else
       render 'new'
     end
@@ -43,7 +43,7 @@ class GamesController < ApplicationController
   private
 
   def set_team
-    @team = Team.find(params[:team_id])
+    @team = Team.find_by!(team_url: params[:team_team_url])
   end
 
   def set_game
@@ -57,7 +57,7 @@ class GamesController < ApplicationController
   end
 
   def ensure_correct_team
-    team = Team.find(params[:team_id])
+    team = Team.find_by!(team_url: params[:team_team_url])
     redirect_to root_path if team != current_team
   end
 end

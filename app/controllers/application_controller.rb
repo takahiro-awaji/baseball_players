@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(resource)
-    team_path(resource)
+    team_path(current_team.team_url)
   end
 
   def after_sign_in_path_for(resource)
-    team_path(resource)
+    team_path(current_team.team_url)
   end
 end

@@ -1,6 +1,10 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: sandybrown;">
-    <%= link_to image_tag('logo.jpg', class: "logo rounded"), root_path %>
+    <% if team_signed_in? %>
+      <%= link_to image_tag('logo.jpg', class: "logo rounded"), team_path(current_team.team_url) %>
+    <% else %>
+      <%= link_to image_tag('logo.jpg', class: "logo rounded"), root_path %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,9 +22,9 @@
             <%= current_team.team_name %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "マイページ", team_path(current_team), class: "btn dropdown-item"%>
-            <%= link_to "新規選手登録", new_team_player_path(current_team), class: "btn dropdown-item" %>
-            <%= link_to "新規試合結果登録", new_team_game_path(current_team), class: "btn dropdown-item" %>
+            <%= link_to "マイページ", team_path(current_team.team_url), class: "btn dropdown-item"%>
+            <%= link_to "新規選手登録", new_team_player_path(current_team.team_url), class: "btn dropdown-item" %>
+            <%= link_to "新規試合結果登録", new_team_game_path(current_team.team_url), class: "btn dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to "ログアウト", destroy_team_session_path, method: :delete, class: "btn dropdown-item" %>
           </div>
