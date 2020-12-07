@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :stat]
   before_action :ensure_correct_team, only: [:edit, :update, :destroy]
-  before_action :forbid_login_user, only: :top
+  before_action :forbid_login_team, only: :top
 
   def index
     @teams = Team.all.page(params[:page]).per(10).order(created_at: :desc)
@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    team = Team.find(params[:id])
+    team = Team.find_by!(team_url: params[:team_url])
     team.destroy
   end
 
@@ -41,7 +41,7 @@ class TeamsController < ApplicationController
   private
 
   def set_team
-    @team = Team.find(params[:id])
+    @team = Team.find_by!(team_url: params[:team_url])
   end
 
   def team_params
@@ -51,12 +51,12 @@ class TeamsController < ApplicationController
   end
 
   def ensure_correct_team
-    team = Team.find(params[:id])
+    team = Team.find_by!(team_url: params[:team_url])
     redirect_to root_path if team != current_team
   end
 
-  def forbid_login_user
+  def forbid_login_team
     team = current_team
-    redirect_to team_path(team) if team_signed_in?
+    redirect_to team_path(team.team_url) if team_signed_in?
   end
 end
