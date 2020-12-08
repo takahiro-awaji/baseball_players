@@ -170,7 +170,7 @@
       <% @batting_stats.each do |b| %>
       <tr>
         <td><%= b.player.number %></td>
-        <td><%= b.player.name %></td>
+        <td><%= link_to b.player.name, team_player_path(@team.team_url, b.player_id) %></td>
         <td><%= b.at_field %></td>
         <td><%= b.batting_order %></td>
         <td><%= b.fielding_position %></td>
@@ -222,6 +222,7 @@
     </tfoot>
     </table>
     </div>
+    <p class="text-muted">横にスクロールするとさらに細かい情報を確認できます</p>
   <% end %>
 
   <% if @pitching_stats.present? %>
@@ -251,7 +252,7 @@
       <% @pitching_stats.each do |p| %>
         <tr>
           <td><%= p.player.number %></td> 
-          <td><%= p.player.name %></td>
+          <td><%= link_to p.player.name, team_player_path(@team.team_url, p.player_id) %></td>
           <td><%= p.pitching_order %></td>
           <td><%= p.win_lose_or_save %></td>
           <td colspan="2"><%= p.inning %>回<%= p.part_of_inning %>/3</td>
