@@ -39,7 +39,7 @@
       <tr>
         <td><%= f.check_box(:player_id, {}, player.id, nil) %></td>
         <td><%= player.number %></td> 
-        <td><%= player.name %></td>
+        <td><%= link_to player.name, team_player_path(@team.team_url, player) %></td>
         <td><%= f.select(:at_field, ["先発", "代打", "代走", "守備"], prompt: "--")%></td>
         <td><%= f.number_field :batting_order, style: "width: 40px;", min: 1 %></td>
         <td><%= f.select(:fielding_position,["投", "捕", "一", "二", "三", "遊", "左", "中", "右", "DH"], prompt: "--") %></td>

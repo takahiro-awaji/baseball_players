@@ -32,7 +32,7 @@
       <tr>
         <td><%= f.check_box(:player_id, {}, player.id, nil) %></td>
         <td><%= player.number %></td> 
-        <td><%= player.name %></td>
+        <td><%= link_to player.name, team_player_path(@team.team_url, player) %></td>
         <td><%= f.number_field :pitching_order, style: "width: 40px;", min: 1 %></td>
         <td><%= f.select(:win_lose_or_save, ["勝", "負", "S"], {prompt: "--"} , {style: "height: 30px;"} ) %></td>
         <td><%= f.select(:inning, [0,1,2,3,4,5,6,7,8,9,10,11,12], {}, {style: "height: 30px;"} ) %> 回</td>
