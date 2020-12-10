@@ -7,86 +7,90 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="form-group row">
-      <%= f.label "メールアドレス", class: "col-sm-2" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-sm-6" %>
+      <%= f.label "メールアドレス", class: "col-sm-3" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-sm-7" %>
       <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "パスワード", class: "col-sm-2" %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-sm-4" %>
+      <%= f.label "パスワード", class: "col-sm-3" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-sm-5", placeholder: "6文字以上で入力してください" %>
       <p class="ml-2 mr-2 badge badge-danger">必須</p>
-      <p>6文字以上</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "パスワード確認用", class: "col-sm-2" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-sm-4" %>
+      <%= f.label "パスワード確認用", class: "col-sm-3" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-sm-5" %>
       <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム名", class: "col-sm-2" %><br />
+      <%= f.label "チーム名", class: "col-sm-3" %><br />
       <%= f.text_field :team_name, class: "form-control col-sm-6" %>
       <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム名（カナ）", class: "col-sm-2" %><br />
+      <%= f.label "チーム名（カナ）", class: "col-sm-3" %><br />
       <%= f.text_field :team_name_kana, class: "form-control col-sm-6" %>
       <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チームURL", class: "col-sm-2 text-uppercase" %><br />
-      <%= f.text_field :team_url, class: "form-control col-sm-4" %>
-      <p class="ml-2 badge badge-danger">必須</p>
+      <%= f.label "チームURL", class: "col-sm-3 text-uppercase" %><br />
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+        baseball-players.site/teams/
+        </div>
+        <%= f.text_field :team_url, class: "form-control col-sm-7", placeholder: "※変更不可" %>
+        <p class="ml-2 badge badge-danger">必須</p>
+      </div>
     </div>
 
     <div class="form-group row">
-      <%= f.label "活動拠点" , class: "col-sm-2"%><br />
+      <%= f.label "活動拠点" , class: "col-sm-3"%><br />
       <%= f.collection_select(:activity_base_id, ActivityBase.all, :id, :name, {}) %>
       <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム区分", class: "col-sm-2" %><br />
+      <%= f.label "チーム区分", class: "col-sm-3" %><br />
       <%= f.collection_select(:team_attribute_id, TeamAttribute.all, :id, :name, {}) %>
       <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チームレベル", class: "col-sm-2" %><br />
+      <%= f.label "チームレベル", class: "col-sm-3" %><br />
       <%= f.collection_select(:team_level_id, TeamLevel.all, :id, :name, {}) %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム平均年齢", class: "col-sm-2" %><br />
+      <%= f.label "チーム平均年齢", class: "col-sm-3" %><br />
       <%= f.collection_select(:team_player_age_id, TeamPlayerAge.all, :id, :name, {}) %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "メンバー野球歴", class: "col-sm-2" %><br />
+      <%= f.label "メンバー野球歴", class: "col-sm-3" %><br />
       <%= f.collection_select(:team_player_history_id, TeamPlayerHistory.all, :id, :name, {}) %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "所属リーグ・団体・連盟等", class: "col-sm-2" %><br />
+      <%= f.label "所属リーグ・団体・連盟等", class: "col-sm-3" %><br />
       <%= f.text_area :league, class: "form-control col-sm-6 overflow-auto", rows: 4 %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "獲得タイトル", class: "col-sm-2" %><br />
+      <%= f.label "獲得タイトル", class: "col-sm-3" %><br />
       <%= f.text_area :team_title, class: "form-control col-sm-6 overflow-auto", rows: 4 %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム結成", class: "col-sm-2" %><br />
+      <%= f.label "チーム結成", class: "col-sm-3" %><br />
       <%= f.collection_select(:since_id, Since.all, :id, :name, {}) %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "活動曜日", class: "col-sm-2" %><br />
+      <%= f.label "活動曜日", class: "col-sm-3" %><br />
       <% [ "土", "日", "月", "火", "水", "木", "金"].each do |day| %>
         <label class="form-check">
           <%= f.check_box :activity_day, {multiple: true}, day, nil %>
@@ -96,31 +100,31 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label "活動ペース", class: "col-sm-2" %><br />
+      <%= f.label "活動ペース", class: "col-sm-3" %><br />
       <%= f.collection_select(:activity_pace_id, ActivityPace.all, :id, :name, {}) %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "年間試合数", class: "col-sm-2" %><br />
+      <%= f.label "年間試合数", class: "col-sm-3" %><br />
       <%= f.collection_select(:games_per_year_id, GamesPerYear.all, :id, :name, {}) %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チームスローガン", class: "col-sm-2" %><br />
+      <%= f.label "チームスローガン", class: "col-sm-3" %><br />
       <%= f.text_field :team_slogan, class: "form-control col-sm-6 overflow-auto" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム紹介", class: "col-sm-2" %><br />
+      <%= f.label "チーム紹介", class: "col-sm-3" %><br />
       <%= f.text_area :introduction, class: "form-control col-sm-6 overflow-auto", rows: 8 %>
     </div>
 
     <div class="custom-file row mb-3">
-      <%= f.label "チーム画像", class: "col-sm-2" %>
+      <%= f.label "チーム画像", class: "col-sm-3" %>
       <%= f.file_field :image, id: "customFile" %>
     </div>
 
-    <div class="actions my-3">
+    <div class="actions my-3 d-flex justify-content-center">
       <%= f.submit "登録する", class: "col-8 btn btn-primary" %>
     </div>
   <% end %>
