@@ -3,6 +3,7 @@
 <div class="container mt-3">
   <h2>打者成績登録</h2>
   <p>成績を登録する選手にチェックを入れてください。</p>
+  <p>横にスライドすることで詳細の情報を登録できます。</p>
   <%= form_with(model: @form, url: team_game_batting_stats_path(@team.team_url), method: :post, local: true) do |form| %>
   <div class="overflow-auto">
   <table class="table text-center text-nowrap">
@@ -95,10 +96,17 @@
   </table>
   </div>
 
-  <%= form.submit "登録する", class: "col-4 mt-2 btn btn-primary" %>
+  <div class="actions my-3 d-flex justify-content-center">
+   <%= form.submit "登録する", class: "col-4 mt-2 btn btn-primary" %>
+  </div>
 
   <% end %>
 
+  <div class="row d-flex justify-content-around">
+    <%= link_to "試合結果詳細へ戻る", team_game_path(@team.team_url, @game), class: "btn btn-outline-success col-sm-3 m-2" %>
+    <%= link_to "チームページへ戻る", team_path(@team.team_url), class: "btn btn-outline-secondary col-sm-3 m-2" %>
+    <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-info col-sm-3 m-2" %>
+  </div>
 
 </div>
 <%= render 'shared/footer' %>
