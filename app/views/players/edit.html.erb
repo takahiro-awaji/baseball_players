@@ -7,13 +7,13 @@
     <%= render 'devise/shared/error_messages', resource: @player %>
 
     <div class="form-group row"> 
-      <%= f.label "選手名", class: "col-sm-2" %><br />
+      <%= f.label "選手名", class: "col-sm-3" %><br />
       <%= f.text_field :name, class: "form-control col-sm-6" %>
       <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "性別", class: "col-sm-2" %><br />
+      <%= f.label "性別", class: "col-sm-3" %><br />
       <label class="form-check pr-2">
         <%= f.radio_button(:sex, '男') %> 男
       </label>
@@ -23,23 +23,23 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label "生年月日", class: "col-sm-2" %><br />
+      <%= f.label "生年月日", class: "col-sm-3" %><br />
       <%= f.date_field :birthday, class: "form-control col-sm-4" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "メインポジション", class: "col-sm-2" %><br />
+      <%= f.label "メインポジション", class: "col-sm-3" %><br />
       <%= f.collection_select(:main_position_id, MainPosition.all, :id, :name, {}) %>
       <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "背番号", class: "col-sm-2" %><br />
+      <%= f.label "背番号", class: "col-sm-3" %><br />
       <%= f.text_field :number, class: "form-control col-sm-4" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "投打", class: "col-sm-2" %><br />
+      <%= f.label "投打", class: "col-sm-3" %><br />
         <div class="form-check mr-4">
           <%= f.label "投", class: "mr-4" %>
           <label class="pr-2"><%= f.radio_button(:at_pitch, "右")%> 右</label>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label "サブポジション", class: "col-sm-2" %><br />
+      <%= f.label "サブポジション", class: "col-sm-3" %><br />
       <% ["投手", "捕手", "内野手", "外野手"].each do |sub| %>
         <label class="form-check pr-2">
           <%= f.check_box :sub_position, {multiple: true}, sub, nil %>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label "スキル", class: "col-sm-2"%>
+      <%= f.label "スキル", class: "col-sm-3"%>
       <table>
       <tr>
         <th>【野手】</th>
@@ -121,31 +121,31 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label "選手の役職", class: "col-sm-2" %><br />
+      <%= f.label "選手の役職", class: "col-sm-3" %><br />
       <%= f.text_area :player_post, class: "form-control col-sm-6", rows: 3 %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "スタッフの役職", class: "col-sm-2" %><br />
+      <%= f.label "スタッフの役職", class: "col-sm-3" %><br />
       <%= f.text_area :staff_post, class: "form-control col-sm-6", rows: 3 %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "野球歴", class: "col-sm-2" %><br />
+      <%= f.label "野球歴", class: "col-sm-3" %><br />
       <%= f.text_area :carrer, class: "form-control col-sm-6", rows: 4 %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "自己紹介", class: "col-sm-2" %><br />
+      <%= f.label "自己紹介", class: "col-sm-3" %><br />
       <%= f.text_area :promotion, class: "form-control col-sm-6", rows: 4 %>
     </div>
 
     <div class="custom-file row mb-3">
-      <%= f.label "選手画像", class: "col-sm-2" %>
+      <%= f.label "選手画像", class: "col-sm-3" %>
       <%= f.file_field :image, id: "customFile" %>
     </div>
     
-    <div class="actions my-3">
+    <div class="actions my-3 d-flex justify-content-center">
       <%= f.submit "登録する", class: "col-8 btn btn-primary" %>
     </div>
   <% end %>
