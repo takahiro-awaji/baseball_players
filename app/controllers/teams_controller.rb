@@ -34,6 +34,7 @@ class TeamsController < ApplicationController
 
   def stat
     @games = Game.where(team_id: @team.id)
+    @players = Player.where(team_id: @team.id)
     @b_stats = BattingStat.where(game_id: @games.ids)
     @p_stats = PitchingStat.where(game_id: @games.ids)
   end
