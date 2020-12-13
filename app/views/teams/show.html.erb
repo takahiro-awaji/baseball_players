@@ -47,9 +47,11 @@
   <div class="row">
     <%# チームプロフィール %>
     <div class="col-lg-6">
-      <a href="#" class="d-block bg-dark text-white">
-      <h5 class="p-2">チームプロフィール</h5>
-      </a>
+      <% if @team == current_team %>
+        <h5><%= link_to "チームプロフィール", edit_team_path(@team.team_url), class: "d-block bg-dark text-white p-2" %></h5>
+      <% else %>
+        <h5 class="d-block bg-dark text-white p-2">チームプロフィール</h5>
+      <% end %>
       <table class="table text-center">
         <tr>
           <th scope="row" style="width: 200px;">チーム名</th>
