@@ -11,21 +11,21 @@
 
   <%= search_form_for @g, url: search_team_games_path, local: true, method: :get do |form| %>
     <div class="row my-3">
-      <div class="col-md-3 col-sm-6 d-flex justify-content-center">
+      <div class="col-md-3 col-sm-6 my-1 d-flex">
         <%= form.label :gameday_eq, "試合日" %>
-        <%= form.date_field :gameday_eq, class: "form-control ml-2", style: "width: 180px;", selected: params[:gameday] %>
+        <%= form.date_field :gameday_eq, class: "form-control ml-2", style: "width: 70%;", selected: params[:gameday] %>
       </div>
-      <div class="col-md-3 col-sm-6  d-flex justify-content-center">
+      <div class="col-md-3 col-sm-6 my-1 d-flex">
         <%= form.label :game_attribute_eq, "試合区分" %>
-        <%= form.select(:game_attribute_eq, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}, class: "ml-2", selected: params[:game_attribute]) %>
+        <%= form.select(:game_attribute_eq, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}, class: "ml-2", style: "width: 60%;", selected: params[:game_attribute]) %>
       </div>
       <%= form_with(url: search_team_games_path, local: true, method: :get) do |f| %>
-      <div class="col-md-5 col-sm-10 d-flex justify-content-center">
+      <div class="col-md-5 col-sm-10 my-1 d-flex">
         <%= f.label :opponent_name, "対戦相手" %>
         <%= f.text_field :opponent_name, class: "form-control ml-2", style: "width: 300px;", value: params[:opponent_name] %>
       </div>
       <% end %>
-      <div class="col-md-1 col-sm-2">
+      <div class="col-md-1 col-sm-2 my-1">
         <%= form.submit "検索", class: "btn btn-outline-success" %>
       </div>
     </div>
