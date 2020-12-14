@@ -1,0 +1,83 @@
+<%= render 'shared/header' %>
+
+<div class="container mt-3">
+
+  <div class="row d-flex justify-content-between">
+    <h2>試合一覧（検索結果）</h2>
+    <% if @team == current_team %>
+      <%= link_to "試合結果登録", new_team_game_path(@team.team_url), class: "btn btn-info mb-2" %>
+    <% end %>
+  </div>
+
+  <%= form_with(url: search_team_games_path, local: true, method: :get) do |form| %>
+    <div class="row my-3">
+      <div class="col-md-3 col-sm-6 d-flex justify-content-center">
+        <%= form.label :date, "試合日" %>
+        <%= form.date_field :date, class: "form-control ml-2", style: "width: 180px;" %>
+      </div>
+      <div class="col-md-3 col-sm-6 d-flex justify-content-center">
+        <%= form.label :attribute, "試合区分" %>
+        <%= form.select(:attribute, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}, class: "ml-2") %>
+      </div>
+      <div class="col-md-5 col-sm-10 d-flex justify-content-center">
+        <%= form.label :opponent_name, "対戦相手" %>
+        <%= form.text_field :opponent_name, class: "form-control ml-2", style: "width: 300px;", value: params[:opponent_name] %>
+      </div>
+      <div class="col-md-1 col-sm-2">
+        <%= form.submit "検索", class: "btn btn-outline-success" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="col text-center">
+    <div class="row">
+      <table class="table text-nowrap">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" width="15%">試合日</th>
+            <th scope="col" width="15%">試合区分</th>
+            <th scope="col" width="40%">対戦相手</th>
+            <th scope="col" width="10%">結果</th>
+            <th scope="col" width="15%">スコア</th>
+            <th scope="col" width="5%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @s_games.each do |game| %>
+          <tr>
+            <td class="position-relative"><%= link_to l(game.gameday, format: :default), team_game_path(@team.team_url, game.id), class: "stretched-link" %></td>
+            <td><%= game.game_attribute %></td>
+            <td><%= game.opponent %></td>
+            <td class="text-nowrap">
+            <% if game.game_result == "勝ち"%>
+              <p class="d-inline p-2 bg-danger text-white rounded"><%= game.game_result %></p>
+            <% elsif game.game_result == "負け"%>
+              <p class="d-inline p-2 bg-primary text-white rounded"><%= game.game_result %></p>
+            <% elsif game.game_result == "引き分け"%>
+              <p class="d-inline p-2 bg-success text-white rounded"><%= game.game_result %></p>
+            <% else %>
+              <p class="d-inline p-2 bg-dark text-white rounded"><%= game.game_result %></p>
+              <% end %>
+            </td>
+            <td><%= game.game_myteam_score %> - <%= game.game_opponent_score %></td>
+            <td><%= link_to "詳細",team_game_path(@team.team_url, game.id), class: "btn btn-sm btn-secondary" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @s_games %>
+  </div>
+
+  <div class="row d-flex justify-content-around">
+    <%= link_to "試合一覧へ戻る", team_games_path(@team.team_url), class: "btn btn-outline-success col-sm-3 m-2" %>
+    <%= link_to "チームページへ戻る", team_path(@team.team_url), class: "btn btn-outline-secondary col-sm-3 m-2" %>
+    <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-info col-sm-3 m-2" %>
+  </div>
+
+</div>
+
+<%= render 'shared/footer' %>
+
+
+
