@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   before_action :set_team
   before_action :set_game, only: [:show, :edit, :update]
-  before_action :ensure_correct_team, except: [:index, :show]
+  before_action :ensure_correct_team, except: [:index, :show, :search]
 
   def index
     @games = Game.where(team_id: @team.id).page(params[:page]).per(10).order(gameday: :desc)
@@ -38,6 +38,10 @@ class GamesController < ApplicationController
   def destroy
     game = Game.find(params[:id])
     game.destroy
+  end
+
+  def search
+    @s_games = Game.where(team_id: @team.id).search(params[:opponent_name]).page(params[:page]).per(10).order(gameday: :desc)
   end
 
   private
