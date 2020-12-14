@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :games do
       resources :batting_stats, only: [:new, :create]
       resources :pitching_stats, only: [:new, :create]
+      collection do
+        get 'search'
+      end
     end
   end
 end

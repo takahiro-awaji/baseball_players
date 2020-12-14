@@ -1,7 +1,8 @@
 class GamesController < ApplicationController
   before_action :set_team
   before_action :set_game, only: [:show, :edit, :update]
-  before_action :ensure_correct_team, except: [:index, :show]
+  before_action :ensure_correct_team, except: [:index, :show, :search]
+  before_action :search_game, only: [:index, :search]
 
   def index
     @games = Game.where(team_id: @team.id).page(params[:page]).per(10).order(gameday: :desc)
@@ -40,6 +41,11 @@ class GamesController < ApplicationController
     game.destroy
   end
 
+  def search
+    # @s_games = Game.where(team_id: @team.id).search(params[:opponent_name]).page(params[:page]).per(10).order(gameday: :desc)
+    @results = @g.result.where(team_id: @team.id).search(params[:opponent_name]).page(params[:page]).per(10).order(gameday: :desc)
+  end
+
   private
 
   def set_team
@@ -60,4 +66,9 @@ class GamesController < ApplicationController
     team = Team.find_by!(team_url: params[:team_team_url])
     redirect_to root_path if team != current_team
   end
+
+  def search_game
+    @g = Game.ransack(params[:q])
+  end
+
 end

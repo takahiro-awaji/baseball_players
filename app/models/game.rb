@@ -11,4 +11,12 @@ class Game < ApplicationRecord
     validates :top_or_bottom
     validates :game_result
   end
+
+  def self.search(search)
+    if search != ''
+      Game.where('opponent LIKE (?)', "%#{search}%")
+    else
+      Game.all
+    end
+  end
 end
