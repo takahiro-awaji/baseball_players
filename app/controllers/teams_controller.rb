@@ -29,7 +29,7 @@ class TeamsController < ApplicationController
   end
 
   def search
-    @teams = Team.search(params[:keyword]).order(created_at: :desc)
+    @teams = Team.search(params[:keyword]).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def stat
