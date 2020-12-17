@@ -21,6 +21,7 @@
 
   <%# チーム一覧 %>
   <h2 class="mt-3 text-center">チーム一覧</h2>
+  <%= paginate @teams %>
   <div class="row mt-5">
     <% @teams.each do |team| %>
       <div class="card col-lg-6">

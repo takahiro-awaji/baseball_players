@@ -3,6 +3,7 @@
 <div class="container mt-3">
 
   <h2>検索結果</h2>
+    <%= paginate @teams %>
     <div class="row">
       <% @teams.each do |team| %>
         <div class="card col-lg-6">
