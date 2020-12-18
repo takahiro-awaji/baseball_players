@@ -17,7 +17,7 @@
       </div>
       <div class="col-md-3 col-sm-6 my-1 d-flex">
         <%= form.label :game_attribute_eq, "試合区分" %>
-        <%= form.select(:game_attribute_eq, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}, class: "ml-2", style: "width: 60%;", selected: params[:game_attribute]) %>
+        <%= form.select(:game_attribute_eq, ["公式戦", "練習試合", "その他"], {include_blank: "---"}, class: "ml-2", style: "width: 60%;", selected: params[:game_attribute]) %>
       </div>
       <%= form_with(url: search_team_games_path, local: true, method: :get) do |f| %>
       <div class="col-md-5 col-sm-10 my-1 d-flex">
