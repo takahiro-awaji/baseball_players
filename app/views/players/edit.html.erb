@@ -7,9 +7,11 @@
     <%= render 'devise/shared/error_messages', resource: @player %>
 
     <div class="form-group row"> 
-      <%= f.label "選手名", class: "col-sm-3" %><br />
+      <div class="col-sm-3">
+        <%= f.label "選手名" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <%= f.text_field :name, class: "form-control col-sm-6" %>
-      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
@@ -28,9 +30,11 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label "メインポジション", class: "col-sm-3" %><br />
+      <div class="col-sm-3">
+        <%= f.label "メインポジション" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <%= f.collection_select(:main_position_id, MainPosition.all, :id, :name, {}) %>
-      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
