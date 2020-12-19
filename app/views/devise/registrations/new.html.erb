@@ -7,56 +7,72 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="form-group row">
-      <%= f.label "メールアドレス", class: "col-sm-3" %><br />
+      <div class="col-sm-3">
+        <%= f.label "メールアドレス" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-sm-7" %>
-      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "パスワード", class: "col-sm-3" %>
+      <div class="col-sm-3">
+        <%= f.label "パスワード" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-sm-5", placeholder: "6文字以上で入力してください" %>
-      <p class="ml-2 mr-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "パスワード確認用", class: "col-sm-3" %><br />
+      <div class="col-sm-3">
+        <%= f.label "パスワード確認用" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-sm-5" %>
-      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム名", class: "col-sm-3" %><br />
+      <div class="col-sm-3">
+        <%= f.label "チーム名" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <%= f.text_field :team_name, class: "form-control col-sm-6" %>
-      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム名（カナ）", class: "col-sm-3" %><br />
-      <%= f.text_field :team_name_kana, class: "form-control col-sm-6" %>
-      <p class="ml-2 badge badge-danger">必須</p>
+      <div class="col-sm-3">
+        <%= f.label "チーム名（カナ）" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
+        <%= f.text_field :team_name_kana, class: "form-control col-sm-6" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チームURL", class: "col-sm-3 text-uppercase" %><br />
+      <div class="col-sm-3">
+        <%= f.label "チームURL", class: "text-uppercase" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <div class="input-group-prepend">
         <div class="input-group-text">
         baseball-players.site/teams/
         </div>
         <%= f.text_field :team_url, class: "form-control col-sm-7", placeholder: "※変更不可" %>
-        <p class="ml-2 badge badge-danger">必須</p>
       </div>
     </div>
 
     <div class="form-group row">
-      <%= f.label "活動拠点" , class: "col-sm-3"%><br />
+      <div class="col-sm-3">
+        <%= f.label "活動拠点" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <%= f.collection_select(:activity_base_id, ActivityBase.all, :id, :name, {}) %>
-      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
-      <%= f.label "チーム区分", class: "col-sm-3" %><br />
+      <div class="col-sm-3">
+        <%= f.label "チーム区分" %>
+        <span class="ml-2 badge badge-danger">必須</span>
+      </div>
       <%= f.collection_select(:team_attribute_id, TeamAttribute.all, :id, :name, {}) %>
-      <p class="ml-2 badge badge-danger">必須</p>
     </div>
 
     <div class="form-group row">
