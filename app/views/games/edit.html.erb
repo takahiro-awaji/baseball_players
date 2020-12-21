@@ -62,8 +62,8 @@
         <label class="pr-2"><%= f.radio_button(:top_or_bottom, '先攻') %>先攻</label>
         <label class="pr-2"><%= f.radio_button(:top_or_bottom, '後攻') %>後攻</label>
         <div class="pt-2">
-          自チーム <%= f.text_field :game_myteam_score, class: "score-form" %> 対
-          相手チーム <%= f.text_field :game_opponent_score, class: "score-form" %>
+          自チーム <%= f.number_field :game_myteam_score, class: "score-form", style: "width: 50px;", min: 0 %> 対
+          相手チーム <%= f.number_field :game_opponent_score, class: "score-form", style: "width: 50px;", min: 0 %>
         </div>
       </div>
     </div>
