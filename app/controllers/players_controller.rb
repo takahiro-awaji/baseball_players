@@ -22,19 +22,19 @@ class PlayersController < ApplicationController
 
   def show
     @batting_stats = BattingStat.all.where(player_id: @player.id)
-    @batting_average = sprintf("%.3f", @batting_stats.sum(:hit) / @batting_stats.sum(:at_hitting).to_f)
-    @batting_on_base_percentage = sprintf("%.3f", (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) \
+    @batting_average = format('%.3f', @batting_stats.sum(:hit) / @batting_stats.sum(:at_hitting).to_f)
+    @batting_on_base_percentage = format('%.3f', (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) \
     / (@batting_stats.sum(:at_hitting) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch) + @batting_stats.sum(:sacrifice_fly)).to_f)
-    @batting_slugging_percentage = sprintf("%.3f", (@batting_stats.sum(:hit) + (@batting_stats.sum(:double) * 2) + (@batting_stats.sum(:triple) * 3) \
+    @batting_slugging_percentage = format('%.3f', (@batting_stats.sum(:hit) + (@batting_stats.sum(:double) * 2) + (@batting_stats.sum(:triple) * 3) \
     + (@batting_stats.sum(:homerun) * 4)) / @batting_stats.sum(:at_hitting).to_f)
-    @batting_on_base_plus_slugging = sprintf("%.3f", (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) \
+    @batting_on_base_plus_slugging = format('%.3f', (@batting_stats.sum(:hit) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch)) \
     / (@batting_stats.sum(:at_hitting) + @batting_stats.sum(:walk) + @batting_stats.sum(:hit_by_pitch) + @batting_stats.sum(:sacrifice_fly)).to_f \
     + (@batting_stats.sum(:hit) + (@batting_stats.sum(:double) * 2) + (@batting_stats.sum(:triple) * 3) + (@batting_stats.sum(:homerun) * 4)) / @batting_stats.sum(:at_hitting).to_f)
-    
+
     @pitching_stats = PitchingStat.all.where(player_id: @player.id)
-    @pitching_earned_run_average = sprintf("%.2f", @pitching_stats.sum(:earned_run) * 7 / @pitching_stats.sum(:inning).to_f)
-    @pitching_win_average = sprintf("%.3f", @pitching_stats.where(win_lose_or_save: "勝").count / ( @pitching_stats.where(win_lose_or_save: "勝").count + @pitching_stats.where(win_lose_or_save: "負").count ).to_f )
-    @pitching_strikeout_average = sprintf("%.2f", @pitching_stats.sum(:strikeout) * 7 / @pitching_stats.sum(:inning).to_f )
+    @pitching_earned_run_average = format('%.2f', @pitching_stats.sum(:earned_run) * 7 / @pitching_stats.sum(:inning).to_f)
+    @pitching_win_average = format('%.3f', @pitching_stats.where(win_lose_or_save: '勝').count / (@pitching_stats.where(win_lose_or_save: '勝').count + @pitching_stats.where(win_lose_or_save: '負').count).to_f)
+    @pitching_strikeout_average = format('%.2f', @pitching_stats.sum(:strikeout) * 7 / @pitching_stats.sum(:inning).to_f)
   end
 
   def edit

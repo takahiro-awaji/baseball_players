@@ -70,5 +70,4 @@ class GamesController < ApplicationController
   def search_game
     @g = Game.ransack(params[:q])
   end
-
 end

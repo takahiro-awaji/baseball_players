@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
     @p_stats = PitchingStat.where(game_id: @games.ids)
     @p_stats_p = @players.joins(:pitching_stats).group('players.name')
   end
-  
+
   private
 
   def set_team
