@@ -36,7 +36,9 @@ class TeamsController < ApplicationController
     @games = Game.where(team_id: @team.id)
     @players = Player.where(team_id: @team.id)
     @b_stats = BattingStat.where(game_id: @games.ids)
+    @b_stats_p = @players.joins(:batting_stats).group('players.name')
     @p_stats = PitchingStat.where(game_id: @games.ids)
+    @p_stats_p = @players.joins(:pitching_stats).group('players.name')
   end
   
   private

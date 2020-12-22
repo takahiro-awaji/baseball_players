@@ -55,6 +55,8 @@
         </tr>
       </thead>
       <tbody>
+        <%# 打者成績ランキング %>
+        <% if @b_stats.present? %>
         <tr style="height: 50px;" class="text-center">
           <td style="font-size: 18px;">首位打者</td>
           <td style="font-size: 22px;"></td>
@@ -62,19 +64,26 @@
         </tr>
         <tr style="height: 50px;" class="text-center">
           <td style="font-size: 18px;">本塁打王</td>
-          <td style="font-size: 22px;"></td>
-          <td></td>
+          <td style="font-size: 22px;"><%= link_to @b_stats_p.order('sum_homerun DESC').sum(:homerun).max{ |a, b| a[1] <=> b[1] }[0],\
+           team_player_path(@team.team_url, @b_stats.group(:player_id).order('sum_homerun DESC').sum(:homerun).max{ |a, b| a[1] <=> b[1] }[0]) %></td>
+          <td><%= @b_stats_p.order('sum_homerun DESC').sum(:homerun).max{ |a, b| a[1] <=> b[1] }[1] %></td>
         </tr>
         <tr style="height: 50px;" class="text-center">
           <td style="font-size: 18px;">打点王</td>
-          <td style="font-size: 22px;"></td>
-          <td></td>
+          <td style="font-size: 22px;"><%= link_to @b_stats_p.order('sum_run_batted_in DESC').sum(:run_batted_in).max{ |a, b| a[1] <=> b[1] }[0],\
+           team_player_path(@team.team_url, @b_stats.group(:player_id).order('sum_run_batted_in DESC').sum(:run_batted_in).max{ |a, b| a[1] <=> b[1] }[0]) %></td>
+          <td><%= @b_stats_p.order('sum_run_batted_in DESC').sum(:run_batted_in).max{ |a, b| a[1] <=> b[1] }[1] %></td>
         </tr>
         <tr style="height: 50px;" class="text-center">
           <td style="font-size: 18px;">盗塁王</td>
-          <td style="font-size: 22px;"></td>
-          <td></td>
+          <td style="font-size: 22px;"><%= link_to @b_stats_p.order('sum_stolen_base DESC').sum(:stolen_base).max{ |a, b| a[1] <=> b[1] }[0],\
+          team_player_path(@team.team_url, @b_stats.group(:player_id).order('sum_stolen_base DESC').sum(:stolen_base).max{ |a, b| a[1] <=> b[1] }[0]) %></td>
+          <td><%= @b_stats_p.order('sum_stolen_base DESC').sum(:stolen_base).max{ |a, b| a[1] <=> b[1] }[1] %></td>
         </tr>
+        <% end %>
+        <%# //打者成績ランキング %>
+        <%# 投手成績ランキング %>
+        <% if @p_stats.present? %>
         <tr style="height: 50px;" class="text-center">
           <td style="font-size: 18px;">最多勝</td>
           <td style="font-size: 22px;"></td>
@@ -82,14 +91,17 @@
         </tr>
         <tr style="height: 50px;" class="text-center">
           <td style="font-size: 18px;">最多奪三振</td>
-          <td style="font-size: 22px;"></td>
-          <td></td>
+          <td style="font-size: 22px;"><%= link_to @p_stats_p.order('sum_strikeout DESC').sum(:strikeout).max{ |a, b| a[1] <=> b[1] }[0],\
+          team_player_path(@team.team_url, @p_stats.group(:player_id).order('sum_strikeout DESC').sum(:strikeout).max{ |a, b| a[1] <=> b[1] }[0]) %></td>
+          <td><%= @p_stats_p.order('sum_strikeout').sum(:strikeout).max{ |a, b| a[1] <=> b[1] }[1] %></td>
         </tr>
         <tr style="height: 50px;" class="text-center">
           <td style="font-size: 18px;">最高勝率</td>
           <td style="font-size: 22px;"></td>
           <td></td>
         </tr>
+        <% end %>
+        <%# //投手成績ランキング %>
       </tbody>
     </table>
   </div>
