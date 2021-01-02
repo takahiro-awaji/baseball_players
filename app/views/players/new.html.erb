@@ -13,7 +13,7 @@
       </div>
       <%= f.text_field :name, class: "form-control col-sm-6" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "性別", class: "col-sm-3" %><br />
       <label class="form-check pr-2">
@@ -23,12 +23,12 @@
         <%= f.radio_button(:sex, '女') %> 女
       </label>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "生年月日", class: "col-sm-3" %><br />
       <%= f.date_field :birthday, class: "form-control col-sm-4", value: "1990-01-01" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <div class="col-sm-3">
         <%= f.label "メインポジション"%>
@@ -36,12 +36,12 @@
       </div>
       <%= f.collection_select(:main_position_id, MainPosition.all, :id, :name, {}) %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "背番号", class: "col-sm-3" %><br />
       <%= f.number_field :number, class: "form-control col-sm-4", min: 0 %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "投打", class: "col-sm-3" %><br />
         <div class="form-check mr-4">
@@ -57,7 +57,7 @@
           <label class="pr-2"><%= f.radio_button(:at_bat, "両")%> 両</label>
         </div>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <div class="col-sm-3">
         <%= f.label "サブポジション" %>
@@ -70,7 +70,7 @@
         </label>
       <% end %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "スキル", class: "col-sm-3"%>
       <table>
@@ -126,32 +126,32 @@
       </tr>
       </table>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "選手の役職", class: "col-sm-3" %><br />
       <%= f.text_area :player_post, class: "form-control col-sm-6", rows: 3, placeholder: "例）キャプテン、副キャプテン、渉外、用具など" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "スタッフの役職", class: "col-sm-3" %><br />
       <%= f.text_area :staff_post, class: "form-control col-sm-6", rows: 3, placeholder: "例）監督、コーチ、マネージャーなど" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "野球歴", class: "col-sm-3" %><br />
       <%= f.text_area :carrer, class: "form-control col-sm-6", rows: 4 %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "PR・コメント", class: "col-sm-3 text-uppercase" %><br />
       <%= f.text_area :promotion, class: "form-control col-sm-6", rows: 4 %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="custom-file row mb-3">
       <%= f.label "選手画像", class: "col-sm-3" %>
       <%= f.file_field :image, id: "customFile" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="actions my-3 d-flex justify-content-center">
       <%= f.submit "登録する", class: "col-8 btn btn-primary" %>
     </div>
