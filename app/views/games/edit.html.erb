@@ -13,12 +13,12 @@
       </div>
       <%= f.date_field :gameday, class: "form-control col-sm-4" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "試合開始時間", class: "col-sm-3" %>
       <%= f.time_field :gametime, class: "form-control col-sm-4" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <div class="col-sm-3">
         <%= f.label "対戦相手" %>
@@ -26,22 +26,22 @@
       </div>
       <%= f.text_field :opponent, class: "form-control col-sm-4" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "大会名", class: "col-sm-3" %>
       <%= f.text_field :tournament_name, class: "form-control col-sm-6" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "球場名", class: "col-sm-3" %>
       <%= f.text_field :field_name, class: "form-control col-sm-6" %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "試合区分", class: "col-sm-3" %>
       <%= f.select(:game_attribute, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}) %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <div class="col-sm-3">
         <%= f.label "通算成績に加える" %>
@@ -52,7 +52,7 @@
         <label class="pr-2"><%= f.radio_button(:total_stats_add, 'いいえ') %> いいえ</label>
       </div>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <div class="col-sm-3">
         <%= f.label "スコア" %>
@@ -67,7 +67,7 @@
         </div>
       </div>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <div class="col-sm-3">
         <%= f.label "試合結果" %>
@@ -75,12 +75,12 @@
       </div>
       <%= f.select(:game_result, ["勝ち", "負け", "引き分け", "その他"], {include_blank: "選択してください"}) %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "コメント", class: "col-sm-3" %>
       <%= f.text_area :game_comment, class: "form-control col-sm-6", rows: 8 %>
     </div>
-
+    <hr width="80%" align="left">
     <div class="actions my-3 d-flex justify-content-center">
       <%= f.submit "登録する", class: "col-8 btn btn-primary" %>
     </div>
