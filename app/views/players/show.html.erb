@@ -115,6 +115,7 @@
     <h3>個人成績</h3>
     <% if @batting_stats.present? %>
     <h4 class="mt-4">打者成績</h4>
+
     <div class="overflow-auto">
     <table class="table text-center text-nowrap">
     <thead class="thead-light">
@@ -197,6 +198,7 @@
     </tfoot>
     </table>
     </div>
+    <p class="text-muted">横にスクロールするとさらに細かい情報を確認できます</p>
   <% end %>
 
   <% if @pitching_stats.present?%>
@@ -271,7 +273,8 @@
     </tfoot>
     </table>
     </div>
-  <% end %>
+    <p class="text-muted">横にスクロールするとさらに細かい情報を確認できます</p>
+    <% end %>
     </div>
   </div>
     
