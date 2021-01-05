@@ -1,0 +1,19 @@
+.pitcher {
+  background-color: #b22222;
+}
+
+.catcher {
+  background-color: #87cefa;
+}
+
+.infielder {
+  background-color: #daa520;
+}
+
+.outfielder {
+  background-color: #9acd32;
+}
+
+.staff {
+  background-color: #696969;
+}
