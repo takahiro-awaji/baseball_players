@@ -137,9 +137,14 @@
                 <%= player.name %>
                 </h5>
               </div>
-              <p class="text-center">
-                <%= player.main_position.name %><br />（<%= player.at_pitch%>/<%= player.at_bat %>）
+              <div class="d-flex flex-column">
+              <p class="text-center p-2 mb-0">
+                <%= player.main_position.name %>
               </p>
+              <p class="text-center">
+                （<%= player.at_pitch%>/<%= player.at_bat %>）
+              </p>
+              </div>
             </div>
           </div>
           <% end %>
