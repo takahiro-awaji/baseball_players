@@ -138,12 +138,31 @@
                 </h5>
               </div>
               <div class="d-flex flex-column">
-              <p class="text-center p-2 mb-0">
-                <%= player.main_position.name %>
-              </p>
-              <p class="text-center">
-                （<%= player.at_pitch%>/<%= player.at_bat %>）
-              </p>
+                <% case player.main_position_id %>
+                <% when 1 %>
+                  <p class="text-center p-2 mb-0 text-white rounded pitcher">
+                    <%= player.main_position.name %>
+                  </p>
+                <% when 2 %>
+                  <p class="text-center p-2 mb-0 text-white rounded catcher">
+                    <%= player.main_position.name %>
+                  </p>
+                <% when 3 %>
+                  <p class="text-center p-2 mb-0 text-white rounded infielder">
+                    <%= player.main_position.name %>
+                  </p>
+                <% when 4 %>
+                  <p class="text-center p-2 mb-0 text-white rounded outfielder">
+                    <%= player.main_position.name %>
+                  </p>
+                <% else %>
+                  <p class="text-center p-2 mb-0 text-white rounded staff">
+                    <%= player.main_position.name %>
+                  </p>
+                <% end %>
+                  <p class="text-center p-1">
+                    （<%= player.at_pitch%>/<%= player.at_bat %>）
+                  </p>
               </div>
             </div>
           </div>
