@@ -233,7 +233,6 @@
     <tr>
         <th scope="col">背番号</th>
         <th scope="col">選手名</th>
-        <th scope="col">登板順</th>
         <th scope="col">勝敗</th>
         <th scope="col" colspan="2">投球回</th>
         <th scope="col">失点</th>
@@ -246,6 +245,7 @@
         <th scope="col">与四死球</th>
         <th scope="col">ボーク</th>
         <th scope="col">暴投</th>
+        <th scope="col">登板順</th>
       </tr>
     </thead>
     <tbody>
@@ -253,7 +253,6 @@
         <tr>
           <td><%= p.player.number %></td> 
           <td><%= link_to p.player.name, team_player_path(@team.team_url, p.player_id) %></td>
-          <td><%= p.pitching_order %></td>
           <td><%= p.win_lose_or_save %></td>
           <td colspan="2"><%= p.inning %>回<%= p.part_of_inning %>/3</td>
           <td><%= p.runs_allowed %></td>
@@ -266,6 +265,7 @@
           <td><%= p.base_on_ball_or_hit_by_pitch %></td>
           <td><%= p.balk %></td>
           <td><%= p.wild_pitch %></td>
+          <td><%= p.pitching_order %></td>
         </tr>
         <% end %>
     </tbody>
@@ -273,7 +273,6 @@
       <tr>
         <th scope="col">背番号</th>
         <th scope="col">選手名</th>
-        <th scope="col">登板順</th>
         <th scope="col">勝敗</th>
         <th scope="col" colspan="2">投球回</th>
         <th scope="col">失点</th>
@@ -286,6 +285,7 @@
         <th scope="col">与四死球</th>
         <th scope="col">ボーク</th>
         <th scope="col">暴投</th>
+        <th scope="col">登板順</th>
       </tr>
     </tfoot>
     </table>
