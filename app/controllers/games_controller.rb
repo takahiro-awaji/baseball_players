@@ -15,7 +15,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
-      redirect_to team_games_path(@team.team_url)
+      redirect_to team_game_path(@team.team_url, @game.id)
     else
       render 'new'
     end
