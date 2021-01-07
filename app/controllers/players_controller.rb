@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if @player.save
-      redirect_to team_players_path(@team.team_url)
+      redirect_to team_player_path(@team.team_url, @player.id)
     else
       render 'new'
     end
