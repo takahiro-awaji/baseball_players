@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'stat'
+      get 'ranking'
     end
     resources :players
     resources :games do
