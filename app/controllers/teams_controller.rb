@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :stat]
+  before_action :set_team, only: [:show, :edit, :update, :stat, :ranking]
   before_action :ensure_correct_team, only: [:edit, :update, :destroy]
   before_action :forbid_login_team, only: :top
 
@@ -38,6 +38,14 @@ class TeamsController < ApplicationController
     @b_stats = BattingStat.where(game_id: @games.ids)
     @b_stats_p = @players.joins(:batting_stats).group('players.name')
     @p_stats = PitchingStat.where(game_id: @games.ids)
+    @p_stats_p = @players.joins(:pitching_stats).group('players.name')
+  end
+
+  def ranking
+    @players = Player.where(team_id: @team.id)
+    # @b_stats = BattingStat.where(game_id: @games.ids)
+    @b_stats_p = @players.joins(:batting_stats).group('players.name')
+    # @p_stats = PitchingStat.where(game_id: @games.ids)
     @p_stats_p = @players.joins(:pitching_stats).group('players.name')
   end
 
