@@ -3,8 +3,8 @@
 <div class="container mt-2">
   <h4>打者個人成績</h4>
   <div class="overflow-auto">
-    <table class="table text-center text-nowrap">
-      <thead>
+    <table class="table table-sm text-center text-nowrap">
+      <thead class="thead-light">
         <tr>
           <th scope="col">背番号</th>
           <th scope="col">選手名</th>
@@ -52,7 +52,7 @@
           </tr>
         <% end %>
       </tbody>
-      <tfoot>
+      <tfoot class="thead-light">
         <tr>
           <th scope="col">背番号</th>
           <th scope="col">選手名</th>
@@ -82,28 +82,29 @@
 
   <h4>投手個人成績</h4>
   <div class="overflow-auto">
-    <table class="table text-center text-nowrap">
-      <thead>
+    <table class="table table-sm text-center text-nowrap">
+      <thead class="thead-light">
         <tr>
           <th scope="col">背番号</th>
           <th scope="col">選手名</th>
-          <th scope="col">打席</th>
-          <th scope="col">打数</th>
-          <th scope="col">安打</th>
-          <th scope="col">打点</th>
-          <th scope="col">得点</th>
-          <th scope="col">盗塁</th>
-          <th scope="col">二塁打</th>
-          <th scope="col">三塁打</th>
-          <th scope="col">本塁打</th>
-          <th scope="col">三振</th>
-          <th scope="col">四球</th>
-          <th scope="col">死球</th>
-          <th scope="col">犠打</th>
-          <th scope="col">犠飛</th>
-          <th scope="col">併殺</th>
-          <th scope="col">敵失</th>
-          <th scope="col">失策</th>
+          <th scope="col">試合数</th>
+          <th scope="col">勝数</th>
+          <th scope="col">負数</th>
+          <th scope="col">セーブ</th>
+          <th scope="col" colspan="2">投球回</th>
+          <th scope="col">失点</th>
+          <th scope="col">自責点</th>
+          <th scope="col">防御率</th>
+          <th scope="col">勝率</th>
+          <th scope="col">完投</th>
+          <th scope="col">完封</th>
+          <th scope="col">被安打</th>
+          <th scope="col">被本塁打</th>
+          <th scope="col">奪三振</th>
+          <th scope="col">奪三振率</th>
+          <th scope="col">与四死球</th>
+          <th scope="col">ボーク</th>
+          <th scope="col">暴投</th>
         </tr>
       </thead>
       <tbody>
@@ -128,30 +129,33 @@
             <td>3</td>
             <td>1</td>
             <td>2</td>
+            <td>1</td>
+            <td>2</td>
           </tr>
         <% end %>
       </tbody>
-      <tfoot>
+      <tfoot class="thead-light">
         <tr>
           <th scope="col">背番号</th>
           <th scope="col">選手名</th>
-          <th scope="col">打席</th>
-          <th scope="col">打数</th>
-          <th scope="col">安打</th>
-          <th scope="col">打点</th>
-          <th scope="col">得点</th>
-          <th scope="col">盗塁</th>
-          <th scope="col">二塁打</th>
-          <th scope="col">三塁打</th>
-          <th scope="col">本塁打</th>
-          <th scope="col">三振</th>
-          <th scope="col">四球</th>
-          <th scope="col">死球</th>
-          <th scope="col">犠打</th>
-          <th scope="col">犠飛</th>
-          <th scope="col">併殺</th>
-          <th scope="col">敵失</th>
-          <th scope="col">失策</th>
+          <th scope="col">試合数</th>
+          <th scope="col">勝数</th>
+          <th scope="col">負数</th>
+          <th scope="col">セーブ</th>
+          <th scope="col" colspan="2">投球回</th>
+          <th scope="col">失点</th>
+          <th scope="col">自責点</th>
+          <th scope="col">防御率</th>
+          <th scope="col">勝率</th>
+          <th scope="col">完投</th>
+          <th scope="col">完封</th>
+          <th scope="col">被安打</th>
+          <th scope="col">被本塁打</th>
+          <th scope="col">奪三振</th>
+          <th scope="col">奪三振率</th>
+          <th scope="col">与四死球</th>
+          <th scope="col">ボーク</th>
+          <th scope="col">暴投</th>
         </tr>
       </tfoot>
     </table>
