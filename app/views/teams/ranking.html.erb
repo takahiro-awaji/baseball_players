@@ -116,25 +116,24 @@
           <tr>
             <td><%= player.number %></td> 
             <td><%= player.name %></td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>1</td>
-            <td>2</td>
+            <td><%= @p_stats.where(player_id: player.id).count %></td>
+            <td><%= @p_stats.where(player_id: player.id, win_lose_or_save: "勝").count %></td>
+            <td><%= @p_stats.where(player_id: player.id, win_lose_or_save: "負").count %></td>
+            <td><%= @p_stats.where(player_id: player.id, win_lose_or_save: "S").count %></td>
+            <td colspan = "2"><%= @p_stats.where(player_id: player.id).sum(:inning) + (@p_stats.where(player_id: player.id).sum(:part_of_inning) / 3) %>回<%= @p_stats.where(player_id: player.id).sum(:part_of_inning) % 3 %>/3</td>
+            <td><%= @p_stats.where(player_id: player.id).sum(:runs_allowed) %></td>
+            <td><%= @p_stats.where(player_id: player.id).sum(:earned_run) %></td>
+            <td></td>
+            <td></td>
+            <td><%= @p_stats.where(player_id: player.id, complete_game: "○").count %></td>
+            <td><%= @p_stats.where(player_id: player.id, shutout: "○").count %></td>
+            <td><%= @p_stats.where(player_id: player.id).sum(:hit_allowed) %></td>
+            <td><%= @p_stats.where(player_id: player.id).sum(:homerun_allowed) %></td>
+            <td><%= @p_stats.where(player_id: player.id).sum(:strikeout) %></td>
+            <td></td>
+            <td><%= @p_stats.where(player_id: player.id).sum(:base_on_ball_or_hit_by_pitch) %></td>
+            <td><%= @p_stats.where(player_id: player.id).sum(:balk) %></td>
+            <td><%= @p_stats.where(player_id: player.id).sum(:wild_pitch) %></td>
           </tr>
         <% end %>
       </tbody>
