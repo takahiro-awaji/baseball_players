@@ -1,6 +1,7 @@
 <%= render 'shared/header' %>
 
 <div class="container mt-2">
+
   <h4>打者個人成績</h4>
   <div class="overflow-auto">
     <table class="table table-sm text-center text-nowrap">
@@ -8,6 +9,7 @@
         <tr>
           <th scope="col">背番号</th>
           <th scope="col">選手名</th>
+          <th scope="col">試合数</th>
           <th scope="col">打席</th>
           <th scope="col">打数</th>
           <th scope="col">安打</th>
@@ -32,23 +34,24 @@
           <tr>
             <td><%= player.number %></td> 
             <td><%= player.name %></td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
+            <td><%= @b_stats.where(player_id: player.id).count %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:at_standing) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:at_hitting) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:hit) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:run_batted_in) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:run) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:stolen_base) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:double) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:triple) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:homerun) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:strikeout) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:walk) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:hit_by_pitch) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:sacrifice_bunt) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:sacrifice_fly) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:double_play) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:opponent_error) %></td>
+            <td><%= @b_stats.where(player_id: player.id).sum(:fielding_error) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -56,6 +59,7 @@
         <tr>
           <th scope="col">背番号</th>
           <th scope="col">選手名</th>
+          <th scope="col">試合数</th>
           <th scope="col">打席</th>
           <th scope="col">打数</th>
           <th scope="col">安打</th>
