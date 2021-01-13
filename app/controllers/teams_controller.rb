@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
   end
 
   def ranking
-    @players = Player.where(team_id: @team.id)
+    @players = Player.where(team_id: @team.id).order(number: :asc)
     @b_stats = BattingStat.all.where(player_id: @players.ids)
     @b_stats_p = @players.joins(:batting_stats).group('players.name')
     @p_stats = PitchingStat.all.where(player_id: @players.ids)
