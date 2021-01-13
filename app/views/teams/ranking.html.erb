@@ -13,6 +13,7 @@
           <th scope="col">打席</th>
           <th scope="col">打数</th>
           <th scope="col">安打</th>
+          <th scope="col">打率</th>
           <th scope="col">打点</th>
           <th scope="col">得点</th>
           <th scope="col">盗塁</th>
@@ -38,6 +39,7 @@
             <td><%= @b_stats.where(player_id: player.id).sum(:at_standing) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:at_hitting) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:hit) %></td>
+            <td><%= format('%.3f', @b_stats.where(player_id: player.id).sum(:hit) / @b_stats.where(player_id: player.id).sum(:at_hitting).to_f) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:run_batted_in) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:run) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:stolen_base) %></td>
@@ -63,6 +65,7 @@
           <th scope="col">打席</th>
           <th scope="col">打数</th>
           <th scope="col">安打</th>
+          <th scope="col">打率</th>
           <th scope="col">打点</th>
           <th scope="col">得点</th>
           <th scope="col">盗塁</th>
@@ -123,14 +126,14 @@
             <td colspan = "2"><%= @p_stats.where(player_id: player.id).sum(:inning) + (@p_stats.where(player_id: player.id).sum(:part_of_inning) / 3) %>回<%= @p_stats.where(player_id: player.id).sum(:part_of_inning) % 3 %>/3</td>
             <td><%= @p_stats.where(player_id: player.id).sum(:runs_allowed) %></td>
             <td><%= @p_stats.where(player_id: player.id).sum(:earned_run) %></td>
-            <td></td>
-            <td></td>
+            <td><%= format('%.2f', @p_stats.where(player_id: player.id).sum(:earned_run) * 7 / @p_stats.where(player_id: player.id).sum(:inning).to_f) %></td>
+            <td><%= format('%.3f', @p_stats.where(player_id: player.id, win_lose_or_save: "勝").count / (@p_stats.where(player_id: player.id, win_lose_or_save: "勝").count + @p_stats.where(player_id: player.id, win_lose_or_save: "負").count).to_f) %></td>
             <td><%= @p_stats.where(player_id: player.id, complete_game: "○").count %></td>
             <td><%= @p_stats.where(player_id: player.id, shutout: "○").count %></td>
             <td><%= @p_stats.where(player_id: player.id).sum(:hit_allowed) %></td>
             <td><%= @p_stats.where(player_id: player.id).sum(:homerun_allowed) %></td>
             <td><%= @p_stats.where(player_id: player.id).sum(:strikeout) %></td>
-            <td></td>
+            <td><%= format('%.2f', @p_stats.where(player_id: player.id).sum(:strikeout) * 7 / @p_stats.where(player_id: player.id).sum(:inning).to_f) %></td>
             <td><%= @p_stats.where(player_id: player.id).sum(:base_on_ball_or_hit_by_pitch) %></td>
             <td><%= @p_stats.where(player_id: player.id).sum(:balk) %></td>
             <td><%= @p_stats.where(player_id: player.id).sum(:wild_pitch) %></td>
