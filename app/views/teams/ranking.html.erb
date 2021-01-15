@@ -16,10 +16,13 @@
           <th scope="col">打率</th>
           <th scope="col">打点</th>
           <th scope="col">得点</th>
+          <th scope="col">出塁率</th>
           <th scope="col">盗塁</th>
           <th scope="col">二塁打</th>
           <th scope="col">三塁打</th>
           <th scope="col">本塁打</th>
+          <th scope="col">長打率</th>
+          <th scope="col">OPS</th>
           <th scope="col">三振</th>
           <th scope="col">四球</th>
           <th scope="col">死球</th>
@@ -42,10 +45,13 @@
             <td><%= format('%.3f', @b_stats.where(player_id: player.id).sum(:hit) / @b_stats.where(player_id: player.id).sum(:at_hitting).to_f) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:run_batted_in) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:run) %></td>
+            <td><%= %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:stolen_base) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:double) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:triple) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:homerun) %></td>
+            <td><%= %></td>
+            <td><%= %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:strikeout) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:walk) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:hit_by_pitch) %></td>
@@ -68,10 +74,13 @@
           <th scope="col">打率</th>
           <th scope="col">打点</th>
           <th scope="col">得点</th>
+          <th scope="col">出塁率</th>
           <th scope="col">盗塁</th>
           <th scope="col">二塁打</th>
           <th scope="col">三塁打</th>
           <th scope="col">本塁打</th>
+          <th scope="col">長打率</th>
+          <th scope="col">OPS</th>
           <th scope="col">三振</th>
           <th scope="col">四球</th>
           <th scope="col">死球</th>
@@ -84,6 +93,7 @@
       </tfoot>
     </table>
   </div>
+  <p class="text-muted">横にスクロールするとさらに細かい情報を確認できます</p>
 
   <div class="w-100 m-3"></div>
 
@@ -166,6 +176,8 @@
       </tfoot>
     </table>
   </div>
+  <p class="text-muted">横にスクロールするとさらに細かい情報を確認できます</p>
+  
 </div>
 
 <%= render 'shared/footer' %>
