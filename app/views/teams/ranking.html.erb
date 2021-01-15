@@ -45,7 +45,8 @@
             <td><%= format('%.3f', @b_stats.where(player_id: player.id).sum(:hit) / @b_stats.where(player_id: player.id).sum(:at_hitting).to_f) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:run_batted_in) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:run) %></td>
-            <td><%= %></td>
+            <td><%= format('%.3f', (@b_stats.where(player_id: player.id).sum(:hit) + @b_stats.where(player_id: player.id).sum(:walk) + @b_stats.where(player_id: player.id).sum(:hit_by_pitch)) \
+            / (@b_stats.where(player_id: player.id).sum(:at_hitting) + @b_stats.where(player_id: player.id).sum(:walk) + @b_stats.where(player_id: player.id).sum(:hit_by_pitch) + @b_stats.where(player_id: player.id).sum(:sacrifice_fly)).to_f)%></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:stolen_base) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:double) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:triple) %></td>
@@ -177,7 +178,7 @@
     </table>
   </div>
   <p class="text-muted">横にスクロールするとさらに細かい情報を確認できます</p>
-  
+
 </div>
 
 <%= render 'shared/footer' %>
