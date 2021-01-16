@@ -25,6 +25,7 @@
             <%= link_to "マイページ", team_path(current_team.team_url), class: "btn dropdown-item"%>
             <%= link_to "新規選手登録", new_team_player_path(current_team.team_url), class: "btn dropdown-item" %>
             <%= link_to "新規試合結果登録", new_team_game_path(current_team.team_url), class: "btn dropdown-item" %>
+            <%= link_to "ランキング", ranking_team_path(@team.team_url), class: "btn dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to "ログアウト", destroy_team_session_path, method: :delete, class: "btn dropdown-item" %>
           </div>
