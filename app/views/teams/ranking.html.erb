@@ -35,6 +35,7 @@
       </thead>
       <tbody>
         <% @players.each do |player| %>
+          <% if @b_stats.where(player_id: player.id).count > 0 %>
           <tr>
             <td><%= player.number %></td> 
             <td><%= link_to player.name, team_player_path(@team.team_url, player) %></td>
@@ -63,6 +64,7 @@
             <td><%= @b_stats.where(player_id: player.id).sum(:opponent_error) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:fielding_error) %></td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
       <tfoot class="thead-light">
@@ -128,6 +130,7 @@
       </thead>
       <tbody>
         <% @players.each do |player| %>
+          <% if @p_stats.where(player_id: player.id).count > 0 %>
           <tr>
             <td><%= player.number %></td> 
             <td><%= link_to player.name, team_player_path(@team.team_url, player) %></td>
@@ -150,6 +153,7 @@
             <td><%= @p_stats.where(player_id: player.id).sum(:balk) %></td>
             <td><%= @p_stats.where(player_id: player.id).sum(:wild_pitch) %></td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
       <tfoot class="thead-light">
