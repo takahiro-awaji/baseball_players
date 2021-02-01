@@ -39,7 +39,7 @@
     <hr width="80%" align="left">
     <div class="form-group row">
       <%= f.label "試合区分", class: "col-sm-3" %>
-      <%= f.select(:game_attribute, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}) %>
+      <%= f.select(:game_attribute, ["公式戦", "練習試合", "その他"], {include_blank: "選択してください"}, class: "col-sm-4 custom-select") %>
     </div>
     <hr width="80%" align="left">
     <div class="form-group row">
@@ -73,7 +73,7 @@
         <%= f.label "試合結果" %>
         <span class="ml-2 badge badge-danger">必須</span>
       </div>
-      <%= f.select(:game_result, ["勝ち", "負け", "引き分け", "その他"], {include_blank: "選択してください"}) %>
+      <%= f.select(:game_result, ["勝ち", "負け", "引き分け", "その他"], {include_blank: "選択してください"}, class: "col-sm-4 custom-select") %>
     </div>
     <hr width="80%" align="left">
     <div class="form-group row">
