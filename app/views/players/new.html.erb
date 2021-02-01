@@ -34,7 +34,7 @@
         <%= f.label "メインポジション"%>
         <span class="ml-2 badge badge-danger">必須</span>
       </div>
-      <%= f.collection_select(:main_position_id, MainPosition.all, :id, :name, {}) %>
+      <%= f.collection_select(:main_position_id, MainPosition.all, :id, :name, {}, class: "col-sm-4 custom-select") %>
     </div>
     <hr width="80%" align="left">
     <div class="form-group row">
