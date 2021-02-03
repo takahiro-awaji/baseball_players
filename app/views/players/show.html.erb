@@ -18,9 +18,9 @@
   <%# 選手画像の表示 %>
     <div class="col-lg-3 col-sm-4 text-center">
     <% if @player.image.present? %>
-      <%= image_tag(@player.image, class: "m-2", size: "150x150") if @player.image.attached? %>
+      <%= image_tag(@player.image, class: "m-2 rounded-circle", size: "150x150") if @player.image.attached? %>
     <% else %>
-      <%= image_tag('logo.jpg', class: "m-2", size: "150x150") %>
+      <%= image_tag('logo.jpg', class: "m-2 rounded-circle", size: "150x150") %>
     <% end %>
     </div>
   <%# //選手画像の表示 %>

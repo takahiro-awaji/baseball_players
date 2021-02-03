@@ -13,9 +13,9 @@
     <% @players.each do |player| %>
       <div class="media col-lg-6 p-3 position-relative border">
         <% if player.image.present? %>
-          <%= link_to image_tag(player.image, class: "mr-3", size: "100x100"), team_player_path(@team.team_url, player.id), class: "stretched-link" if player.image.attached? %>
+          <%= link_to image_tag(player.image, class: "mr-3 rounded-circle", size: "100x100"), team_player_path(@team.team_url, player.id), class: "stretched-link" if player.image.attached? %>
         <% else %>
-          <%= link_to image_tag('logo.jpg', class: "mr-3", size: "100x100"), team_player_path(@team.team_url, player.id), class: "stretched-link" %>
+          <%= link_to image_tag('logo.jpg', class: "mr-3 rounded-circle", size: "100x100"), team_player_path(@team.team_url, player.id), class: "stretched-link" %>
         <% end %>
         <div class="media-body">
           <h5 class="pb-2 border-bottom">
