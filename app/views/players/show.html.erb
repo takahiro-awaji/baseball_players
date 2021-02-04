@@ -59,51 +59,51 @@
     <div class="col-sm-10 text-center">
       <table class="table table-bordered">
         <tr>
-          <th scope="row" style="width: 200px;">所属チーム</th>
+          <th scope="row" style="width: 200px;" class="table-dark">所属チーム</th>
           <td><%= @player.team.team_name %></td>
         </tr>
         <tr>
-          <th scope="row">選手名</th>
+          <th scope="row" class="table-dark">選手名</th>
           <td><%= @player.name %></td>
         </tr>
         <tr>
-          <th scope="row">性別</th>
+          <th scope="row" class="table-dark">性別</th>
           <td><%= @player.sex %></td>
         </tr>
         <tr>
-          <th scope="row">生年月日</th>
+          <th scope="row" class="table-dark">生年月日</th>
           <td><%= l(@player.birthday, format: :default) %></td>
         </tr>
         <tr>
-          <th scope="row">メインポジション</th>
+          <th scope="row" class="table-dark">メインポジション</th>
           <td id="main-position"><%= @player.main_position.name %></td>
         </tr>
         <tr>
-          <th scope="row">背番号</th>
+          <th scope="row" class="table-dark">背番号</th>
           <td><%= @player.number %></td>
         </tr>
         <tr>
-          <th scope="row">投／打</th>
+          <th scope="row" class="table-dark">投／打</th>
           <td><%= @player.at_pitch %> / <%= @player.at_bat %></td>
         </tr>
         <tr>
-          <th scope="row">サブポジション</th>
+          <th scope="row" class="table-dark">サブポジション</th>
           <td><%= @player.sub_position %></td>
         </tr>
         <tr>
-          <th scope="row">選手の役職</th>
+          <th scope="row" class="table-dark">選手の役職</th>
           <td><%= simple_format(@player.player_post) %></td>
         </tr>
         <tr>
-          <th scope="row">スタッフの役職</th>
+          <th scope="row" class="table-dark">スタッフの役職</th>
           <td><%= simple_format(@player.staff_post) %></td>
         </tr>
         <tr>
-          <th scope="row">野球歴</th>
+          <th scope="row" class="table-dark">野球歴</th>
           <td><%= simple_format(@player.carrer) %></td>
         </tr>
         <tr>
-          <th scope="row">自己紹介</th>
+          <th scope="row" class="table-dark">自己紹介</th>
           <td><%= simple_format(@player.promotion) %></td>
         </tr>
       </table>
