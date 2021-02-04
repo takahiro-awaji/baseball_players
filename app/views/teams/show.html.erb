@@ -75,63 +75,63 @@
       <% end %>
       <table class="table text-center">
         <tr>
-          <th scope="row" style="width: 200px;">チーム名</th>
+          <th scope="row" style="width: 200px;" class="table-info">チーム名</th>
           <td><%= @team.team_name %></td>
         </tr>
         <tr>
-          <th scope="row">チーム名（カナ）</th>
+          <th scope="row" class="table-info">チーム名（カナ）</th>
           <td><%= @team.team_name_kana %></td>
         </tr>
         <tr>
-          <th score="row">活動拠点</th>
+          <th score="row" class="table-info">活動拠点</th>
           <td><%= @team.activity_base.name %></td>
         </tr>
         <tr>
-          <th score="row">チーム区分</th>
+          <th score="row" class="table-info">チーム区分</th>
           <td><%= @team.team_attribute.name %></td>
         </tr>
         <tr>
-          <th score="row">チームレベル</th>
+          <th score="row" class="table-info">チームレベル</th>
           <td><%= @team.team_level.name %></td>
         </tr>
         <tr>
-          <th score="row">チーム平均年齢</th>
+          <th score="row" class="table-info">チーム平均年齢</th>
           <td><%= @team.team_player_age.name %></td>
         </tr>
         <tr>
-          <th score="row">メンバー野球歴</th>
+          <th score="row" class="table-info">メンバー野球歴</th>
           <td><%= @team.team_player_history.name %></td>
         </tr>
         <tr>
-          <th score="row">所属リーグ・団体・連盟等</th>
+          <th score="row" class="table-info">所属リーグ・団体・連盟等</th>
           <td><%= simple_format(@team.league) %></td>
         </tr>
         <tr>
-          <th score="row">獲得タイトル</th>
+          <th score="row" class="table-info">獲得タイトル</th>
           <td><%= simple_format(@team.team_title) %></td>
         </tr>
         <tr>
-          <th score="row">チーム結成</th>
+          <th score="row" class="table-info">チーム結成</th>
           <td><%= @team.since.name %></td>
         </tr>
         <tr>
-          <th score="row">活動曜日</th>
+          <th score="row" class="table-info">活動曜日</th>
           <td><%= @team.activity_day %></td>
         </tr>
         <tr>
-          <th score="row">活動ペース</th>
+          <th score="row" class="table-info">活動ペース</th>
           <td><%= @team.activity_pace.name %></td>
         </tr>
         <tr>
-          <th score="row">年間試合数</th>
+          <th score="row" class="table-info">年間試合数</th>
           <td><%= @team.games_per_year.name %></td>
         </tr>
         <tr>
-          <th score="row">チームスローガン</th>
+          <th score="row" class="table-info">チームスローガン</th>
           <td><%= @team.team_slogan %></td>
         </tr>
         <tr>
-          <th score="row">チーム紹介</th>
+          <th score="row" class="table-info">チーム紹介</th>
           <td><%= simple_format(@team.introduction) %></td>
         </tr>
       </table>
