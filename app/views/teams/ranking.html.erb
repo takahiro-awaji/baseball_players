@@ -54,7 +54,9 @@
             <td><%= @b_stats.where(player_id: player.id).sum(:homerun) %></td>
             <td><%= format('%.3f', (@b_stats.where(player_id: player.id).sum(:hit) + (@b_stats.where(player_id: player.id).sum(:double) * 2) + (@b_stats.where(player_id: player.id).sum(:triple) * 3) \
             + (@b_stats.where(player_id: player.id).sum(:homerun) * 4)) / @b_stats.where(player_id: player.id).sum(:at_hitting).to_f) %></td>
-            <td><%= %></td>
+            <td><%= format('%.3f', (@b_stats.where(player_id: player.id).sum(:hit) + @b_stats.where(player_id: player.id).sum(:walk) + @b_stats.where(player_id: player.id).sum(:hit_by_pitch)) \
+            / (@b_stats.where(player_id: player.id).sum(:at_hitting) + @b_stats.where(player_id: player.id).sum(:walk) + @b_stats.where(player_id: player.id).sum(:hit_by_pitch) + @b_stats.where(player_id: player.id).sum(:sacrifice_fly)).to_f \
+            + ((@b_stats.where(player_id: player.id).sum(:hit) + (@b_stats.where(player_id: player.id).sum(:double) * 2) + (@b_stats.where(player_id: player.id).sum(:triple) * 3) + (@b_stats.where(player_id: player.id).sum(:homerun) * 4)) / @b_stats.where(player_id: player.id).sum(:at_hitting).to_f)) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:strikeout) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:walk) %></td>
             <td><%= @b_stats.where(player_id: player.id).sum(:hit_by_pitch) %></td>
