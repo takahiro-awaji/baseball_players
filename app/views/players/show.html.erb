@@ -2,17 +2,7 @@
 
 <div class="container mt-3">
 
-    <% if @team == current_team %>
-    <div class="btn-group">
-      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="fas fa-pencil-alt fa-lg" style="color: darkblue"></span>
-      </button>
-      <div class="dropdown-menu">
-        <%= link_to "編集", edit_team_player_path(@player.team.team_url), class: "dropdown-item" %>
-        <%= link_to "削除", team_player_path(@player.team.team_url),class: "dropdown-item", method: :delete, data: {confirm: "本当に削除してもいいですか？"} %>
-      </div>
-    </div>
-    <% end %>
+    
 
   <div class="row  d-flex justify-content-center">
   <%# 選手画像の表示 %>
@@ -28,7 +18,20 @@
   <%# 選手名、背番号、ポジション、投打 %>
     <div class="col-lg-7 col-sm-6 text-center">
       <h2><%= @player.number %></h2>
+      <div class="d-flex justify-content-center">
       <h3><%= @player.name %></h3>
+      <% if @team == current_team %>
+      <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="fas fa-pencil-alt fa-lg" style="color: darkblue"></span>
+        </button>
+        <div class="dropdown-menu">
+          <%= link_to "編集", edit_team_player_path(@player.team.team_url), class: "dropdown-item" %>
+          <%= link_to "削除", team_player_path(@player.team.team_url),class: "dropdown-item", method: :delete, data: {confirm: "本当に削除してもいいですか？"} %>
+        </div>
+      </div>
+      <% end %>
+      </div>
         <div class="progress">
           <div class="progress-bar bg-dark" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
